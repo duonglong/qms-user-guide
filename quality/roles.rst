@@ -1,0 +1,488 @@
+================
+Roles and access
+================
+
+The **Quality** app has three roles. Each one gives access to the app and decides what a person can see and do in
+it. Some decisions also depend on the person's place on the record — its owner, its author, its verifier, the lead
+auditor, the chair — and a few are kept apart on purpose, so that nobody approves their own work.
+
+The three roles
+===============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 30 50
+
+   * - Role
+     - Includes
+     - Meant for
+   * - :guilabel:`User`
+     - Internal user access to Odoo.
+     - People who raise and treat nonconformities, carry out corrective actions, write document versions and read
+       the documents addressed to them. Shop-floor staff who report problems get this role.
+   * - :guilabel:`Internal auditor`
+     - Everything a :guilabel:`User` has.
+     - People who must read the whole quality system: they read every nonconformity, action, audit, document and
+       management review of their companies, run the internal audits they are assigned to and request audit packs.
+   * - :guilabel:`Manager`
+     - Everything an :guilabel:`Internal auditor` has.
+     - The people who run the quality system: they close, cancel and amend, approve documents, close audits, manage
+       the configuration and change the settings.
+
+The roles build on each other: a manager can do everything an internal auditor can, and an internal auditor
+everything a user can. A person without any Quality role does not see the **Quality** app.
+
+At installation, the administrator is a quality manager.
+
+Give a user a role
+==================
+
+#. Go to :menuselection:`Settings --> Users & Companies --> Users` and open the user.
+#. On the :guilabel:`Access Rights` tab, find the :guilabel:`Supply Chain` section.
+#. In the :guilabel:`Quality` field, choose :guilabel:`User`, :guilabel:`Internal auditor` or :guilabel:`Manager`.
+   Leave it empty to remove access to the app.
+#. Save.
+
+Only one Quality role can be chosen: each role already includes the ones before it.
+
+.. tip::
+   Give the Quality :guilabel:`User` role to everyone who must read and acknowledge controlled documents. Audience
+   members without it are not asked to read: the version's chatter names them instead. See :doc:`documents`.
+
+What each role sees
+===================
+
+Each role sees a different part of the records. Everything outside that part is hidden: it does not appear in lists,
+on the dashboard, in the clause view or in exports.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 30 24 24
+
+   * - Records
+     - User
+     - Internal auditor
+     - Manager
+   * - Nonconformities
+     - Those they own, detected or follow.
+     - All.
+     - All.
+   * - Corrective and preventive actions
+     - Those they own or verify, those of nonconformities they own, and those created from management reviews they
+       attend.
+     - All.
+     - All.
+   * - Recurrences
+     - All.
+     - All.
+     - All.
+   * - Processes, audit templates and programmes
+     - All.
+     - All.
+     - All.
+   * - Audits, checklists and findings
+     - Those of the processes they own or work in (as an auditee).
+     - All.
+     - All.
+   * - Controlled documents
+     - Those they own, are in the audience of, or wrote a version of.
+     - All.
+     - All.
+   * - Document versions
+     - Their own versions while draft or rejected; the effective and obsolete versions of the documents they can see.
+     - All.
+     - All.
+   * - Acknowledgements
+     - Their own.
+     - All.
+     - All.
+   * - Management reviews
+     - Those they attend, with their inputs and decisions.
+     - All.
+     - All.
+   * - Audit packs
+     - None.
+     - All.
+     - All.
+
+"All" means all the records of the companies the person works in; see `Several companies`_. The standards and their
+clauses are the same for everyone.
+
+A record's trail and signatures follow the record: whoever can open the record can read them. See :doc:`trail`.
+
+.. tip::
+   A quality user who needs to work on a nonconformity they neither own nor detected can be added as a follower in its
+   chatter.
+
+Who can do what
+===============
+
+The table lists every action of the app. *Yes* means the role can do it on every record it can see; otherwise the
+cell says on which records. Items in **Core QMS** need the paid layer to be installed.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 34 22 22 22
+
+   * - Action
+     - User
+     - Internal auditor
+     - Manager
+   * - **Nonconformities**
+     -
+     -
+     -
+   * - Record a nonconformity
+     - Yes
+     - Yes
+     - Yes
+   * - Raise a nonconformity from a receipt, lot, order or repair (see :doc:`sources`)
+     - Yes
+     - Yes
+     - Yes
+   * - Edit and accept a new nonconformity
+     - Those they own, detected or follow
+     - Those they own, detected or follow
+     - Yes
+   * - Close an open nonconformity (signed)
+     - No
+     - No
+     - Yes
+   * - Cancel a new or open nonconformity
+     - No
+     - No
+     - Yes
+   * - Amend a closed nonconformity (signed)
+     - No
+     - No
+     - Yes
+   * - Delete a new or open nonconformity that carries no signature
+     - No
+     - No
+     - Yes
+   * - **Dashboard, clauses and trail**
+     -
+     -
+     -
+   * - Open the dashboard
+     - Yes, figures of the records they can see
+     - Yes
+     - Yes
+   * - Open the clause view and its evidence
+     - Yes, counts of the records they can see
+     - Yes
+     - Yes
+   * - Manage standards and clauses (:menuselection:`Configuration --> Standards`)
+     - No
+     - No
+     - Yes
+   * - Verify a record's trail, export it as PDF or CSV
+     - Records they can see
+     - Records they can see
+     - Yes
+   * - Export the trail of a period (:menuselection:`Quality --> Trail export`)
+     - Rows of the records they can see
+     - Rows of the records they can see
+     - Yes
+   * - **Corrective actions** (Core QMS)
+     -
+     -
+     -
+   * - Add an action to an open nonconformity
+     - Nonconformities they own
+     - Nonconformities they own
+     - Yes
+   * - Start an action, mark it done
+     - Actions they own
+     - Actions they own
+     - Yes
+   * - Verify effectiveness (signed)
+     - Actions they are the verifier of, never their own
+     - Actions they are the verifier of, never their own
+     - Any action they do not own
+   * - Cancel a draft or in-progress action
+     - No
+     - No
+     - Yes
+   * - Amend a verified or ineffective action (signed)
+     - No
+     - No
+     - Yes
+   * - Read recurrences
+     - Yes
+     - Yes
+     - Yes
+   * - Acknowledge a recurrence
+     - No
+     - No
+     - Yes
+   * - **Internal audits** (Core QMS)
+     -
+     -
+     -
+   * - Manage processes (:menuselection:`Configuration --> Processes`)
+     - No
+     - No
+     - Yes
+   * - Manage audit templates (:menuselection:`Configuration --> Audit templates`)
+     - No
+     - No
+     - Yes
+   * - Create, approve and close an audit programme
+     - No
+     - No
+     - Yes
+   * - Be chosen as lead auditor or co-auditor
+     - No
+     - Yes
+     - Yes
+   * - Plan an audit
+     - No
+     - Audits they lead or co-audit
+     - Yes
+   * - Start an audit
+     - No
+     - Audits they lead
+     - Yes
+   * - Record checklist results and add findings
+     - No
+     - Audits they lead or co-audit
+     - Yes
+   * - Report an audit (signed)
+     - No
+     - Audits they lead
+     - Yes, on the lead auditor's behalf
+   * - Close a reported audit (findings become nonconformities)
+     - No
+     - No
+     - Yes
+   * - Cancel a planned or in-progress audit
+     - No
+     - No
+     - Yes
+   * - Amend a reported or closed audit (signed)
+     - No
+     - No
+     - Yes
+   * - Print an audit report
+     - Audits they can see
+     - Yes
+     - Yes
+   * - **Documents** (Core QMS)
+     -
+     -
+     -
+   * - Create a document; change its title, owner, audience or clauses
+     - No
+     - No
+     - Yes
+   * - Manage document types (:menuselection:`Configuration --> Document types`)
+     - No
+     - No
+     - Yes
+   * - Write a new version
+     - Documents they can see
+     - Yes
+     - Yes
+   * - Submit, revise or delete a draft version
+     - Their own versions
+     - Their own versions
+     - Yes, on the author's behalf
+   * - Approve a version in review (signed)
+     - No
+     - No
+     - Yes, never a version they wrote
+   * - Reject a version in review
+     - No
+     - No
+     - Yes
+   * - Make an approved version effective today
+     - No
+     - No
+     - Yes
+   * - Withdraw an effective or approved version (signed)
+     - No
+     - No
+     - Yes
+   * - Amend an effective or obsolete version (signed)
+     - No
+     - No
+     - Yes
+   * - List every version (:menuselection:`Documents --> Versions`)
+     - No
+     - Yes
+     - Yes
+   * - Confirm a periodic review (:guilabel:`Reviewed, no change`)
+     - Documents they own
+     - Documents they own
+     - Yes
+   * - Acknowledge a version (:guilabel:`Read and understood`)
+     - Their own requests
+     - Their own requests
+     - Their own requests
+   * - See who acknowledged a version
+     - Only themselves
+     - Yes
+     - Yes
+   * - Print a controlled copy
+     - Versions they can see
+     - Yes
+     - Yes
+   * - Print or export the master list
+     - Documents they can see
+     - Yes
+     - Yes
+   * - **Management reviews** (Core QMS)
+     -
+     -
+     -
+   * - Chair a management review
+     - No
+     - No
+     - Yes
+   * - Create a review, edit it, recompute its inputs, record decisions and the conclusion
+     - No
+     - No
+     - Yes
+   * - Hold the review
+     - No
+     - No
+     - Yes, as the chair or on the chair's behalf
+   * - Create an action from a decision
+     - No
+     - No
+     - Yes
+   * - Approve the review (signed)
+     - No
+     - No
+     - Only the chair
+   * - Update the status of a decision of an approved review
+     - No
+     - No
+     - Yes
+   * - Amend the conclusion of an approved review (signed)
+     - No
+     - No
+     - Yes
+   * - Print the minutes of a held or approved review
+     - Reviews they attend
+     - Yes
+     - Yes
+   * - **Audit pack** (Core QMS)
+     -
+     -
+     -
+   * - Open packs, preview and download the ZIP and its files
+     - No
+     - Yes
+     - Yes
+   * - Request a pack, print the clause matrix
+     - No
+     - Yes
+     - Yes
+   * - Cancel a queued pack
+     - No
+     - Packs they requested
+     - Yes
+   * - Delete a failed or cancelled pack
+     - No
+     - No
+     - Yes
+   * - **Settings**
+     -
+     -
+     -
+   * - Change the Quality settings (:menuselection:`Settings --> Quality`)
+     - No
+     - No
+     - Yes, with the *Administration: Settings* right
+
+.. note::
+   Buttons are shown only to the people who can use them. For example, :guilabel:`Start` and :guilabel:`Mark done` on
+   a corrective action are shown to its owner and to quality managers; :guilabel:`Start` and :guilabel:`Report` on an
+   audit to its lead auditor and to quality managers, not to co-auditors; :guilabel:`Submit` and :guilabel:`Revise` on
+   a document version to its author and to quality managers.
+
+.. important::
+   - Only users with the :guilabel:`Internal auditor` or :guilabel:`Manager` role can be chosen as lead auditor or
+     co-auditor. See :doc:`audits`.
+   - The chair of a management review must be a quality manager. See :doc:`management_reviews`.
+   - The *Approve* to-do of a new document version goes to quality managers who did not write it. See
+     :doc:`documents`.
+
+Separation of duties
+====================
+
+ISO management systems expect that nobody checks their own work. The app enforces it in four places, for quality
+managers too:
+
+Author and approver
+   The author of a document version can never approve it, even when they are a quality manager. The
+   :guilabel:`Approve` button is hidden from them; another quality manager approves. See :doc:`documents`.
+
+Owner and verifier
+   The verifier of a corrective action cannot be its owner, and the owner can never sign the effectiveness verdict,
+   even as a quality manager: the :guilabel:`Verify` button is hidden from them. See :doc:`corrective_actions`.
+
+Auditor independence
+   The lead auditor and the co-auditors of an audit cannot be the owner of the audited process or one of its auditees.
+   Odoo refuses to save such an audit, and checks again when the audit starts. The rule applies to quality managers
+   too. See :doc:`audits`.
+
+The chair approves the review
+   Only the chair of a management review can approve it. A quality manager who is not the chair cannot approve it,
+   even on the chair's behalf. See :doc:`management_reviews`.
+
+Some actions can be done by a quality manager *on behalf of* the person they belong to: submitting a document version
+for its author, reporting an audit for its lead auditor, holding a review for its chair. The trail then records that
+it was done on their behalf.
+
+Nobody, not even a quality manager, can acknowledge a document for someone else.
+
+Signatures and the password re-check
+====================================
+
+Seven decisions are electronic signatures: closing a nonconformity, amending a locked record and, with Core QMS,
+signing the effectiveness verdict of an action, reporting an audit, approving a document version, withdrawing a
+document version and approving a management review. Each signature records who signed, when, why, and the
+fingerprint of the record at that moment. See :doc:`trail`.
+
+By default, Odoo asks the signer for their own password before signing, in its standard *confirm your password*
+dialog, so that nobody can sign from someone else's unattended session. Odoo does not ask again if the person
+confirmed their password in the last ten minutes.
+
+A quality manager can turn the password request off with :ref:`Ask the password before signing <config-password>`,
+for example where people sign in through single sign-on and have no Odoo password. The decisions are still signed,
+without the password check, and every change of this setting is recorded in the trail.
+
+Several companies
+=================
+
+On a database with several companies, quality records belong to a company:
+
+- a nonconformity, audit, programme, process, audit template, document, management review or audit pack takes the
+  company you are working in when it is created; a nonconformity raised from an operation takes the company of that
+  operation;
+- corrective actions, checklist lines, findings, document versions, acknowledgements and recurrences take the company
+  of the record they belong to;
+- numbers run per company: two companies each have their own ``NC/2026/00001``.
+
+People see and work on the records of the companies selected in the company switcher at the top of the screen, and
+their role applies in each of those companies. This holds for quality managers too, including the trail: a quality
+manager reads the trail rows of the records of their own companies only, in searches and in the period export.
+Reminders that go to "the quality managers" go to the quality managers
+who have access to the record's company.
+
+Some things are shared by every company:
+
+- the standards and their clauses;
+- the Quality settings, which are the same for the whole database;
+- document types whose :guilabel:`Company` is left empty.
+
+An audit pack covers the company you are working in when you request it. See :doc:`audit_pack`.
+
+.. seealso::
+   - :doc:`configuration`
+   - :doc:`nonconformities`
+   - :doc:`trail`
+   - :doc:`faq`
