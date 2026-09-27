@@ -123,7 +123,7 @@ Integrity
 .. _config-password:
 
 :guilabel:`Ask the password before signing`
-   When ticked, every signature — closing a nonconformity, amending a closed record and, with **Core QMS**, the other
+   When ticked, every signature — closing a nonconformity, amending a closed record and, with **QMS Advanced**, the other
    signed decisions — asks the signer for their own password first. See :doc:`trail`.
 
    - Default: ticked.
@@ -141,10 +141,10 @@ Integrity
    - Allowed: 100 or more.
    - Example: raise it to 20000 if your auditor wants a whole year of trail on paper and your server copes with it.
 
-Settings of Core QMS
---------------------
+Settings of QMS Advanced
+------------------------
 
-With **Core QMS** installed, the same page shows more blocks. They are explained with their features:
+With **QMS Advanced** installed, the same page shows more blocks. They are explained with their features:
 
 - :guilabel:`Corrective actions` (effectiveness gap, reminder interval, recurrence window, severities needing a
   corrective action) — see :doc:`corrective_actions`.

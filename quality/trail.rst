@@ -128,7 +128,7 @@ two first columns naming the record. Auditors can use it to recompute the chain 
 Electronic signatures
 =====================
 
-Some actions are *signed*: closing a nonconformity and amending a locked record. With **Core QMS**, more decisions
+Some actions are *signed*: closing a nonconformity and amending a locked record. With **QMS Advanced**, more decisions
 are signed the same way, such as approving a document, approving a management review, issuing an audit report or
 giving the effectiveness verdict of a corrective action. A signature records:
 
@@ -167,7 +167,7 @@ When a closed record must be corrected, a quality manager uses :guilabel:`Amend`
 least ten characters, is signed, and leaves the original value in the trail next to the new one. A cancelled record
 cannot be amended. See :ref:`Cancel or amend <nc-cancel-amend>` in :doc:`nonconformities`.
 
-With **Core QMS**, the same :guilabel:`Amend` dialog corrects the other locked records, each with the fields it allows:
+With **QMS Advanced**, the same :guilabel:`Amend` dialog corrects the other locked records, each with the fields it allows:
 
 .. list-table::
    :header-rows: 1

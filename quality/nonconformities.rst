@@ -218,7 +218,7 @@ and every change since it was created is kept in its :doc:`trail <trail>`.
    - Only an open nonconformity can be closed. A new one must be accepted first.
 
 .. note::
-   With **Core QMS** installed, a major or critical nonconformity also needs a verified corrective action before it
+   With **QMS Advanced** installed, a major or critical nonconformity also needs a verified corrective action before it
    can close. See :doc:`corrective_actions`.
 
 What is locked after closing

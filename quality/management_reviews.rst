@@ -3,7 +3,7 @@ Management reviews
 ==================
 
 ISO 9001 clause 9.3 asks top management to review the quality management system at planned intervals, to consider a
-fixed list of inputs, and to record its decisions. With **Core QMS** installed, the **Quality** app lays out the
+fixed list of inputs, and to record its decisions. With **QMS Advanced** installed, the **Quality** app lays out the
 agenda from the inputs of clause 9.3.2, fills it with the figures of the period from your nonconformities, corrective
 actions, audits and documents, records the meeting and its decisions, turns decisions into tracked actions, and has
 the chair sign the minutes.

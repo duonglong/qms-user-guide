@@ -3,7 +3,7 @@ Internal audits
 ===============
 
 ISO 9001 clause 9.2 asks for internal audits run to a *programme*, by auditors who are independent of what they
-audit, with every finding followed up. With **Core QMS** installed, the **Quality** app plans the year's audits,
+audit, with every finding followed up. With **QMS Advanced** installed, the **Quality** app plans the year's audits,
 builds each audit's checklist from the clauses in scope, keeps the auditor away from their own process, has the
 auditor sign the report, and turns every minor and major finding into a nonconformity when the audit is closed.
 
@@ -58,7 +58,7 @@ belonged to a process when it was audited.
          smart button.
 
 .. note::
-   With Core QMS installed, the :guilabel:`Process` of a nonconformity is chosen from this register. When the
+   With QMS Advanced installed, the :guilabel:`Process` of a nonconformity is chosen from this register. When the
    process is not in the register, type it in :guilabel:`Process not in the register` instead. Typed text that
    exactly matches the name of one registered process (whatever the case) is linked to that process when the
    nonconformity is saved.
@@ -351,7 +351,7 @@ You can group by :guilabel:`Programme`, :guilabel:`Process` or :guilabel:`State`
 Dashboard and statistics
 ========================
 
-Core QMS adds two tiles to the :doc:`dashboard`:
+QMS Advanced adds two tiles to the :doc:`dashboard`:
 
 .. list-table::
    :header-rows: 1

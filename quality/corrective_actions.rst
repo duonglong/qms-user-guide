@@ -6,7 +6,7 @@ A *correction* fixes the nonconforming item: the wrong label is replaced. A *cor
 so that the problem does not come back: the labelling step gets a second check. ISO 9001 clause 10.2 asks for both,
 and asks you to check afterwards that the corrective action actually worked.
 
-With **Core QMS** installed, each nonconformity can carry corrective actions. Every action has an owner who carries
+With **QMS Advanced** installed, each nonconformity can carry corrective actions. Every action has an owner who carries
 it out, a due date, an *effectiveness date* on which its effect can be judged, and a *verifier* — someone other than
 the owner — who signs the verdict. The nonconformity cannot be closed while one of its corrective actions is still
 waiting for that verdict.
@@ -198,7 +198,7 @@ full path after an ineffective verdict is:
 Closing the nonconformity
 =========================
 
-With **Core QMS** installed, :guilabel:`Close` on a nonconformity checks its corrective actions as well as its
+With **QMS Advanced** installed, :guilabel:`Close` on a nonconformity checks its corrective actions as well as its
 treatment. Odoo refuses to close and lists what is missing when:
 
 - a corrective action is still waiting for its verdict (**Draft**, **In progress** or **Done**) — *Verify
@@ -369,7 +369,7 @@ nothing was changed outside the application. See :doc:`trail`.
 Dashboard and statistics
 ========================
 
-Core QMS adds three tiles to the :doc:`dashboard`. Each opens the matching list:
+QMS Advanced adds three tiles to the :doc:`dashboard`. Each opens the matching list:
 
 .. list-table::
    :header-rows: 1

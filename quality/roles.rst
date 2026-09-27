@@ -118,7 +118,7 @@ Who can do what
 ===============
 
 The table lists every action of the app. *Yes* means the role can do it on every record it can see; otherwise the
-cell says on which records. Items in **Core QMS** need the paid layer to be installed.
+cell says on which records. Items in **QMS Advanced** need the paid layer to be installed.
 
 .. list-table::
    :header-rows: 1
@@ -184,7 +184,7 @@ cell says on which records. Items in **Core QMS** need the paid layer to be inst
      - Rows of the records they can see
      - Rows of the records they can see
      - Yes
-   * - **Corrective actions** (Core QMS)
+   * - **Corrective actions** (QMS Advanced)
      -
      -
      -
@@ -216,7 +216,7 @@ cell says on which records. Items in **Core QMS** need the paid layer to be inst
      - No
      - No
      - Yes
-   * - **Internal audits** (Core QMS)
+   * - **Internal audits** (QMS Advanced)
      -
      -
      -
@@ -268,7 +268,7 @@ cell says on which records. Items in **Core QMS** need the paid layer to be inst
      - Audits they can see
      - Yes
      - Yes
-   * - **Documents** (Core QMS)
+   * - **Documents** (QMS Advanced)
      -
      -
      -
@@ -332,7 +332,7 @@ cell says on which records. Items in **Core QMS** need the paid layer to be inst
      - Documents they can see
      - Yes
      - Yes
-   * - **Management reviews** (Core QMS)
+   * - **Management reviews** (QMS Advanced)
      -
      -
      -
@@ -368,7 +368,7 @@ cell says on which records. Items in **Core QMS** need the paid layer to be inst
      - Reviews they attend
      - Yes
      - Yes
-   * - **Audit pack** (Core QMS)
+   * - **Audit pack** (QMS Advanced)
      -
      -
      -
@@ -442,7 +442,7 @@ Nobody, not even a quality manager, can acknowledge a document for someone else.
 Signatures and the password re-check
 ====================================
 
-Seven decisions are electronic signatures: closing a nonconformity, amending a locked record and, with Core QMS,
+Seven decisions are electronic signatures: closing a nonconformity, amending a locked record and, with QMS Advanced,
 signing the effectiveness verdict of an action, reporting an audit, approving a document version, withdrawing a
 document version and approving a management review. Each signature records who signed, when, why, and the
 fingerprint of the record at that moment. See :doc:`trail`.

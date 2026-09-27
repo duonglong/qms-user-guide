@@ -40,7 +40,7 @@ app it connects to are both installed, in any order. For example, installing Inv
 has Quality adds the button to transfers and lots straight away. All of them are free.
 
 .. note::
-   With **Core QMS** installed, audit findings can also raise nonconformities. See :doc:`audits`.
+   With **QMS Advanced** installed, audit findings can also raise nonconformities. See :doc:`audits`.
 
 Raise a nonconformity from a record
 ===================================

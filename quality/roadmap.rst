@@ -26,7 +26,7 @@ Available now (Odoo 20.0)
    * - Free bridges: Stock, Manufacturing, Purchase, Repair, Product
      - Free
      - Raise a nonconformity from the record where the problem was found. See :doc:`sources`.
-   * - **Core QMS**
+   * - **QMS Advanced**
      - One-time purchase
      - Corrective actions with an independent effectiveness verdict (§10.2), internal audits (§9.2), document control
        (§7.5), management review (§9.3) and the one-click audit pack. See :doc:`corrective_actions`, :doc:`audits`,
@@ -34,11 +34,11 @@ Available now (Odoo 20.0)
 
 Every app is a one-time purchase for its Odoo version: no subscription, no licence key, nothing that expires.
 
-Next: Core QMS 1.1
-==================
+Next: QMS Advanced 1.1
+======================
 
 **Quality objectives** (ISO 9001 §6.2 and §9.1.3). Set objectives with a target and a period, record the actual
-figure, and see them as an input of the management review, which needs them to be complete. Included in Core QMS.
+figure, and see them as an input of the management review, which needs them to be complete. Included in QMS Advanced.
 
 Release 2
 =========
@@ -55,7 +55,7 @@ The rest of the ISO 9001 clauses an auditor opens with, each where it fits best:
    * - **Risks and opportunities**
      - §6.1
      - A register with likelihood and severity, treatment actions (the same corrective actions you already use),
-       and links to processes and nonconformities. Included in Core QMS.
+       and links to processes and nonconformities. Included in QMS Advanced.
    * - **Supplier evaluation**
      - §8.4
      - A rating per supplier computed from receipts and supplier nonconformities, an approved supplier list, and a

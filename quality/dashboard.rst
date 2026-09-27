@@ -108,10 +108,10 @@ day counts separated by commas, each the upper limit of one bucket. The default 
 *61-90* and *>90* days. A food plant might prefer ``7,14,30``; an engineering company ``30,90,180``. See
 :ref:`config-age-buckets`.
 
-Tiles added by Core QMS
-=======================
+Tiles added by QMS Advanced
+===========================
 
-With **Core QMS** installed, the dashboard shows more tiles after the five above:
+With **QMS Advanced** installed, the dashboard shows more tiles after the five above:
 
 - :guilabel:`Overdue corrective actions`, :guilabel:`Actions awaiting a verdict` and :guilabel:`Recurrences (90 days)`
   — see :doc:`corrective_actions`;

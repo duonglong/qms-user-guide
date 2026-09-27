@@ -4,7 +4,7 @@ Quality Management System — User guide
 
 **Quality Management System** runs your ISO quality system inside Odoo: record every nonconformity where it
 happens, treat it, close it with an electronic signature, and prove to any auditor — clause by clause — that nothing
-was quietly changed afterwards. The free core covers the nonconformity register; **Core QMS** adds corrective
+was quietly changed afterwards. The free core covers the nonconformity register; **QMS Advanced** adds corrective
 actions, internal audits, document control, management review and the audit pack.
 
 .. seealso::
@@ -23,7 +23,7 @@ actions, internal audits, document control, management review and the audit pack
    quality/configuration
 
 .. toctree::
-   :caption: Core QMS
+   :caption: QMS Advanced
    :titlesonly:
 
    quality/corrective_actions

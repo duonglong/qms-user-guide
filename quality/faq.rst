@@ -12,14 +12,14 @@ Nonconformities
    Odoo lists what is missing: the containment, the correction, the root cause, at least one clause, or the owner's
    *Nonconformity to treat* activity (mark it done in the chatter). The yellow banner *N items before closure* on the
    form gives the count. Only a quality manager can close, and only an **Open** nonconformity: accept a new one first.
-   With Core QMS, the corrective actions are checked too. See :doc:`nonconformities` and :doc:`corrective_actions`.
+   With QMS Advanced, the corrective actions are checked too. See :doc:`nonconformities` and :doc:`corrective_actions`.
 
 **I don't see the Close, Cancel or Amend button.**
    These buttons are reserved to quality managers. :guilabel:`Close` shows on open nonconformities only,
    :guilabel:`Cancel` on new and open ones, :guilabel:`Amend` on closed ones. See :doc:`nonconformities`.
 
 **How do I correct a signed audit report, an approved review, a verdict's wording or a version in force?**
-   With Core QMS, a quality manager clicks :guilabel:`Amend` on the locked record, changes the fields it allows and
+   With QMS Advanced, a quality manager clicks :guilabel:`Amend` on the locked record, changes the fields it allows and
    gives a reason; the amendment is signed and the trail keeps both values. See :doc:`trail`.
 
 **Odoo says "Tag at least one clause before Open."**

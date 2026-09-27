@@ -31,7 +31,7 @@ The words below are used throughout the **Quality** guide with the meaning given
       31-60, 61-90 and over 90 days). See :doc:`dashboard`.
 
    Amendment
-      A signed correction, with a reason, of a locked record: a closed nonconformity and, with Core QMS, a verified or
+      A signed correction, with a reason, of a locked record: a closed nonconformity and, with QMS Advanced, a verified or
       ineffective action, a reported or closed audit, a version in force or obsolete, or an approved review. Only
       the fields each record allows can be amended. The trail keeps the original value next to the new one. See
       :doc:`trail`.
@@ -95,7 +95,7 @@ The words below are used throughout the **Quality** guide with the meaning given
 
    Closure blocker
       Something still missing before a nonconformity can close, such as the containment, the correction, the root
-      cause, a clause, the owner's activity or, with Core QMS, a corrective action to verify. See
+      cause, a clause, the owner's activity or, with QMS Advanced, a corrective action to verify. See
       :doc:`nonconformities`.
 
    Co-auditor
@@ -124,7 +124,7 @@ The words below are used throughout the **Quality** guide with the meaning given
       A procedure, work instruction, form, policy or manual whose versions are approved before use, kept with their
       effective dates and reviewed periodically (ISO 9001 clause 7.5). See :doc:`documents`.
 
-   Core QMS
+   QMS Advanced
       The paid layer of the Quality app. It adds corrective actions, internal audits, document control, management
       reviews and the audit pack to the free core. See :doc:`configuration`.
 
@@ -338,7 +338,7 @@ The words below are used throughout the **Quality** guide with the meaning given
       realised clauses of the audited process. See :doc:`audits`.
 
    Severity
-      How serious a nonconformity is: *Minor*, *Major* or *Critical*. With Core QMS, major and critical
+      How serious a nonconformity is: *Minor*, *Major* or *Critical*. With QMS Advanced, major and critical
       nonconformities need a verified corrective action before closing, by default. See :doc:`nonconformities`.
 
    Source description

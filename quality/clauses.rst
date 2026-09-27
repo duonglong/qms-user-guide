@@ -76,7 +76,7 @@ is required before a nonconformity can be accepted, and it must still be there t
   standards: a chemical spill might be tagged with both an ISO 14001 and an ISO 45001 clause.
 - The :guilabel:`Standards` field under the clauses fills itself with the standards of the tagged clauses.
 
-With **Core QMS** installed, corrective actions, audits, audit findings, audit programmes, processes, documents and
+With **QMS Advanced** installed, corrective actions, audits, audit findings, audit programmes, processes, documents and
 management reviews are tagged the same way, and count as evidence too.
 
 The clause view

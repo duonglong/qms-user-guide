@@ -4,7 +4,7 @@ Document control
 
 ISO 9001 clause 7.5 asks you to control your documented information: every procedure, work instruction, form or
 policy is approved before use, the right version is available where it is used, obsolete versions cannot be mistaken
-for the current one, and changes are reviewed. With **Core QMS** installed, the **Quality** app keeps each controlled
+for the current one, and changes are reviewed. With **QMS Advanced** installed, the **Quality** app keeps each controlled
 document with a code that never changes, numbers its versions, has each version approved by someone other than its
 author with an electronic signature, brings it into force on a date, asks the people concerned to confirm they read
 it, stamps every printed copy, and reminds the owner when the document is due for review.
@@ -46,7 +46,7 @@ Every version moves through these states:
 Set up document types
 =====================
 
-A document type says what kind of document it is and how it is controlled. Core QMS installs five shared types:
+A document type says what kind of document it is and how it is controlled. QMS Advanced installs five shared types:
 
 .. list-table::
    :header-rows: 1
@@ -499,7 +499,7 @@ shown in blue and obsolete ones in grey. Use the :guilabel:`In review` filter to
 Dashboard and statistics
 ========================
 
-Core QMS adds two tiles to the :doc:`dashboard`:
+QMS Advanced adds two tiles to the :doc:`dashboard`:
 
 .. list-table::
    :header-rows: 1

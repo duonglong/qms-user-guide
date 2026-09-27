@@ -4,7 +4,7 @@ Audit pack
 
 Before a certification or surveillance audit, the external auditor asks for the same evidence every time: the
 nonconformity log, the status of the corrective actions, the internal audit reports, the document master list, who
-read which procedure, the management review minutes. With **Core QMS** installed, the **Quality** app builds all of
+read which procedure, the management review minutes. With **QMS Advanced** installed, the **Quality** app builds all of
 it for a period you choose — up to a whole year or more — into **one ZIP file**, the *audit pack*.
 
 Every file in the pack is dated, states its period and how many records it covers, and is fingerprinted with a
