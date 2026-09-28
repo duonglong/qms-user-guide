@@ -72,10 +72,37 @@ The rest of the ISO 9001 clauses an auditor opens with, each where it fits best:
      - §9.1.2
      - A satisfaction input for the management review: a survey score or the trend of complaints for the period.
 
+Other ISO standards
+===================
+
+**ISO 9001** is the standard the apps are built for. For **ISO 14001, ISO 45001, ISO 22000 and ISO 13485**, the apps
+ship the *clause libraries* today: you can tag nonconformities and other records with their clauses and see the
+evidence per clause (see :doc:`clauses`). The registers each of those standards asks for are not built yet. They
+are planned as packs:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 75
+
+   * - Standard
+     - What its pack will add
+   * - **ISO 14001** (environment)
+     - Environmental aspects and impacts, compliance obligations (legal register), emergency preparedness.
+   * - **ISO 45001** (health and safety)
+     - Hazard identification and risk assessment, incidents and near misses, consultation and participation of
+       workers.
+   * - **ISO 22000** (food safety)
+     - HACCP plan, critical control points and their monitoring, prerequisite programmes.
+   * - **ISO 13485** (medical devices)
+     - Design and development controls, complaint handling and vigilance reporting, software validation.
+
+Until a pack exists, keep those registers where you keep them today and use the clause libraries to link your
+records to the standard.
+
 Later
 =====
 
-- **Industry packs**, priced separately: food safety (HACCP), medical devices (ISO 13485), automotive and aerospace
+- **Industry packs**, priced separately: the ISO 14001, 45001, 22000 and 13485 packs above, automotive and aerospace
   (IATF 16949, AS9100), and laboratories (ISO/IEC 17025: calibration uncertainty and laboratory depth).
 - **A read-only portal for external auditors**: the clause view and the audit pack, without an Odoo licence seat.
 - **Explanations with AI**: for a nonconformity, the chain of evidence and ranked root-cause candidates, each
