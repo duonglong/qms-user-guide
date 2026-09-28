@@ -2,8 +2,8 @@
 Configuration
 =============
 
-This page explains how to install the **Quality** app, the order in which to set it up, and every setting of the
-free core.
+This page explains how to install the **Quality** app and its add-ons, the order in which to set them up, and every
+setting with its default value.
 
 Install the app
 ===============
@@ -26,6 +26,34 @@ At installation:
    The app is available in English, French, German, Spanish and Vietnamese. Add the language in the Settings app
    and choose it in the user's preferences.
 
+Install QMS Advanced and the add-ons
+------------------------------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 32 40
+
+   * - Module
+     - Needs
+     - How it is installed
+   * - **QMS Advanced**
+     - The free core
+     - Bought and installed from the Apps store.
+   * - **Training & Competence** (free with QMS Advanced)
+     - QMS Advanced and Employees
+     - Installed separately, on purpose: search for it in **Apps**. Once installed, an audit whose lead auditor is not
+       qualified cannot start: record the auditor qualifications first. See :doc:`competence`.
+   * - **Supplier evaluation** (free with QMS Advanced)
+     - QMS Advanced and Purchase
+     - Installed separately, on purpose. From installation, every supplier is Unapproved: set the purchase confirmation
+       control to Off while you build the approved supplier list. See :doc:`suppliers`.
+   * - Supplier receipt measures
+     - Supplier evaluation and Inventory
+     - Installs itself when both are installed. See :doc:`suppliers`.
+   * - Portal document readers
+     - QMS Advanced and Portal
+     - Installs itself when both are installed. See :ref:`documents-portal-readers`.
+
 First-time setup
 ================
 
@@ -40,7 +68,13 @@ Follow this order the first time:
 #. **Check the nonconformity settings**: days to treat, owner reminder, fallback owner and dashboard age buckets (see
    below).
 #. **Decide on the password check** for signatures. Leave it on unless your users sign in through single sign-on.
+#. **Declare the clauses that do not apply to you**, with their justification. See :ref:`clauses-not-applicable`.
 #. **Record or raise your first nonconformity.** See :doc:`nonconformities`.
+
+With **QMS Advanced**, continue with: the process register and the importance of each process (:doc:`audits`), the
+top management and the quality policy (:doc:`documents`), the context and the signed scope (:doc:`context`), the risk
+register (:doc:`risks`), the objectives (:doc:`objectives`), the equipment register (:doc:`calibration`) and the
+retention periods (:ref:`documents-retention`).
 
 Settings
 ========
@@ -48,7 +82,7 @@ Settings
 Go to :menuselection:`Settings --> Quality`. The section is visible to quality managers only.
 
 .. image:: ../_images/settings-quality.png
-   :alt: The Quality section of the Settings app with the Standards, Nonconformities and Integrity blocks.
+   :alt: The Quality section of the Settings app with the Standards and Nonconformities blocks.
 
 .. important::
    Odoo opens the Settings app only to users with the *Administration: Settings* right. A quality manager without
@@ -105,6 +139,15 @@ Nonconformities
    - Allowed: any internal user.
    - Example: set it to your quality coordinator so that orphaned nonconformities land on one desk.
 
+.. _config-concession:
+
+:guilabel:`Concessions need the customer's approval`
+   When ticked, a repair or use-as-is disposition can be authorised only once the reference of the customer's written
+   approval is recorded on its line, for example ``DEV-2026-114``. See :ref:`nc-disposition`.
+
+   - Default: unticked.
+   - Refusal when the reference is missing: *Record the customer's approval reference for this concession.*
+
 .. _config-age-buckets:
 
 :guilabel:`Dashboard age buckets`
@@ -144,21 +187,202 @@ Integrity
 Settings of QMS Advanced
 ------------------------
 
-With **QMS Advanced** installed, the same page shows more blocks. They are explained with their features:
+With **QMS Advanced** installed, the same page shows more blocks. A value outside its limits is refused when you click
+:guilabel:`Save`, and nothing is saved.
 
-- :guilabel:`Corrective actions` (effectiveness gap, reminder interval, recurrence window, severities needing a
-  corrective action) — see :doc:`corrective_actions`.
-- :guilabel:`Documents` (review period, acknowledgement grace, controlled-copy stamp) — see :doc:`documents`.
-- :guilabel:`Management review` (review interval, review reminder) — see :doc:`management_reviews`.
-- :guilabel:`Audit pack` (longest period, time cap, NC log rows per file) — see :doc:`audit_pack`.
+.. list-table::
+   :header-rows: 1
+   :widths: 18 32 12 38
 
-Internal audits have no settings of their own; their configuration menus are described in :doc:`audits`.
+   * - Block
+     - Setting
+     - Default
+     - What it does
+   * - :guilabel:`Corrective actions`
+     - :guilabel:`Effectiveness gap`, :guilabel:`Reminder interval`, :guilabel:`Recurrence window`,
+       :guilabel:`Corrective action required for`
+     - 30, 7, 180, ``major,critical``
+     - See :doc:`corrective_actions`.
+   * - :guilabel:`Documents`
+     - :guilabel:`Review period`
+     - 12
+     - Months between periodic reviews, proposed for a new document type. See :doc:`documents`.
+   * -
+     - :guilabel:`Acknowledgement grace`
+     - 14
+     - Days a reader has to confirm a new version.
+   * -
+     - :guilabel:`External documents`
+     - 12
+     - Months between two checks for a new edition of an external document; 0 sends no reminder.
+   * -
+     - :guilabel:`Top management`
+     - Empty
+     - Who approves the quality policy of this company, with their password; they need no Quality role.
+       :guilabel:`Top management history` lists the changes.
+   * -
+     - :guilabel:`Controlled-copy stamp`
+     - CONTROLLED COPY
+     - Stamped on every page of a printed version in force; cannot be empty.
+   * - :guilabel:`Retention`
+     - :guilabel:`Default retention`
+     - 5
+     - Years a record is kept once it stops being live when its type has no period of its own; 0 keeps it
+       indefinitely. Nothing is deleted automatically. :guilabel:`Record retention` opens the periods per record
+       type. See :ref:`documents-retention`.
+   * - :guilabel:`Management review`
+     - :guilabel:`Review interval`, :guilabel:`Review reminder`
+     - 12, 30
+     - See :doc:`management_reviews`.
+   * - :guilabel:`Context`
+     - :guilabel:`Issue review interval`
+     - 12
+     - Default months between two reviews of a new context issue, at least 1. See :doc:`context`.
+   * -
+     - :guilabel:`Review reminder`
+     - 14
+     - Days before a review date when the issue owner gets a to-do.
+   * - :guilabel:`Risks`
+     - :guilabel:`Level thresholds`: :guilabel:`Medium from score`, :guilabel:`High from score`, :guilabel:`Critical
+       from score`
+     - 5, 10, 15
+     - Lowest score of each level, from 2 to 25, increasing. See :doc:`risks`.
+   * -
+     - :guilabel:`Review intervals`: a low, medium, high and critical risk every (months)
+     - 12, 12, 6, 3
+     - Months after the last assessment when a risk is due for review; 0: no periodic review.
+   * -
+     - :guilabel:`Risk review reminder`
+     - 14
+     - Days before a risk's review date when its owner gets a to-do.
+   * - :guilabel:`Objectives`
+     - :guilabel:`Measurement reminder`
+     - 5
+     - Days after a measurement was due when the owner gets a to-do. See :doc:`objectives`.
+   * -
+     - :guilabel:`Communication`
+     - 14
+     - Days after activation before an objective never communicated is listed as not communicated.
+   * - :guilabel:`Customer satisfaction`
+     - :guilabel:`Deterioration threshold`
+     - 5
+     - Percentage points of drop since the previous result that expect an action; 0 flags every drop. See
+       :doc:`satisfaction`.
+   * - :guilabel:`Calibration`
+     - :guilabel:`Due soon window`
+     - 30
+     - Days before its due date when an instrument shows Due soon and its responsible is reminded; 0: only on the due
+       day. See :doc:`calibration`.
+   * - :guilabel:`Audit programme proposal`
+     - :guilabel:`Base interval by importance`: high, medium, low
+     - 6, 12, 24
+     - Months between two audits of a process before the factors apply. See :ref:`audits-importance`.
+   * -
+     - :guilabel:`Factors`: major finding, minor finding, change, nonconformity; nonconformities that shorten
+     - 0.5, 0.75, 0.75, 0.75; 3
+     - Each factor multiplies the base interval when its condition holds, above 0 and at most 1.
+   * -
+     - :guilabel:`Interval bounds`: shortest, longest interval
+     - 3, 36
+     - The proposed interval is kept between these months after rounding.
+   * - :guilabel:`Audit pack`
+     - :guilabel:`Longest period`, :guilabel:`Time cap`, :guilabel:`NC log rows per file`
+     - 24, 600, 5000
+     - See :doc:`audit_pack`.
+
+.. _config-context:
+.. _config-risks:
+.. _config-objectives:
+.. _config-satisfaction:
+.. _config-calibration:
+.. _config-audit-proposal:
+
+The labels above are those of the settings page. Each setting is explained with its feature on the page linked in the
+table. Refusals you may meet when saving: *Thresholds must increase: medium < high < critical.*, *The audit proposal
+factors must be above 0 and at most 1.*, *The base audit intervals must be above 0 months.*, *The shortest audit
+interval must be at least 1 month and not above the longest.*, *The nonconformity threshold must be at least 1.*, *The
+deterioration threshold cannot be negative.*, *The controlled-copy stamp cannot be empty.*, and *<setting> must be at
+least <n>.* or *<setting> must be at most <n>.* for a value out of its limits.
+
+.. _config-training:
+
+Settings of the Training & Competence add-on
+--------------------------------------------
+
+Block :guilabel:`Training & competence`:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 12 58
+
+   * - Setting
+     - Default
+     - What it does
+   * - :guilabel:`Training effectiveness`
+     - 90
+     - Days after a training when each attendee's manager evaluates it.
+   * - :guilabel:`Expiry warning`
+     - 60
+     - Days before a required qualification expires when the manager is reminded; 0: none.
+   * - :guilabel:`Internal auditor levels`: :guilabel:`Level to audit`, :guilabel:`Level to lead an audit`
+     - 2, 3
+     - Levels of the internal auditor qualification needed to audit as a co-auditor and to lead an audit, from 1 to 3;
+       the level to lead is not below the level to audit.
+
+See :doc:`competence`.
+
+.. _config-supplier:
+
+Settings of the supplier evaluation add-on
+------------------------------------------
+
+Block :guilabel:`Supplier evaluation`:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 14 56
+
+   * - Setting
+     - Default
+     - What it does
+   * - :guilabel:`Score weights`: on-time receipts, right quantities, nonconformities
+     - 30, 20, 50
+     - How each part weighs in the supplier score; at least one above 0.
+   * - :guilabel:`Nonconformity points`: minor, major, critical
+     - 1, 3, 5
+     - Penalty points of a supplier nonconformity, per receipt of the period; they do not decrease with severity.
+   * - :guilabel:`Receipt measures`: :guilabel:`Grace days`, :guilabel:`Quantity tolerance (%)`
+     - 0, 0
+     - Days after the deadline a receipt still counts as on time; how far the quantity received may differ from the
+       quantity ordered. Receipt measures need Inventory.
+   * - :guilabel:`Grades`: A, B and C from
+     - 90, 75, 60
+     - Lowest score of grades A, B and C; below C the grade is D.
+   * - :guilabel:`Purchase confirmation control`
+     - Warn
+     - :guilabel:`Off`, :guilabel:`Warn` or :guilabel:`Block`: what happens when a purchase order is confirmed for an
+       unapproved or blocked supplier. Set it to Off while you build the approved supplier list, then to Warn or Block.
+   * - :guilabel:`Supplier delays`: :guilabel:`SCAR response (days)`, :guilabel:`Assessment reminder (days)`
+     - 30, 30
+     - Days the supplier has to answer a corrective action request (at least 1); lead time of the periodic assessment
+       reminder.
+
+See :doc:`suppliers`.
 
 Other configuration menus
 =========================
 
 :menuselection:`Quality --> Configuration --> Standards`
-   The standards and their clause libraries. Visible to quality managers only. See :doc:`clauses`.
+   The standards and their clause libraries, with the sections that may be declared not applicable. Visible to quality
+   managers only. See :doc:`clauses`.
+
+:menuselection:`Quality --> Configuration --> Clause applicability`
+   The clauses declared not applicable, per company, in force or withdrawn. See :ref:`clauses-not-applicable`.
+
+With **QMS Advanced** and the add-ons, the :menuselection:`Configuration` menu also holds :guilabel:`Processes` and
+:guilabel:`Audit templates` (:doc:`audits`), :guilabel:`Document types` (:doc:`documents`), :guilabel:`Review inputs`
+(:doc:`management_reviews`), :guilabel:`Record retention` (:ref:`documents-retention`), :guilabel:`Competences` and
+:guilabel:`Requirements` (:doc:`competence`), and :guilabel:`Assessment criteria` (:doc:`suppliers`).
 
 Scheduled action
    Odoo runs *QMS: overdue nonconformities* once a day. It marks nonconformities that became overdue and sends their

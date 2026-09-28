@@ -34,6 +34,15 @@ everything a user can. A person without any Quality role does not see the **Qual
 
 At installation, the administrator is a quality manager.
 
+Three kinds of people take part without a Quality role:
+
+- **Top management**, named in the Quality settings, approve the quality policy from their to-do. See
+  :ref:`documents-top-management`.
+- **Portal readers**, without an internal user, read and acknowledge the controlled documents that name them in their
+  My Account portal, and see nothing else. See :ref:`documents-portal-readers`.
+- **Employees** without a user are covered by the Training & Competence add-on: their competence records and trainings
+  are kept on their employee record. See :doc:`competence`.
+
 Give a user a role
 ==================
 
@@ -102,6 +111,18 @@ on the dashboard, in the clause view or in exports.
      - All.
    * - Audit packs
      - None.
+     - All.
+     - All.
+   * - Context issues, interested parties, scope, risks, objectives, satisfaction records, equipment and calibrations
+     - All of their companies.
+     - All.
+     - All.
+   * - Competence records, trainings, matrix (Training & Competence)
+     - Records and trainings: all; the matrix: the employees they manage; their own under *My competences*.
+     - All, and the whole matrix.
+     - All, and the whole matrix.
+   * - Supplier evaluations, decisions, requirements, SCARs (Supplier evaluation)
+     - All.
      - All.
      - All.
 
@@ -288,11 +309,19 @@ cell says on which records. Items in **QMS Advanced** need the paid layer to be 
      - Their own versions
      - Their own versions
      - Yes, on the author's behalf
-   * - Approve a version in review (signed)
-     - No
-     - No
-     - Yes, never a version they wrote
-   * - Reject a version in review
+   * - Approve or reject a version in review (approval signed), by the type's rule
+     - As the document's owner, when the rule is *Document owner*
+     - As the document's owner, when the rule is *Document owner*
+     - Yes (never a version they wrote, never a top-management type)
+   * - Approve or reject the quality policy (signed)
+     - Only as a member of top management
+     - Only as a member of top management
+     - Only as a member of top management
+   * - Confirm an external document's edition (:guilabel:`Edition still current`); send a copy to an interested party
+     - Documents they own (the edition); documents they can see (the copy)
+     - Documents they own (the edition); documents they can see (the copy)
+     - Yes
+   * - Name top management; set retention periods
      - No
      - No
      - Yes
@@ -332,6 +361,118 @@ cell says on which records. Items in **QMS Advanced** need the paid layer to be 
      - Documents they can see
      - Yes
      - Yes
+   * - **Nonconforming output** (free core)
+     -
+     -
+     -
+   * - Record and authorise scrap, rework, return to supplier or a hold; record a customer notification
+     - Nonconformities they can see
+     - Nonconformities they can see
+     - Yes
+   * - Authorise a regrade, authorise a concession (signed), withdraw a disposition, release a hold, record a waiver
+     - No
+     - No
+     - Yes (a concession never on their own nonconformity)
+   * - Declare a clause not applicable, withdraw a declaration
+     - No
+     - No
+     - Yes
+   * - **Context, risks, objectives, satisfaction, calibration** (QMS Advanced)
+     -
+     -
+     -
+   * - Create and edit context issues, interested parties and needs; record monitoring
+     - Yes
+     - Yes
+     - Yes
+   * - Mark an issue reviewed, retire it
+     - Issues they own
+     - Issues they own
+     - Yes
+   * - Approve (signed) and revise the scope
+     - No
+     - No
+     - Yes
+   * - Record a risk, open it, add treatment actions, re-assess it
+     - Risks they own
+     - No (read only)
+     - Yes
+   * - Accept a risk
+     - Their own Low or Medium risks
+     - No
+     - Yes; High and Critical signed
+   * - Close a risk
+     - No
+     - No
+     - Yes
+   * - Set, activate, close, cancel or continue an objective
+     - No
+     - No
+     - Yes
+   * - Record measurements, communicate an objective
+     - Objectives they own
+     - No (read only)
+     - Yes
+   * - Record a draft satisfaction result
+     - Yes
+     - No (read only)
+     - Yes
+   * - Confirm a satisfaction result, raise an improvement action, record why none is needed
+     - No
+     - No
+     - Yes
+   * - Register an instrument, change its calibration settings, retire it
+     - No
+     - No
+     - Yes
+   * - Record a calibration and an impact assessment; put an instrument out of service
+     - Yes (out of service: instruments they are responsible for)
+     - No (read only)
+     - Yes
+   * - Confirm a calibration
+     - Instruments they are responsible for
+     - No
+     - Yes
+   * - Rate the importance of a process; write and amend a programme's rationale
+     - No
+     - No
+     - Yes
+   * - **Training & Competence** (add-on)
+     -
+     -
+     -
+   * - Manage competences and requirements; plan, mark done or cancel trainings
+     - No
+     - No
+     - Yes
+   * - Record an assessment, revoke a record, evaluate a training
+     - As the employee's manager
+     - As the employee's manager
+     - Yes
+   * - Record prior experience; grant an auditor qualification (signed)
+     - No
+     - No
+     - Yes
+   * - **Supplier evaluation** (add-on)
+     -
+     -
+     -
+   * - Run the evaluation, confirm evaluations, score assessments, sign decisions (signed), exempt suppliers
+     - No
+     - No
+     - Yes
+   * - Record a draft requirement; request and send a SCAR, record the supplier's response
+     - Yes
+     - Requirements: no; SCARs: yes
+     - Yes
+   * - Communicate, supersede or withdraw a requirement
+     - No
+     - No
+     - Yes
+   * - Confirm a purchase order anyway, with a reason (control *Warn*)
+     - As a Purchase user
+     - As a Purchase user
+     - As a Purchase user
    * - **Management reviews** (QMS Advanced)
      -
      -
@@ -407,18 +548,29 @@ cell says on which records. Items in **QMS Advanced** need the paid layer to be 
    - Only users with the :guilabel:`Internal auditor` or :guilabel:`Manager` role can be chosen as lead auditor or
      co-auditor. See :doc:`audits`.
    - The chair of a management review must be a quality manager. See :doc:`management_reviews`.
-   - The *Approve* to-do of a new document version goes to quality managers who did not write it. See
-     :doc:`documents`.
+   - The *Approve* to-do of a new document version goes to the people the document type names — the owner, the
+     quality managers or top management — never to its author. See :doc:`documents`.
+   - With the Training & Competence add-on, the lead auditor of an audit must be qualified for the audit to start. See
+     :doc:`competence`.
 
 Separation of duties
 ====================
 
-ISO management systems expect that nobody checks their own work. The app enforces it in four places, for quality
+ISO management systems expect that nobody checks their own work. The app enforces it in these places, for quality
 managers too:
 
 Author and approver
    The author of a document version can never approve it, even when they are a quality manager. The
-   :guilabel:`Approve` button is hidden from them; another quality manager approves. See :doc:`documents`.
+   :guilabel:`Approve` button is hidden from them; the owner, a quality manager or top management approves, by the
+   document type's rule. See :doc:`documents`.
+
+Concessions
+   A repair or use-as-is disposition is authorised by a quality manager other than the nonconformity's owner. See
+   :doc:`nonconformities`.
+
+Assessor and employee
+   Nobody assesses their own competence, and nobody evaluates their own training; the trainer does not either. See
+   :doc:`competence`.
 
 Owner and verifier
    The verifier of a corrective action cannot be its owner, and the owner can never sign the effectiveness verdict,
@@ -442,9 +594,11 @@ Nobody, not even a quality manager, can acknowledge a document for someone else.
 Signatures and the password re-check
 ====================================
 
-Seven decisions are electronic signatures: closing a nonconformity, amending a locked record and, with QMS Advanced,
-signing the effectiveness verdict of an action, reporting an audit, approving a document version, withdrawing a
-document version and approving a management review. Each signature records who signed, when, why, and the
+These decisions are electronic signatures: closing a nonconformity, authorising a concession, amending a locked record
+and, with QMS Advanced, signing the effectiveness verdict of an action, reporting an audit, approving a document version
+or accepting an external document for use, withdrawing a document version, approving a management review, approving
+the scope and accepting a high or critical risk; with the add-ons, granting an auditor qualification and signing a
+supplier decision. Each signature records who signed, when, why, and the
 fingerprint of the record at that moment. See :doc:`trail`.
 
 By default, Odoo asks the signer for their own password before signing, in its standard *confirm your password*

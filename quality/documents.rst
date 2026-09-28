@@ -7,7 +7,9 @@ policy is approved before use, the right version is available where it is used, 
 for the current one, and changes are reviewed. With **QMS Advanced** installed, the **Quality** app keeps each controlled
 document with a code that never changes, numbers its versions, has each version approved by someone other than its
 author with an electronic signature, brings it into force on a date, asks the people concerned to confirm they read
-it, stamps every printed copy, and reminds the owner when the document is due for review.
+it, stamps every printed copy, and reminds the owner when the document is due for review. It also keeps the quality
+policy approved by top management, the documents of external origin you work to, the copies sent to interested parties,
+and how long each kind of record is kept.
 
 The pieces fit together like this:
 
@@ -46,30 +48,52 @@ Every version moves through these states:
 Set up document types
 =====================
 
-A document type says what kind of document it is and how it is controlled. QMS Advanced installs five shared types:
+A document type says what kind of document it is and how it is controlled. QMS Advanced installs seven shared types:
 
 .. list-table::
    :header-rows: 1
-   :widths: 30 15 55
+   :widths: 26 12 18 22 22
 
    * - Type
      - Prefix
      - Requires acknowledgement
+     - Approved by
+     - Kind
    * - Procedure
      - ``PRO``
      - Yes
+     - Document owner
+     - Internal
    * - Work instruction
      - ``WI``
      - Yes
+     - Document owner
+     - Internal
    * - Form
      - ``FRM``
      - No
+     - Document owner
+     - Internal
    * - Policy
      - ``POL``
      - Yes
+     - Document owner
+     - Internal
    * - Manual
      - ``MAN``
      - No
+     - Document owner
+     - Internal
+   * - Quality policy
+     - ``QP``
+     - Yes
+     - Top management
+     - Quality policy
+   * - External document
+     - ``EXT``
+     - No
+     - Document owner
+     - External origin
 
 Each of them has a review period of 12 months. To change them or add your own:
 
@@ -84,6 +108,14 @@ Each of them has a review period of 12 months. To change them or add your own:
      of this type. A new type proposes the :ref:`Review period <documents-settings>` setting.
    - :guilabel:`Requires acknowledgement`: tick it when readers must confirm they read and understood every new
      version in force. It is not ticked on a new type.
+   - :guilabel:`Approved by`: who approves the versions — :guilabel:`Document owner` (the default),
+     :guilabel:`Quality manager` or :guilabel:`Top management`. See `Who approves a version`_.
+   - :guilabel:`Kind`: :guilabel:`Internal` for documents written here, :guilabel:`External origin` for documents
+     written elsewhere and accepted for use (see `External documents`_), :guilabel:`Quality policy` for the quality
+     policy (see `The quality policy`_).
+   - :guilabel:`Retention (years)`: how long a version of this type is kept after it leaves force, for example 10.
+     Empty or 0: the retention period of *Document versions* applies. See `Record retention`_.
+   - :guilabel:`Default clauses` (optional column): the clauses a new document of this type is tagged with.
    - :guilabel:`Company` (with several companies only): leave it empty to share the type with every company.
 
 #. Save.
@@ -106,9 +138,10 @@ Only a quality manager creates documents.
 #. Enter the :guilabel:`Area`: 2 to 4 capital letters for the department or area, for example ``PUR`` for
    purchasing or ``QUA`` for quality. Leave it empty for ``GEN`` (general).
 #. Choose the :guilabel:`Owner`: the person responsible for the document and its periodic review. It is you by
-   default.
+   default. With the type's rule *Document owner*, the owner also approves the versions they did not write.
 #. On the :guilabel:`Audience` tab, choose who must read the document: :guilabel:`Audience groups` (every member of
-   a user group, for example a *Shop floor* group) and :guilabel:`Audience users` (named people).
+   a user group, for example a *Shop floor* group), :guilabel:`Audience users` (named people) and, when portal readers
+   are available, :guilabel:`Portal readers` (see `Portal readers`_).
 #. On the :guilabel:`Clauses` tab, tag at least one clause of the standard that the document supports. A version
    cannot be submitted without one.
 #. Save.
@@ -123,6 +156,8 @@ never change after the document is saved. To reclassify a document, create a new
 
 The document form shows:
 
+- :guilabel:`Approved by`: who approves the version in review under the type's rule, for example *Approved by Bao
+  (document owner)* or *Approved by a quality manager — the owner wrote this version*;
 - :guilabel:`Current version`: the version in force today, if any;
 - :guilabel:`Next review`: the date of the next periodic review (see `Review documents periodically`_);
 - the :guilabel:`Versions` tab: every version with its number, state, author, approver, :guilabel:`Effective from`
@@ -173,34 +208,65 @@ only. Odoo checks that:
 - the document is tagged with at least one clause.
 
 The version moves to **In review** and a *Review document version* to-do, *Approve <version>*, goes to the people who
-can approve it — quality managers of the company who did not write the version:
+can approve it under the type's rule (see `Who approves a version`_):
 
-- to the document's owner alone, when the owner is such a quality manager;
-- otherwise to every quality manager of the company other than the author.
+- **Document owner**: to the owner alone, when the owner can approve this version; otherwise to the quality managers of
+  the company other than the author;
+- **Quality manager**: to the quality managers of the company other than the author — to the owner alone when the
+  owner is one of them;
+- **Top management**: to the members of the company's top management other than the author.
 
-When the author is the company's only quality manager, nobody can approve the version: no to-do is sent, and the
-version's chatter says so. Give another person the Manager role.
-
-When nobody can approve the version, no to-do is created and the version's chatter says *No quality manager other
-than the author can approve this version*: give a quality manager the approval.
+When nobody can approve the version, no to-do is created and the version's chatter says so: *Nobody other than the
+author can approve this version: give the document an owner who did not write it, or a quality manager the approval.*,
+or, for a top-management type, *Name top management in the Quality settings of <company> to approve this version.*
+When the owner changes while a version is in review, the to-dos move to the new approvers.
 
 Approve or reject
 =================
 
+Who approves a version
+----------------------
+
+Approval is a real second pair of eyes: the author of a version can never approve it, not even when they are a
+quality manager (*The author cannot approve their own version.*). Beyond that, the document type decides:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 45 33
+
+   * - Approved by
+     - Who approves
+     - Anyone else is told
+   * - :guilabel:`Document owner`
+     - The document's owner, when they are an active quality user of the document's company and did not write the
+       version. When the owner cannot approve it (they wrote it, left, or have no Quality role), a quality manager
+       approves it instead, and the trail records why.
+     - *<code> is approved by its owner, <owner>.*, or *<code> is approved by a quality manager: its owner cannot
+       approve this version.*
+   * - :guilabel:`Quality manager`
+     - Any quality manager of the company.
+     - *Documents of type <type> are approved by a quality manager.*
+   * - :guilabel:`Top management`
+     - A member of the company's :ref:`top management <documents-top-management>`, who needs no Quality role — not
+       even a quality manager or the owner otherwise.
+     - *<code> is approved by top management: <names>.*
+
+The same people can reject the version. The :guilabel:`Approve` and :guilabel:`Reject` buttons are shown only to the
+people who can use them.
+
 Approve it with a signature
 ---------------------------
 
-Approval is a real second pair of eyes: the author of a version can never approve it, not even when they are a
-quality manager.
-
-#. As a quality manager who did not write the version, open the version in review and click :guilabel:`Approve`.
+#. As a person who may approve the version, open the version in review and click :guilabel:`Approve` — for a document of
+   external origin, :guilabel:`Accept for use` (see `External documents`_).
 #. Check the :guilabel:`Effective from` date: the day the version comes into force. It is today by default. A date in
    the past is moved to today: a version is never in force before it was approved.
 #. If you like, add a :guilabel:`Note`; it is kept on the signature. Without a note, the change summary is used.
 #. Click :guilabel:`Sign and approve`. When Odoo asks for your password, enter your own.
 
 The version moves to **Approved**. :guilabel:`Approver` and :guilabel:`Approved on` are filled in, the signature
-appears on the :guilabel:`Signatures` tab with the reason *Document approval*, and the review to-dos are marked done.
+appears on the :guilabel:`Signatures` tab with the reason *Document approval* (*External document accepted for use*
+for a document of external origin), and the review to-dos are marked done.
 
 Odoo refuses to approve when the file changed after it was uploaded: the approver signs exactly the file that was
 submitted.
@@ -215,7 +281,7 @@ submitted.
 Reject it
 ---------
 
-#. As a quality manager, open the version in review and click :guilabel:`Reject`.
+#. As a person who may approve it, open the version in review and click :guilabel:`Reject`.
 #. Enter the :guilabel:`Reason`: what the author must change.
 #. Click :guilabel:`Reject`.
 
@@ -323,7 +389,8 @@ A document with an empty audience, or whose type does not require acknowledgemen
    Readers need at least the Quality **User** role to open *My documents to read* and the file. Audience members
    without a Quality role are not asked: when the version comes into force, one note in its chatter names them, *Not
    asked to read this version (no Quality role, so they cannot open it)*. Give them the Quality User role and they are
-   asked the next day. See :doc:`roles`.
+   asked the next day. See :doc:`roles`. Two exceptions: :ref:`portal readers <documents-portal-readers>` read in their
+   portal, and the :ref:`quality policy <documents-quality-policy>` is read by everyone of the company.
 
 Confirm you read it
 -------------------
@@ -349,6 +416,55 @@ A few rules make the acknowledgement worth something:
 
 Quality managers and internal auditors follow who has read what on the :guilabel:`Acknowledgements` tab of each
 version: the reader, the state (**Pending** or **Done**), the due date and the date acknowledged.
+
+.. _documents-portal-readers:
+
+Portal readers
+==============
+
+Some people who must read a procedure have no internal Odoo user — shop-floor operators, temporary staff, a
+subcontractor's team. They can be named one by one as *portal readers* of a controlled document and read it in their
+**My Account** portal, without any other access to the Quality app.
+
+This needs the free *QMS — Portal document readers* module. It installs itself as soon as the **Portal** app and QMS
+Advanced are both installed; nothing changes for anyone until a quality manager names a portal reader on a document.
+
+Name the portal readers
+-----------------------
+
+#. Give the person a portal user, as usual in Odoo, for example by granting portal access from their contact. They
+   must belong to the document's company.
+#. Open the document and, on its :guilabel:`Audience` tab, add them to :guilabel:`Portal readers`.
+#. Save.
+
+Portal readers are always named one by one. A group that holds portal or public users can never be an audience: *Portal
+and public groups cannot be an audience: name portal readers one by one.* An internal user in :guilabel:`Portal readers`
+is refused with *Add internal readers under Audience users or groups.*
+
+When a version comes into force, each portal reader gets a pending acknowledgement, like any reader, and an email
+*To read: <version> <document>* with the link to their portal instead of a to-do. The :guilabel:`Acknowledgements` tab
+of the version shows them with the :guilabel:`Reader kind` *Portal*.
+
+What a portal reader sees
+-------------------------
+
+In **My Account**, the *Documents to read* entry opens ``/my/documents``:
+
+- **Documents to read**: their pending acknowledgements, overdue ones first, with the document code, title and version;
+- **Documents that concern you**: the documents naming them, with the version in force, its *In force from* date and
+  state.
+
+To confirm, they open the version (the controlled copy, stamped, opens in the browser) and click :guilabel:`Read and
+understood`. As inside Odoo, they must open the document first in the same session: otherwise the page says *Open the
+document first.* When the version is no longer in force, the page says *This version is no longer in force; open the
+current one.* Once recorded, it says *Thank you: your acknowledgement is recorded.*
+
+A portal reader never sees anything else of the Quality app: no other document, no draft, no obsolete version, no
+nonconformity, no trail. A link to someone else's document or acknowledgement answers as if it did not exist.
+
+.. image:: ../_images/documents-portal-readers.png
+   :alt: The Documents to read page of a portal user's My Account: one pending acknowledgement with the Read and
+         understood button, and the documents that concern the reader with their version in force.
 
 Print a controlled copy
 =======================
@@ -471,6 +587,142 @@ To review the document:
    :alt: The form of a document overdue for review, with the red Review overdue ribbon and the Reviewed, no change
          button in the header.
 
+.. _documents-quality-policy:
+
+The quality policy
+==================
+
+ISO 9001 clause 5.2 asks top management to establish a quality policy, communicate it and keep it available. The
+**Quality policy** document type (prefix ``QP``) is made for it:
+
+- a new document of this type is tagged with clauses 5.2, 5.2.1 and 5.2.2 and addressed to every internal user of the
+  company;
+- its versions are approved by **top management**, never by the author;
+- each company has **one** quality policy in force: bringing in force a second policy document is refused with
+  *<company> already has a quality policy in force (<version>); revise it instead.* — write a new version of the
+  existing one.
+
+.. _documents-top-management:
+
+Name the top management
+-----------------------
+
+#. Go to :menuselection:`Settings --> Quality`, block :guilabel:`Documents`.
+#. In :guilabel:`Top management`, add the managing director, the plant manager… of the company you are working in.
+   They need no Quality role.
+#. Click :guilabel:`Save`.
+
+Every change of the list is recorded; click :guilabel:`Top management history` to see who was added or removed, when
+and by whom.
+
+Approve the policy
+------------------
+
+When a policy version is submitted, the members of top management get the *Approve <version>* to-do. From it, they
+open the version, read the file and click :guilabel:`Approve`. The dialog asks them to confirm, under *ISO 9001 5.2.1:
+the policy…*, that the policy:
+
+- :guilabel:`Appropriate to our purpose and context and supports our strategic direction` (a);
+- :guilabel:`Provides a framework for setting quality objectives` (b);
+- :guilabel:`Commits to satisfy applicable requirements` (c);
+- :guilabel:`Commits to continual improvement of the QMS` (d).
+
+Each box must be ticked; Odoo names the first one missing, for example *Confirm that the policy provides a framework for
+setting quality objectives (ISO 9001 5.2.1 b).* The four confirmations stay on the version, under *ISO 9001 5.2.1
+confirmations*. Approving is signed with the approver's password, like any approval.
+
+When the policy comes into force, everyone of the company is asked to read it — also the employees without a Quality
+role, who get an email with the link to the stamped copy (and to their My Account page when portal readers are
+available). Each :doc:`quality objective <objectives>` records the policy in force when it was activated. To give the
+policy to a customer or another interested party, use `Send a copy to an interested party`_.
+
+External documents
+==================
+
+Standards, customer drawings, supplier specifications: documents written elsewhere that you work to are controlled
+too, but they are *accepted for use* rather than approved.
+
+#. Create the document with the type **External document** (or any type of kind *External origin*). Its
+   :guilabel:`Origin` becomes *External origin*.
+#. Choose the :guilabel:`Issuer`, for example *ISO*, the customer or the supplier, and enter the :guilabel:`Issuer's
+   reference`, for example *ISO 9001* or *Drawing 44-17*. Both are required.
+#. Write a new version with the issuer's file and, on the version, the :guilabel:`Edition` it holds, for example
+   *2015* or *Rev C*, and, if known, the :guilabel:`Edition date`. The edition is required to submit it.
+#. Submit it. The person who may approve it clicks :guilabel:`Accept for use` and then :guilabel:`Sign and accept for
+   use`. The signature reads *External document accepted for use* and the version shows the badge *Accepted for use*.
+
+When a new version holds the same edition as an earlier one, it shows *Same edition as v1*: accepting the same edition
+again is allowed, so it is only a warning. The document shows the :guilabel:`Edition in force`. The origin of a document
+can no longer change once one of its versions left draft; a quality policy is never of external origin.
+
+Check for a new edition
+-----------------------
+
+An external document can be replaced by its issuer at any time. When one of its versions comes into force, its
+:guilabel:`Next edition check` is set 12 months later (the :ref:`External documents <documents-settings>` setting).
+On that date its owner gets a *Check for a new edition of <code>* to-do:
+
+- when the issuer published a new edition, write a new version with it; when it comes into force, the check starts
+  again;
+- when the edition in use is still the current one, click :guilabel:`Edition still current` on the document: the next
+  check moves on by the interval, the trail records it, and the to-do is marked done. The owner or a quality manager
+  can do it.
+
+A setting of 0 sends no reminder.
+
+Send a copy to an interested party
+==================================
+
+The quality policy and the external documents are sometimes asked for by customers, certification bodies or suppliers.
+
+#. Open the document (its version must be in force) and click :guilabel:`Send to an interested party`.
+#. Choose who to :guilabel:`Send to`, the :guilabel:`Method` — :guilabel:`Email` or :guilabel:`Handed over` — and, if
+   useful, a :guilabel:`Note`, for example *requested by the customer's auditor*.
+#. Click :guilabel:`Send`.
+
+By email, the stamped controlled copy of the version in force is sent to the contact, who must have an email address.
+Either way, the document's :guilabel:`Distributed to` tab records the date, the version, the recipient, the method and
+who sent it. A distribution record is permanent. Only the version in force is ever distributed.
+
+.. _documents-retention:
+
+Record retention
+================
+
+ISO 9001 clause 7.5.3 asks you to decide how long documented information is kept. **Nothing is ever deleted
+automatically**: the app computes until when each record must be kept, and shows which records are past that date, so
+that disposal remains your own decision, taken outside the system.
+
+- Each record of a type with a retention period gets a :guilabel:`Keep until` date once it stops being live: a version
+  from the day it left force, a nonconformity from its closure, a risk from its closure, a scope version from the end
+  of its time in force, a satisfaction record from its confirmation, and so on. A live record has no date yet.
+- The period is, in this order: the :guilabel:`Retention (years)` of the document type (for document versions), the
+  company's row for the record type, the shared row for the record type, and the :ref:`Default retention
+  <documents-settings>` setting (5 years by default). 0 years keeps the records indefinitely.
+- A record past its date shows the banner *Retention period ended on <date>. Disposal is a manual decision outside the
+  system.*, and appears under the :guilabel:`Past retention` filter of its list.
+
+To set the periods:
+
+#. Go to :menuselection:`Quality --> Configuration --> Record retention`, or click :guilabel:`Record retention` in the
+   :guilabel:`Retention` block of the Quality settings.
+#. Click :guilabel:`New`, choose the :guilabel:`Record type` — for example *Nonconformities*, *Document versions*,
+   *Internal audits*, *Management reviews*, *Audit packs*, *Scope versions*, *Risks and opportunities*, *Quality
+   objectives*, *Customer satisfaction records*, *Calibration records* and, with the add-ons, *Competence records*,
+   *Training attendances*, *Supplier evaluations* and *Supplier decisions* — and the :guilabel:`Years`.
+#. Write the :guilabel:`Legal basis`, for example *product liability: 10 years*.
+#. Leave :guilabel:`Company` empty for a period shared by every company, or choose one: a row for a company overrides
+   the shared one for that company's records. The list shows the company of each row, so a shared row (empty
+   company) and a company's own row of the same record type are told apart.
+#. Save.
+
+A record type has one shared period and at most one per company. Changing a period recomputes the dates in the
+background. Each row shows its :guilabel:`Past retention` count; click :guilabel:`Open records` to list them.
+
+.. image:: ../_images/documents-retention.png
+   :alt: The Record retention list: record types with their years, company, legal basis and the count of records
+         past retention.
+
 Find documents
 ==============
 
@@ -518,12 +770,8 @@ With :guilabel:`My records` switched on, the first tile counts only the document
 acknowledgements. A quality user who is not an internal auditor or a quality manager always sees only their own
 acknowledgements in the second tile.
 
-Documents also feed other reports:
-
-- the :doc:`management review <management_reviews>` shows the number of documents overdue for review under the input
-  *Effectiveness of actions on risks and opportunities*;
-- the :doc:`audit pack <audit_pack>` includes the master list as at the end of its period and a matrix of who
-  acknowledged which version.
+Documents also feed the :doc:`audit pack <audit_pack>`: it includes the master list as at the end of its period and a
+matrix of who acknowledged which version.
 
 .. _documents-settings:
 
@@ -551,10 +799,23 @@ settings.
        the same day.
      - 14
      - 7 on a site where procedures change often.
+   * - :guilabel:`External documents`
+     - Months between two checks for a new edition of an external document. 0 sends no reminder.
+     - 12
+     - 24 for standards revised every few years.
+   * - :guilabel:`Top management`
+     - Who approves the quality policy of the company you are working in, with their password. They need no Quality
+       role. :guilabel:`Top management history` lists every change.
+     - Empty
+     - The managing director and the plant manager.
    * - :guilabel:`Controlled-copy stamp`
      - The text stamped on every page of a printed version in force. It cannot be empty.
      - CONTROLLED COPY
      - *CONTROLLED COPY — DO NOT PHOTOCOPY*
+
+The :guilabel:`Retention` block, right below, holds :guilabel:`Default retention`: the years a record is kept once it
+stops being live when its type has no period of its own (5 by default; 0 keeps it indefinitely). See `Record
+retention`_.
 
 Two Quality settings of the :guilabel:`Integrity` and :guilabel:`Nonconformities` blocks also apply (see
 :doc:`configuration`):
@@ -576,15 +837,23 @@ Who can do what
      - Sees the documents they own, are in the audience of, or wrote a version of, and their versions in force or
        obsolete. Writes new versions of those documents, and edits, submits, revises or deletes their own versions
        while draft or rejected. Acknowledges their own read requests, prints controlled copies and the master list of
-       what they can see. The owner of a document confirms its periodic review with :guilabel:`Reviewed, no change`.
+       what they can see. The owner of a document approves or rejects its versions when the type's rule is
+       *Document owner*, confirms its periodic review with :guilabel:`Reviewed, no change` and, for an external
+       document, :guilabel:`Edition still current`. Sends a copy of the policy or of an external document to an
+       interested party.
    * - **Internal auditor**
      - The same, and reads every document, version and acknowledgement of the company, also from
        :menuselection:`Documents --> Versions`.
    * - **Manager**
-     - Everything: creates documents and changes their title, owner, audience and clauses; manages document types;
-       approves (never their own version), rejects, brings into force and withdraws versions; submits, revises or
-       deletes drafts on the author's behalf; amends the change summary of a version in force or obsolete; lists every
-       version under :menuselection:`Documents --> Versions`. A manager cannot acknowledge for anyone else.
+     - Everything: creates documents and changes their title, owner, audience and clauses; manages document types and
+       retention periods; approves and rejects versions under the type's rule (never their own version, never a
+       top-management type); brings into force and withdraws versions; submits, revises or deletes drafts on the
+       author's behalf; amends the change summary of a version in force or obsolete; lists every version under
+       :menuselection:`Documents --> Versions`. A manager cannot acknowledge for anyone else.
+   * - **Top management**
+     - Needs no Quality role: approves or rejects the versions of the quality policy from their to-do.
+   * - **Portal reader**
+     - Reads and acknowledges, in My Account, the versions in force of the documents naming them; nothing else.
 
 .. note::
    A quality user sees their own version only while it is draft or rejected: once submitted, it disappears from their

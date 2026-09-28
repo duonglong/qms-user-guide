@@ -192,6 +192,138 @@ register gets an optional :guilabel:`Product` column, and you can group the regi
 automatically when a nonconformity is raised from an operation that involves exactly one product or one lot; you
 can also set them by hand. See :doc:`sources`.
 
+.. _nc-disposition:
+
+Disposition of the nonconforming output
+=======================================
+
+When a nonconformity concerns an output — parts, a batch, a service delivered — ISO 9001 clause 8.7 asks what was
+done with it, and who authorised letting any of it go on. The :guilabel:`Disposition` tab records one decision per line,
+for the quantity it covers.
+
+:guilabel:`Disposition required` is ticked for you when the source type concerns an output: :guilabel:`Inspection`,
+:guilabel:`Supplier` and :guilabel:`Complaint`. For the other source types it starts unticked; tick it when the problem
+concerns an output. Only a quality manager can untick it on an inspection, supplier or complaint nonconformity:
+*Only a quality manager can decide that this nonconformity concerns no output.*
+
+#. On the :guilabel:`Disposition` tab, enter the :guilabel:`Quantity affected` and its :guilabel:`Unit`, for example
+   *100* and *pcs*. Leave 0 when the output is not quantified.
+#. Add one line per decision:
+
+   - :guilabel:`Disposition`: what is done with that part of the output (see the table below);
+   - :guilabel:`Quantity`: how much it covers, for example *20*. Required when the nonconformity is quantified;
+   - :guilabel:`Description`: what was done, for example the new grade or the supplier's return number;
+   - :guilabel:`Customer approval`: for a concession, the reference of the customer's written approval, for example
+     ``DEV-2026-114``.
+
+#. Click :guilabel:`Authorise` on each line. The line moves from **Proposed** to **Authorised**, with
+   :guilabel:`Authorised by` and the date.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 35 35
+
+   * - Disposition
+     - Who authorises it
+     - Afterwards
+   * - :guilabel:`Scrap`
+     - Any quality user
+     - —
+   * - :guilabel:`Rework`
+     - Any quality user
+     - Re-verification required
+   * - :guilabel:`Return to supplier`
+     - Any quality user
+     - —
+   * - :guilabel:`Suspend provision (hold)`
+     - Any quality user
+     - Released by a quality manager (see `Holding delivery`_)
+   * - :guilabel:`Regrade`
+     - A quality manager
+     - Re-verification required
+   * - :guilabel:`Repair (concession)`
+     - A quality manager other than the nonconformity's owner, with a signature
+     - Re-verification required
+   * - :guilabel:`Use as is (concession)`
+     - A quality manager other than the nonconformity's owner, with a signature
+     - —
+
+Repair and use as is let nonconforming output go on: they are *concessions*. Authorising one is an electronic signature
+on the nonconformity, with the reason *Concession* and a note such as *Use as is 80 pcs — customer ref DEV-2026-114*.
+When the :ref:`Concessions need the customer's approval <config-concession>` setting is on, a concession is authorised
+only once its :guilabel:`Customer approval` reference is recorded.
+
+For a rework, a repair or a regrade, the output must be checked again: once the line is authorised, fill in
+:guilabel:`Re-verified on`, :guilabel:`Re-verified by` and, if useful, a :guilabel:`Re-verification note`. The
+re-verification cannot be dated before the authorisation.
+
+The lines of a quantified nonconformity must add up to the quantity affected — a hold does not count — and never exceed
+it: *The dispositions cover 110 pcs, more than the 100 affected.* For example, an inspection nonconformity on 100 parts
+is disposed of by *20 scrap* and *80 use as is (concession)*; the tab then shows the summary *20 pcs scrap · 80 pcs use as
+is (concession)*.
+
+.. image:: ../_images/nc-disposition-tab.png
+   :alt: The Disposition tab of an inspection nonconformity on 100 pcs: a Scrap line of 20 authorised and a Use as is
+         (concession) line of 80 authorised with its customer approval reference, and the summary above.
+
+An authorised line does not change: to correct it, a quality manager clicks :guilabel:`Withdraw` on the line, gives a
+reason of at least ten characters, and a new line is recorded. Withdrawn lines stay on the tab, greyed out, and on the
+trail. A disposition is never deleted.
+
+The register's :guilabel:`Disposition required` and :guilabel:`Released under concession` filters find these
+nonconformities.
+
+.. _nc-customer:
+
+When the output may have reached the customer
+=============================================
+
+ISO 9001 clause 8.7.1 also asks you to act when nonconforming output may already be with the customer. The
+:guilabel:`Customers informed` tab records it.
+
+- :guilabel:`Reached a customer`: :guilabel:`No`, :guilabel:`Possibly` or :guilabel:`Yes`. A complaint starts at
+  :guilabel:`Yes`; the other source types start at :guilabel:`No`. Once the answer is :guilabel:`Possibly` or
+  :guilabel:`Yes`, only a quality manager can set it back to :guilabel:`No`.
+- While the answer is :guilabel:`Possibly` or :guilabel:`Yes`, the nonconformity closes only once a customer
+  notification or a manager's waiver is recorded; :guilabel:`Customer informed` is ticked when one is.
+
+To record that a customer was informed, add a line to the notifications and fill in:
+
+#. the :guilabel:`Customer` (the company; the person goes in :guilabel:`Person informed`, for example *Mr Tran
+   (purchasing)*);
+#. :guilabel:`Informed on` (between the detection date and today), :guilabel:`Informed by` (you by default) and the
+   :guilabel:`Method`: :guilabel:`Email`, :guilabel:`Phone`, :guilabel:`Meeting`, :guilabel:`Letter`,
+   :guilabel:`Portal` or :guilabel:`Other`;
+#. the :guilabel:`Reference` of the message or call record, for example *email ACME-QN-551*;
+#. :guilabel:`What was said`: the output concerned, the quantity and the action recommended to the customer (required);
+#. the :guilabel:`Customer response` and :guilabel:`Attachments`, if any.
+
+A notification is never deleted. When no customer needs to be told — for example, the shipment was recalled from the
+carrier before delivery — a quality manager writes why in :guilabel:`Why no customer is informed`, at least 20
+characters, in the :guilabel:`Waiver` section. :guilabel:`Waived by` and :guilabel:`Waived on` are recorded. A
+notification recorded later clears the waiver.
+
+The register's :guilabel:`Reached a customer` and :guilabel:`Customer not informed` filters list the nonconformities
+concerned.
+
+.. image:: ../_images/nc-customers-tab.png
+   :alt: The Customers informed tab: Reached a customer set to Possibly, one notification to a customer by email,
+         and the Customer informed box ticked.
+
+.. _nc-hold:
+
+Holding delivery
+----------------
+
+While you decide what to do with the output, stop its provision: add a disposition line :guilabel:`Suspend provision
+(hold)` and authorise it. The nonconformity shows :guilabel:`On hold` and appears under the :guilabel:`On hold`
+filter. A hold is not a final decision and does not count towards the quantity affected.
+
+A quality manager lifts the hold with :guilabel:`Release` on its line, and a release note of at least ten characters.
+On a nonconformity that needs a disposition, the hold can be released only once a final decision — scrap, rework,
+concession… — is authorised: *Record what is done with the held output before releasing it.* A nonconformity cannot be
+closed while a hold is still authorised.
+
 Close it with a signature
 =========================
 
@@ -199,9 +331,12 @@ Closing is an electronic signature: it records who closed the nonconformity, whe
 that moment. Only a quality manager can close.
 
 #. Open the nonconformity and click :guilabel:`Close`.
-#. If something is still missing, Odoo says exactly what: the containment, the correction, the root cause, at least
-   one clause, or the owner's activity (mark the *Nonconformity to treat* activity as done). Complete it and try
-   again.
+#. If something is still missing, Odoo says exactly what, under *Before closing:*: the containment, the correction,
+   the root cause, at least one clause, or the owner's activity (mark the *Nonconformity to treat* activity as done).
+   When a disposition is required: *Record the disposition of the nonconforming output*, *Dispose of the whole affected
+   quantity (80 of 100)*, *Authorise every disposition* or *Re-verify the reworked, repaired or regraded output*.
+   Whatever the flag: *Release or replace the hold on the output* and, when the output may have reached a customer,
+   *Record that the customer was informed, or why not*. Complete it and try again.
 #. When Odoo asks for your password, enter your own. This is what makes the closure a signature.
 
 .. image:: ../_images/nc-close-password.png
@@ -225,8 +360,8 @@ What is locked after closing
 ----------------------------
 
 A closed or cancelled nonconformity is locked. Any attempt to change its title, source, classification, owner, due
-date, treatment or clauses is refused with *This record is locked; use Amend.* You can still post messages in the
-chatter and schedule activities.
+date, treatment or clauses is refused with *This record is locked; use Amend.* Its dispositions and customer
+notifications are locked with it. You can still post messages in the chatter and schedule activities.
 
 A closed or cancelled nonconformity can never be deleted, by anyone, and neither can any nonconformity that carries a
 signature.
@@ -289,6 +424,15 @@ Who can do what
      - Yes, on those they own, detected or follow
      - Yes
    * - Close, cancel, amend
+     - No
+     - No
+     - Yes
+   * - Record and authorise a scrap, rework, return or hold; record a customer notification
+     - Yes, on those they can see
+     - Yes, on those they can see
+     - Yes
+   * - Authorise a regrade; authorise a concession (signed, not on their own nonconformity); withdraw a disposition;
+       release a hold; record a waiver; untick *Disposition required*
      - No
      - No
      - Yes

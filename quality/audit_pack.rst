@@ -196,8 +196,9 @@ example ``PACK_2026_0001.zip``. Hand this file to the auditor, together with the
 What is inside the ZIP
 ======================
 
-The files come in a fixed order, so that every pack looks the same to an auditor. A section with nothing in the period
-still gets its PDF, stating *0 records in period*: absence is evidence too.
+The files come in a fixed order, so that every pack looks the same to an auditor: files 01 to 06, then the registers
+10 to 16, then 07, 08 and 09. A section with nothing in the period still gets its PDF, stating *0 records in period*:
+absence is evidence too. Files 13 and 15 are present only when their add-on is installed.
 
 .. list-table::
    :header-rows: 1
@@ -235,12 +236,43 @@ still gets its PDF, stating *0 records in period*: absence is evidence too.
    * - ``05_acknowledgement_matrix.pdf``
      - A table of people against the document versions in force at some time during the period. Each cell shows the
        date the person acknowledged the version, *pending* when they have not yet, or *not required* when the version
-       was not addressed to them. It stands in for a training matrix.
+       was not addressed to them. The acknowledgement matrix shows who confirmed they read and understood each
+       controlled document, and when. It is evidence of awareness (ISO 9001 7.3). It is not a training or competence
+       record (7.2): competence is recorded by the Training & Competence add-on.
      - Cells of the table
    * - ``06_review_minutes/``
      - One PDF per management review **approved** with its meeting in the period, named after the review, for example
        ``MR_2026_001.pdf``: the minutes with inputs, decisions and conclusion. See :doc:`management_reviews`.
      - Inputs of the review
+   * - ``10_context_and_scope.pdf``
+     - The context issues active and the interested parties with their needs at the end of the period, and the scope
+       in force then with its clauses not applicable. See :doc:`context`.
+     - Issues, parties and scope versions
+   * - ``11_risk_register.pdf``
+     - Every risk and opportunity open at any time in the period, with its assessments up to the end of the period, its
+       treatment and its actions. See :doc:`risks`.
+     - Risks
+   * - ``12_quality_objectives.pdf``
+     - The objectives whose period overlaps the pack period, as of its end: target, actual, status, plan and
+       measurements. See :doc:`objectives`.
+     - Objectives
+   * - ``13_competence_and_training.pdf``
+     - Only with the Training & Competence add-on. The competence matrix at the end of the period and the trainings of
+       the period with each attendee's result and effectiveness verdict, headed *Competence (ISO 9001 7.2)*. See
+       :doc:`competence`.
+     - Matrix cells and trainings
+   * - ``14_calibration_register.pdf``
+     - The calibration register as at the end of the period: every instrument with its status and the calibrations of
+       the period. See :doc:`calibration`.
+     - Instruments
+   * - ``15_approved_supplier_list.pdf``
+     - Only with the supplier evaluation add-on. The approved supplier list at the end of the period: every supplier
+       with its status, decision, signer and conditions. See :doc:`suppliers`.
+     - Suppliers
+   * - ``16_customer_satisfaction.pdf``
+     - The confirmed satisfaction records whose period overlaps the pack period, with the complaint trend. See
+       :doc:`satisfaction`.
+     - Satisfaction records
    * - ``07_clause_matrix.pdf``
      - For each chosen standard, every clause with its number, title, evidence count in the period and the count per
        type of record. Clauses without evidence are highlighted and marked *no evidence*. See `The clause matrix`_.
@@ -250,8 +282,9 @@ still gets its PDF, stating *0 records in period*: absence is evidence too.
        `The integrity and completeness report`_.
      - Records verified
    * - ``09_trail.csv``
-     - Only when :guilabel:`Include the trail CSV` was ticked. Every trail row of the nonconformities, actions, audits,
-       findings, document versions and reviews the pack covers, with the columns ``model``, ``record``, ``sequence``,
+     - Only when :guilabel:`Include the trail CSV` was ticked. Every trail row of the records the pack prints —
+       nonconformities, actions, audits, findings, document versions, reviews and the records of files 10 to 16 — with
+       the columns ``model``, ``record``, ``sequence``,
        ``timestamp``, ``user``, ``event``, ``field``, ``old``, ``new``, ``reason``, ``prev_hash`` and ``hash``. The
        auditor can recompute the hash chain with their own tools. See :doc:`trail`.
      - Trail rows
@@ -273,7 +306,7 @@ document hash is a fingerprint of the body of the document; it ties a printed co
 generated. See :doc:`trail`.
 
 .. image:: ../_images/audit-pack-zip.png
-   :alt: The content of an audit pack ZIP opened in a file manager: files 01 to 09, the 03_audit_reports and
+   :alt: The content of an audit pack ZIP opened in a file manager: files 01 to 16, the 03_audit_reports and
          06_review_minutes folders, manifest.json and README.txt.
 
 .. note::
@@ -322,7 +355,7 @@ Trail integrity
 ---------------
 
 For every type of record the pack covers — nonconformities, actions, audits, findings, document versions, reviews,
-and the pack itself — the report verifies the trail of each record, exactly as :guilabel:`Verify trail` does on a
+the records of files 10 to 16, and the pack itself — the report verifies the trail of each record, exactly as :guilabel:`Verify trail` does on a
 record (see :doc:`trail`), and prints a table:
 
 - :guilabel:`Records verified`: how many records were checked;
@@ -383,6 +416,9 @@ the app is not installed shows *n/a*.
        See :doc:`management_reviews`.
    * - Amended records and their reasons
      - Every record the pack covers that was amended after locking, with the reasons given (see :doc:`trail`).
+   * - Management reviews missing an input
+     - Approved reviews of the period whose agenda lacks an ISO 9001 input that existed when the review was created, or
+       holds an input neither discussed nor noted. See :doc:`management_reviews`.
 
 .. image:: ../_images/audit-pack-integrity.png
    :alt: The integrity and completeness PDF: the trail integrity table per type of record with verified, intact and
@@ -398,7 +434,8 @@ The clause matrix
 The clause matrix shows, for each clause of the chosen standards, how much evidence the period holds: the clause
 number, its title, the evidence count and the count per type of record (nonconformities, actions, audits and so on).
 A parent clause also counts the evidence of its sub-clauses. Clauses with no evidence are highlighted and marked
-*no evidence*. It is the :doc:`clause view <clauses>` on paper, counted the same way.
+*no evidence*. It is the :doc:`clause view <clauses>` on paper, counted the same way, with the same sentence: records
+tagged to a clause show where to look; they are not proof of conformity.
 
 The pack always contains it as ``07_clause_matrix.pdf``. To print it on its own, without building a pack:
 

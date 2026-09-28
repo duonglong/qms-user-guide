@@ -5,7 +5,8 @@ Management reviews
 ISO 9001 clause 9.3 asks top management to review the quality management system at planned intervals, to consider a
 fixed list of inputs, and to record its decisions. With **QMS Advanced** installed, the **Quality** app lays out the
 agenda from the inputs of clause 9.3.2, fills it with the figures of the period from your nonconformities, corrective
-actions, audits and documents, records the meeting and its decisions, turns decisions into tracked actions, and has
+actions, audits, context, objectives, satisfaction, calibration and risk registers, records the meeting and its
+decisions, turns decisions into tracked actions, and has
 the chair sign the minutes.
 
 Every management review moves through three states:
@@ -66,11 +67,11 @@ The inputs
 
 The :guilabel:`Inputs` tab has one row per input of ISO 9001 clause 9.3.2, in the order of the standard. Each row
 shows the :guilabel:`Clause`, the input, its :guilabel:`Figures`, your :guilabel:`Notes` and a :guilabel:`Discussed`
-switch.
+switch. The figures come from the registers of the app, for the review period:
 
 .. list-table::
    :header-rows: 1
-   :widths: 10 35 55
+   :widths: 10 30 60
 
    * - Clause
      - Input
@@ -82,13 +83,18 @@ switch.
        *no previous review* for the first review.
    * - 9.3.2 b
      - Changes in external and internal issues
-     - None: record them in the notes.
+     - From the :doc:`context registers <context>`: issues active, identified, changed and retired, issues overdue for
+       review, needs added, changed and overdue for monitoring, whether the scope changed, and the clause applicability
+       changes.
    * - 9.3.2 c1
      - Customer satisfaction and feedback
-     - Nonconformities from customer complaints detected in the period, by severity.
+     - From :doc:`customer satisfaction <satisfaction>`: the satisfaction records of the period, their average, each
+       record, those below target or awaiting an action, the improvement actions raised; then the complaints detected
+       in the period by severity and the complaint trend against the previous period.
    * - 9.3.2 c2
      - Extent to which quality objectives were met
-     - None: record them in the notes.
+     - From the :doc:`quality objectives <objectives>`: the objectives of the period by status, then one line per
+       objective with its target and actual.
    * - 9.3.2 c3
      - Process performance and conformity
      - Nonconformities detected in the period by source and by severity, and their age in days at the end of the
@@ -96,12 +102,14 @@ switch.
    * - 9.3.2 c4
      - Nonconformities and corrective actions
      - Nonconformities closed in the period and how many of them had a verified corrective action; the effectiveness
-       ratio; the corrective and preventive actions due in the period by state and by kind; the actions still in
-       progress past their due date at the end of the period; the recurrences detected in the period. See
+       ratio; the corrective and preventive actions due in the period by state, by kind and by origin; the actions
+       still in progress past their due date at the end of the period; the recurrences detected in the period. See
        :doc:`corrective_actions`.
    * - 9.3.2 c5
      - Monitoring and measurement results
-     - None: record them in the notes.
+     - From the :doc:`calibration register <calibration>`: equipment in service and its status at the end of the period,
+       the calibrations of the period and their results, instruments overdue at the end of the period, out-of-tolerance
+       events without impact assessment.
    * - 9.3.2 c6
      - Audit results
      - Audits started (or, if not started, planned) in the period and their states; their findings by grade; the
@@ -109,13 +117,18 @@ switch.
        in. See :doc:`audits`.
    * - 9.3.2 c7
      - Performance of external providers
-     - Nonconformities from suppliers detected in the period, by severity.
+     - With the :doc:`supplier evaluation <suppliers>` add-on: the supplier evaluations confirmed, by grade, their
+       average and lowest scores, the suppliers' status at the end of the period, the decisions signed, the SCARs opened,
+       closed and overdue, and the orders confirmed despite the supplier's status. In every case: the nonconformities
+       from suppliers detected in the period, by severity.
    * - 9.3.2 d
      - Adequacy of resources
      - None: record them in the notes.
    * - 9.3.2 e
      - Effectiveness of actions on risks and opportunities
-     - The number of documents overdue for review, at the time of computing. See :doc:`documents`.
+     - From the :doc:`risk register <risks>`: risks and opportunities open by level, identified, closed and treated in
+       the period, how many were reduced, unchanged or increased, the high risks accepted, the treatment actions open
+       and overdue, and the risks overdue for review.
    * - 9.3.2 f
      - Opportunities for improvement
      - The previous review's decisions of kind *Improvement* that are still open.
@@ -124,8 +137,23 @@ Figures are shown in your language, counts as numbers and ratios as percentages.
 company only, with the access rights of the person who computes them: a quality manager counts every record of the
 company.
 
-Inputs cannot be added or deleted. When an input does not apply, switch :guilabel:`Discussed` on and write *not
-applicable* in its notes.
+When a register has nothing for the period, the input says so in a sentence instead of a row of zeros: *No context
+register entries for the period*, *No quality objectives for the period*, *No calibration recorded for the period*,
+*No risk register entries for the period*, *No satisfaction record for the period*, or *Nothing recorded for the
+period*. When an input's figures come from a part of the app that is not installed, it reads *component not installed —
+record the discussion in the notes*.
+
+Inputs cannot be added or deleted from the review. When an input does not apply, switch :guilabel:`Discussed` on and
+write *not applicable* in its notes.
+
+The agenda
+----------
+
+The agenda is made of the inputs of the enabled standards, listed under :menuselection:`Quality --> Configuration -->
+Review inputs` with their :guilabel:`Clause`, :guilabel:`Input`, order and :guilabel:`Text when empty`. A quality
+manager can rename an input, change its order or its text when empty, or archive it. When the agenda holds inputs of
+more than one standard, the :guilabel:`Inputs` tab groups them by standard. Inputs of a standard enabled after the
+review was created are added when you recompute a draft review.
 
 Recompute the figures
 ---------------------

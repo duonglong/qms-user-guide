@@ -49,6 +49,31 @@ Nonconformities
    nonconformities can never be deleted. To remove a duplicate from the register, cancel it with a reason instead:
    its number is kept. See :doc:`nonconformities`.
 
+**Close lists "Record the disposition of the nonconforming output" or "Dispose of the whole affected quantity".**
+   The nonconformity concerns an output: add disposition lines on the :guilabel:`Disposition` tab until they cover the
+   :guilabel:`Quantity affected` (a hold does not count), then authorise each line. See :ref:`nc-disposition`.
+
+**Odoo says "Only a quality manager can decide that this nonconformity concerns no output."**
+   Inspection, supplier and complaint nonconformities start with :guilabel:`Disposition required` ticked. Only a
+   quality manager can untick it. See :ref:`nc-disposition`.
+
+**Authorise refuses: "A concession is authorised by a quality manager other than the nonconformity owner."**
+   Repair and use as is are concessions: another quality manager authorises them, with a signature. When the setting
+   requires it, record the customer's approval reference first (*Record the customer's approval reference for this
+   concession.*). See :ref:`nc-disposition`.
+
+**Odoo says "An authorised disposition cannot change: withdraw it and record a new line."**
+   An authorised line is final. A quality manager withdraws it with a reason, and a new line is recorded. A disposition
+   is never deleted. See :ref:`nc-disposition`.
+
+**Close lists "Record that the customer was informed, or why not".**
+   :guilabel:`Reached a customer` is *Possibly* or *Yes*: record a customer notification on the :guilabel:`Customers
+   informed` tab, or have a quality manager write why no customer is informed. See :ref:`nc-customer`.
+
+**Release refuses: "Record what is done with the held output before releasing it."**
+   A hold is lifted only once a final disposition is authorised. While a hold is authorised, the nonconformity cannot
+   close (*Release or replace the hold on the output*). See :ref:`nc-hold`.
+
 Operations
 ==========
 
@@ -85,6 +110,26 @@ Clauses
 **Why does a clause show a gap although I have evidence?**
    The evidence must fall in the chosen period (for a nonconformity, its :guilabel:`Detected On` date), must not be
    cancelled, and must be visible to you. Widen the period or check the record's clause tags. See :doc:`clauses`.
+
+**Why does the clause view say "Records tagged" and not "evidence"?**
+   Records tagged to a clause show where to look. They are not proof of conformity: conformity is judged against the
+   requirement. See :doc:`clauses`.
+
+**A procedure approved two years ago counts in this quarter. Is that right?**
+   Yes. A record in force — a document version, a process, a risk, an objective — counts in every period its time in
+   force overlaps. See :doc:`clauses`.
+
+**Mark not applicable refuses: "Clauses of sections … apply to every organization."**
+   Sections 4 and 5 can never be declared not applicable, and each standard lists the sections that may be. See
+   :ref:`clauses-not-applicable`.
+
+**Odoo says "<clause> already covers <sub-clause>" or "… is already declared not applicable for …".**
+   The clause, or its parent, is already declared for that company. Withdraw the declaration first if it must change.
+   See :ref:`clauses-not-applicable`.
+
+**I withdrew a declaration but last quarter still shows the clause "Not applicable".**
+   That is intended: the clause view reads the declarations as they stood on the last day of the chosen period. See
+   :ref:`clauses-not-applicable`.
 
 **I enabled a standard in Configuration ‣ Standards, but it switched off again.**
    Enable standards in :menuselection:`Settings --> Quality`: saving the settings applies the list of enabled
@@ -204,6 +249,24 @@ Audits
 **The audit PDF says "DRAFT — not reported".**
    The audit is still in progress. Report it to get the signed version. See :doc:`audits`.
 
+**Why can't my audit start?**
+   With the Training & Competence add-on installed, the lead auditor must hold a current internal auditor qualification
+   of the level to lead (3 by default) on the start date: *<user> cannot lead this audit: <reason> Record the
+   qualification or change the lead auditor.* Grant the qualification, or choose a qualified lead auditor. Otherwise
+   Start refuses for the reasons above: no clause in scope, or a template covering none of them. See
+   :ref:`audits-qualification` and :doc:`competence`.
+
+**Approve refuses: "Write the programme's rationale (at least 20 characters): why these processes, in these months."**
+   Every programme needs its rationale, even when it follows the proposal exactly. See :doc:`audits`.
+
+**Why is Purchasing proposed every 3 months?**
+   The proposal starts from the importance of the process and shortens it after major or minor findings, changes and
+   nonconformities, never below 3 months. The process's :guilabel:`Basis of the proposal` shows the calculation. See
+   :ref:`audits-importance`.
+
+**Odoo says "Only a quality manager can rate the importance of a process."**
+   Ask a quality manager; a High or Low importance also needs its reason. See :ref:`audits-importance`.
+
 **The programme will not close.**
    Every audit of the programme must be closed or cancelled first; the message lists those still open. See
    :doc:`audits`.
@@ -227,13 +290,39 @@ Documents
    :guilabel:`Clauses` tab. See :doc:`documents`.
 
 **I do not see the Approve button on a version in review.**
-   Only quality managers approve, and never the author of the version. Ask another quality manager. See
-   :doc:`documents`.
+   The document type decides who approves: the document owner, a quality manager or top management — never the
+   author. The document's :guilabel:`Approved by` field says who. See :doc:`documents`.
+
+**Approve refuses: "<code> is approved by its owner, <owner>."**
+   The type's rule is *Document owner* and the owner can approve this version: ask them. Other messages: *Documents of
+   type <type> are approved by a quality manager.*, *<code> is approved by top management: <names>.*, *The author
+   cannot approve their own version.* See :doc:`documents`.
 
 **Nobody received the Approve to-do of my version.**
-   The to-do goes to quality managers other than the author. When the author is the company's only quality manager,
-   nobody can approve: the version's chatter says so. Give another person the Manager role. See
-   :doc:`documents`.
+   Nobody other than the author can approve it under the type's rule, and the version's chatter says so. Give the
+   document an owner who did not write it, give a quality manager the approval, or — for the quality policy — name
+   the top management in the Quality settings. See :doc:`documents`.
+
+**Approving the quality policy asks me to confirm four points.**
+   ISO 9001 clause 5.2.1: the policy fits the purpose and context, frames the objectives, commits to requirements and
+   commits to continual improvement. Tick the four boxes; Odoo names the one missing. See
+   :ref:`documents-quality-policy`.
+
+**Odoo says "<company> already has a quality policy in force (<version>); revise it instead."**
+   Each company has one quality policy in force. Write a new version of the existing policy document. See
+   :ref:`documents-quality-policy`.
+
+**Submit refuses: "Give the edition of this external document (for example 2015 or Rev C)."**
+   A version of an external document must say which edition of the issuer it holds. See :doc:`documents`.
+
+**Odoo says "Portal and public groups cannot be an audience: name portal readers one by one."**
+   Portal readers are added one by one under :guilabel:`Portal readers`, never through a group. See
+   :ref:`documents-portal-readers`.
+
+**Why was a record not deleted when its retention period ended?**
+   Nothing is ever deleted automatically. A record past its *Keep until* date shows a banner and appears under
+   :guilabel:`Past retention`; disposal is a manual decision taken outside the system. See
+   :ref:`documents-retention`.
 
 **An approved version became Obsolete without ever being in force.**
    A newer version of the same document came into force before its date, so the older one was superseded; its chatter
@@ -303,6 +392,13 @@ Management reviews
    Hold the review first. The decision also needs an owner and a due date, and only quality managers create actions
    from decisions. See :doc:`management_reviews`.
 
+**An input reads "component not installed — record the discussion in the notes".**
+   The figures of that input come from a part of the app that is not installed. Discuss it from your notes. See
+   :doc:`management_reviews`.
+
+**An input reads "No risk register entries for the period".**
+   The register had nothing in the review period. The sentence replaces a row of zeros. See :doc:`management_reviews`.
+
 **The Next management review tile is missing.**
    It needs at least one approved review, and a :guilabel:`Review interval` above 0. See :doc:`management_reviews`.
 
@@ -349,6 +445,126 @@ Audit pack
    Only a queued pack can be cancelled, by the person who requested it or by a quality manager. A generating pack runs
    until it is done or fails. See :doc:`audit_pack`.
 
+Context, risks and objectives
+=============================
+
+**Odoo says "Use Mark reviewed or Retire: the review and the state are not written directly."**
+   The review dates of a context issue move only with :guilabel:`Mark reviewed`, which needs a note of at least ten
+   characters. Only the owner or a quality manager can use it. See :doc:`context`.
+
+**Approve refuses my scope: "A scope approved today is in force; approve its revision from tomorrow."**
+   Two versions cannot come into force on the same day. Approve the revision tomorrow. See :doc:`context`.
+
+**My scope shows "Clause applicability changed since this scope was approved".**
+   A clause was declared not applicable, or made applicable again, since the scope was signed. Revise the scope and
+   approve the revision. See :doc:`context`.
+
+**Open refuses my risk: "Add at least one treatment action." or "Write a treatment note of at least 10 characters."**
+   Reduce, avoid, transfer and pursue need a treatment action; accept and decline need a note. See :doc:`risks`.
+
+**Odoo says "Accepting a high or critical risk needs a quality manager's signature."**
+   Ask a quality manager to click :guilabel:`Accept` and sign. See :doc:`risks`.
+
+**Odoo says "Re-assess the risk to change its score."**
+   Once a risk is open, its score changes only through :guilabel:`Re-assess`, which keeps the history. See
+   :doc:`risks`.
+
+**Close refuses: "Finish or cancel the treatment actions first."**
+   A treatment action is still in draft or in progress. See :doc:`risks`.
+
+**Activate refuses: "Complete these items before activating the objective: …"**
+   The plan texts, a clause and, with a quality policy in force, how the objective serves it are missing. See
+   :doc:`objectives`.
+
+**Odoo says "Only a quality manager changes the target or the period of an active objective."**
+   The owner records measurements; a quality manager changes the target, and the change is shown on the objective.
+   See :doc:`objectives`.
+
+**Odoo says "The objective already has a measurement on this date; correct that one."**
+   There is one measurement per date. Open it and correct its value. See :doc:`objectives`.
+
+Satisfaction and calibration
+============================
+
+**Odoo says "The period has not ended yet: record the result once the period is over."**
+   A satisfaction result is recorded after its period. See :doc:`satisfaction`.
+
+**Why does my satisfaction record say "Action expected"?**
+   It was below its target or dropped by at least the deterioration threshold since the previous result. Raise an
+   improvement action, or have a quality manager record why none is needed. See :doc:`satisfaction`.
+
+**Why does an instrument say DO NOT USE?**
+   It is overdue, out of tolerance, never calibrated, out of service or retired. See :doc:`calibration`.
+
+**Confirm refuses my calibration.**
+   An external calibration needs its certificate file (*Attach the calibration certificate.*), an in-house one its notes;
+   the traceability fields must be filled in, and a broken protection restored first (*Restore the protection before
+   confirming, or put the equipment out of service.*). See :doc:`calibration`.
+
+**The nonconformity of an out-of-tolerance calibration will not close.**
+   Record the impact assessment on the calibration: *Record the impact assessment of <calibration> (measurements from
+   <date> to <date>).* See :doc:`calibration`.
+
+Training and competence
+=======================
+
+**Is the acknowledgement matrix a training record?**
+   No. The acknowledgement matrix shows who confirmed they read and understood each controlled document, and when: it
+   is evidence of awareness (ISO 9001 7.3). Competence (7.2) is recorded by the Training & Competence add-on, as
+   competence records, trainings and the competence matrix. An acknowledgement never creates or extends a competence
+   record. See :doc:`competence`.
+
+**Where do I install Training & Competence?**
+   It is a separate free module, installed separately from **Apps**; it needs Employees. Record the auditor
+   qualifications first: from then on, an audit whose lead auditor is not qualified cannot start. See
+   :doc:`competence`.
+
+**Mark done refuses my training.**
+   Every attendee needs a result (*Record a result for every attendee.*), and an external course a certificate for
+   every attendee who passed. See :doc:`competence`.
+
+**Odoo says "A training record is granted by marking its training done."**
+   Records of source *Training* come only from a training marked done. Record an assessment or prior experience
+   instead, or mark the training done. See :doc:`competence`.
+
+**Odoo says "Nobody evaluates their own training."**
+   The employee's manager or a quality manager evaluates it; never the attendee or the trainer. See
+   :doc:`competence`.
+
+**A "not effective" verdict removed a competence.**
+   That is intended: a training that did not work grants nothing, so its records are revoked and the gap shows again.
+   See :doc:`competence`.
+
+Suppliers
+=========
+
+**Why do buyers get a warning?**
+   The :guilabel:`Purchase confirmation control` is *Warn* (the default) and the supplier is unapproved or blocked:
+   *<supplier> is not on the approved supplier list.* or *<supplier> is blocked by <decision> (<date>, <signer>).* The
+   buyer can confirm anyway with a reason. Right after installing the add-on every supplier is unapproved: set the
+   control to *Off* while you build the approved supplier list. See :doc:`suppliers`.
+
+**Confirmation is refused for a supplier.**
+   The control is *Block*: sign a decision for the supplier, or confirm from another supplier. See :doc:`suppliers`.
+
+**Accept refuses a supplier nonconformity: "Name the supplier of this nonconformity."**
+   Choose the :guilabel:`Supplier` first. When the nonconformity was raised from a purchase order or a receipt, the
+   supplier follows it and cannot be changed. See :doc:`suppliers`.
+
+**A supplier shows "Not rated".**
+   It had no receipt in the period, or Inventory is not installed, so the receipt measures are missing. See
+   :doc:`suppliers`.
+
+**Sign refuses: "This decision departs from <evaluation> (proposed <status>) …"**
+   The full message asks you to cite the evaluation and explain why in at least 30 characters. A decision that differs from the latest evaluation's proposal cites it and says why. See :doc:`suppliers`.
+
+**Odoo says "Record the supplier's response before marking this SCAR done."**
+   Record the supplier's answer on the :guilabel:`Supplier` tab of the SCAR. See :doc:`suppliers`.
+
+**A requirement shows "Revision not communicated".**
+   A newer version of one of its documents is in force. Supersede the requirement and communicate the new one. See
+   :doc:`suppliers`.
+
 Settings and access
 ===================
 
@@ -364,8 +580,9 @@ Settings and access
    :guilabel:`Access Rights` tab. See :doc:`roles`.
 
 **I do not see the Configuration menu.**
-   :menuselection:`Quality --> Configuration` (standards, processes, audit templates, document types) is for quality
-   managers only. See :doc:`roles`.
+   :menuselection:`Quality --> Configuration` (standards, clause applicability, processes, audit templates, document
+   types, review inputs, record retention, competences, assessment criteria) is for quality managers only. See
+   :doc:`roles`.
 
 **I work for two companies and some records are missing.**
    You see the records of the companies selected in the company switcher. Select the other company too. See

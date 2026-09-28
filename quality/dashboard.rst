@@ -117,7 +117,16 @@ With **QMS Advanced** installed, the dashboard shows more tiles after the five a
   — see :doc:`corrective_actions`;
 - :guilabel:`Audit programme completion (%)` and :guilabel:`Open audit findings` — see :doc:`audits`;
 - :guilabel:`Documents overdue for review` and :guilabel:`Acknowledgements pending` — see :doc:`documents`;
-- :guilabel:`Next management review` — see :doc:`management_reviews`.
+- :guilabel:`Next management review` — see :doc:`management_reviews`;
+- :guilabel:`Context reviews due` — see :doc:`context`;
+- :guilabel:`High and critical risks` — see :doc:`risks`;
+- :guilabel:`Objectives at risk` — see :doc:`objectives`;
+- :guilabel:`Satisfaction records awaiting action` — see :doc:`satisfaction`;
+- :guilabel:`Calibration due` — see :doc:`calibration`.
+
+The add-ons add their own tiles: :guilabel:`Competence gaps`, :guilabel:`Qualifications expiring` and
+:guilabel:`Training evaluations due` with Training & Competence (see :doc:`competence`), and :guilabel:`Suppliers
+needing attention` with the supplier evaluation (see :doc:`suppliers`).
 
 .. seealso::
    - :doc:`nonconformities`

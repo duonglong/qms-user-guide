@@ -54,8 +54,62 @@ nonconformities. The :guilabel:`Trail` tab keeps every change of owner, auditees
 belonged to a process when it was audited.
 
 .. image:: ../_images/audits-process.png
-   :alt: A process of the register: code, process owner, auditees and realised clauses, with the Nonconformities
-         smart button.
+   :alt: A process of the register: process owner, auditees and realised clauses, its importance with the reason,
+         the proposed audit interval and next audit with their basis, and the Nonconformities smart button.
+
+.. _audits-importance:
+
+Rate each process by importance
+-------------------------------
+
+ISO 9001 clause 9.2.2 a asks that the audit programme takes into account the importance of the processes, the changes
+affecting them and the results of previous audits. Each process therefore has an :guilabel:`Importance`:
+:guilabel:`High`, :guilabel:`Medium` (the default) or :guilabel:`Low`. For High or Low, say why in :guilabel:`Reason
+for the importance`, for example *Safety-critical parts*. Only a quality manager rates the importance.
+
+From the importance and the history of the process, Odoo proposes how often to audit it:
+
+- :guilabel:`Last audit`: the latest reported or closed audit of the process, ad hoc audits included;
+- :guilabel:`Proposed interval (months)` and :guilabel:`Proposed next audit`: the month the process should next be
+  audited — a proposal, never an automatic audit;
+- :guilabel:`Due for audit`: ticked when that month has come; a process never audited is due now;
+- :guilabel:`Basis of the proposal`: the calculation in words, for example *high (6) × major finding 0.5 × owner changed
+  0.75 = 2.25 → 2 → clamp 3*.
+
+The proposal starts from the base interval of the importance and multiplies it by each factor that applies:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 45 20 35
+
+   * - Condition
+     - Factor (default)
+     - Setting
+   * - Base interval: High / Medium / Low importance
+     - 6 / 12 / 24 months
+     - :guilabel:`Base interval by importance`
+   * - The last audit had a major finding
+     - × 0.5
+     - :guilabel:`Major finding factor`
+   * - The last audit had a minor finding and no major one
+     - × 0.75
+     - :guilabel:`Minor finding factor`
+   * - The process changed since its last audit: its owner, auditees or clauses, or a document of the process came into
+       force
+     - × 0.75
+     - :guilabel:`Change factor`
+   * - At least 3 nonconformities of the process (not cancelled) detected since its last audit
+     - × 0.75
+     - :guilabel:`Nonconformity factor`, :guilabel:`Nonconformities that shorten`
+
+The result is rounded half up, then kept between 3 and 36 months (:guilabel:`Interval bounds`). The proposed month is
+the month of the last audit plus the interval. For example, *Purchasing* is rated High (6 months); its last audit, on
+2026-03-15, had a major finding (× 0.5), and its owner changed since (× 0.75); two nonconformities are below the
+threshold. 6 × 0.5 × 0.75 = 2.25, rounded to 2 and kept at the shortest interval, 3: Purchasing is proposed every 3
+months, due since June 2026.
+
+Use the :guilabel:`Due for audit` filter of the process list to see what the next programme should cover. The factors
+are set in the :ref:`Audit programme proposal <config-audit-proposal>` settings.
 
 .. note::
    With QMS Advanced installed, the :guilabel:`Process` of a nonconformity is chosen from this register. When the
@@ -90,12 +144,27 @@ A programme is the plan of the year's internal audits. There is one programme pe
 #. Save. The programme starts in the **Draft** state.
 #. Plan the audits of the year (see `Plan an audit`_) and choose this programme in each audit's
    :guilabel:`Programme` field. They appear in the programme's list of audits.
+#. Compare the plan with the :guilabel:`Proposal` at the bottom of the programme: the proposed audit month of every
+   active process next to the audits planned (see `Rate each process by importance`_). :guilabel:`Deviations` counts
+   the differences.
+#. Write the :guilabel:`Rationale`: why these processes are audited in these months, in words, for example
+   *Maintenance moved to Q1 2027 after the ERP go-live; Purchasing auditor available only in November*.
 #. When the plan is agreed, a quality manager clicks :guilabel:`Approve`. The programme moves to **Approved**.
 
-A programme is approved as a plan, so Odoo checks it first: it refuses to approve a programme with no audit (*Plan at
-least one audit before approving the programme*), or with an audit planned in a month outside the programme's year,
-which it names. Cancelled audits are not checked. Every audit already has its process and lead auditor, since both are
-required.
+A programme is approved as a plan, so Odoo checks it first: it refuses to approve a programme without a rationale of at
+least 20 characters (*Write the programme's rationale (at least 20 characters): why these processes, in these
+months.*) — even when nothing deviates — with no audit (*Plan at least one audit before approving the programme*), or
+with an audit planned in a month outside the programme's year, which it names. Cancelled audits are not checked.
+Every audit already has its process and lead auditor, since both are required.
+
+A *deviation* is a process due in the programme's year, or earlier, that has no audit planned (*Maintenance: due
+2026-09 — not planned*), or a process first planned later than proposed (*Purchasing: planned 2026-11, proposed 2026-06
+(overdue)*). With the Training & Competence add-on installed, a lead auditor not qualified for the planned month is a
+deviation too. Deviations never stop the approval: the rationale explains them.
+
+At approval, the proposal and its deviations are **frozen** with the programme: the programme and its PDF show the plan
+as it was approved, whatever changes later. The rationale of an approved programme is changed with
+:guilabel:`Amend`, with a reason; the frozen proposal never changes.
 
 The programme shows how many of its audits are planned, in progress, reported, closed and cancelled, and its
 :guilabel:`Completion (%)`: the closed audits divided by all its audits that are not cancelled. For example, 8 closed
@@ -112,8 +181,8 @@ Each button appears only when its count is not zero, and opens exactly those aud
 audits, late audits are red and audits to close are amber.
 
 .. image:: ../_images/audits-programme.png
-   :alt: An approved audit programme with its completion bar, the counts by state, the Late and To close smart
-         buttons, and its audits colour-coded by state.
+   :alt: A draft audit programme with its completion bar, the counts by state and deviations, the rationale, its
+         planned audits and the proposal table per process.
 
 At the end of the year, a quality manager clicks :guilabel:`Close` on the approved programme. Every audit of the
 programme must be closed or cancelled first; if not, Odoo lists the ones still open. A closed programme is locked.
@@ -136,6 +205,27 @@ Plan an audit
 
 The process, programme, template, planned month and clauses can be changed only while the audit is planned. The
 team can be changed until the audit is reported.
+
+.. _audits-qualification:
+
+Auditor qualification
+---------------------
+
+When the :doc:`Training & Competence <competence>` add-on is installed, the audits also check that each auditor is
+qualified (ISO 19011). The qualification is a competence record of the *Internal auditor (ISO 19011)* competence: level
+2 to audit as a co-auditor, level 3 to lead an audit, by default.
+
+- On a planned audit, a warning lists every auditor not qualified for the planned month, with the reason, for example
+  *No current auditor qualification on 2026-10-01.*
+- :guilabel:`Start` is refused when the **lead auditor** — not the person clicking — is not qualified on the start
+  date: *<user> cannot lead this audit: <reason> Record the qualification or change the lead auditor.*
+- A co-auditor who is not qualified does not stop the audit: the chatter notes *Co-auditor <user> is not qualified
+  (<reason>): auditor in training under <lead auditor>.*
+- The audit report prints one line per auditor: *Qualified (level 3, valid until 2028-01-31)* or *Not qualified — in
+  training*.
+
+Without the add-on, the role check alone applies and none of this is shown. How to record a qualification is explained
+in :doc:`competence`.
 
 Auditor independence
 --------------------
@@ -377,7 +467,9 @@ For a period, the :doc:`management review <management_reviews>` prints the audit
 Settings
 ========
 
-Audits have no settings of their own. Two Quality settings apply to them (see :doc:`configuration`):
+The :guilabel:`Audit programme proposal` block of the Quality settings holds the base intervals, the factors and the
+interval bounds of the proposed audit frequency (see `Rate each process by importance`_ and
+:ref:`the settings page <config-audit-proposal>`). Two other Quality settings apply to audits (see :doc:`configuration`):
 
 - :guilabel:`Ask the password before signing` (on by default): the password is asked when the auditor signs the
   report.
@@ -400,9 +492,11 @@ Who can do what
      - Reads every audit. Plans audits they lead or co-audit, starts the audits they lead, records results and
        findings on the audits they are assigned to, and signs the report of the audits they lead.
    * - **Manager**
-     - Everything: manages processes and templates (:menuselection:`Quality --> Configuration`), approves and closes
-       programmes, starts or reports any audit, closes audits, cancels them and amends reported or closed audits. A
-       manager remains bound by the independence rule.
+     - Everything: manages processes and templates (:menuselection:`Quality --> Configuration`), rates the importance
+       of processes, writes the rationale and approves and closes programmes, starts or reports any audit, closes
+       audits, cancels them and amends reported or closed audits and the rationale of approved programmes. A manager
+       remains bound by the independence rule and, with the Training & Competence add-on, by the qualification of the
+       lead auditor.
 
 See :doc:`roles` for the full picture.
 
