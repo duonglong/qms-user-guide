@@ -17,21 +17,21 @@ The source modules
    * - Module
      - Installs itself when
      - Adds
-   * - *QMS — Product link*
+   * - *ISO 9001 QMS — Products*
      - Quality and any app that uses products are installed
      - The :guilabel:`Product` field on nonconformities, the :guilabel:`Product` column in the register and the
        :guilabel:`Product` grouping.
-   * - *QMS — Stock sources*
+   * - *ISO 9001 QMS — Inventory*
      - Quality and **Inventory** are installed
      - The button on transfers (receipts, deliveries, internal transfers) and on lots and serial numbers, and the
        :guilabel:`Lot / serial` field on nonconformities.
-   * - *QMS — Manufacturing sources*
+   * - *ISO 9001 QMS — Manufacturing*
      - Quality and **Manufacturing** are installed
      - The button on manufacturing orders and work orders.
-   * - *QMS — Purchase sources*
+   * - *ISO 9001 QMS — Purchase*
      - Quality and **Purchase** are installed
      - The button on purchase orders.
-   * - *QMS — Repair sources*
+   * - *ISO 9001 QMS — Repair*
      - Quality and **Repairs** are installed
      - The button on repair orders.
 
@@ -134,6 +134,105 @@ Nonconformities` instead.
    the type of record, then the record. Only the types of records you are allowed to read are offered. Afterwards,
    the form also shows the record's name; it reads *restricted* if you are not allowed to see that record, and
    *deleted* if it no longer exists.
+
+App by app
+==========
+
+Inventory: receipts, deliveries, transfers and lots
+---------------------------------------------------
+
+#. Go to :menuselection:`Inventory --> Operations --> Receipts` (deliveries and internal transfers work the same) and
+   open the transfer where the problem was found.
+#. Click :guilabel:`Raise nonconformity` in the header of the transfer.
+#. Check what is filled in: :guilabel:`Source Type` is *Supplier* for a receipt from a vendor and *Inspection* for
+   any other transfer; the transfer is the :guilabel:`Source record`; the :guilabel:`Source Description` gives the
+   reference, operation type, partner, number of moves and up to three products; :guilabel:`Product` and
+   :guilabel:`Lot / serial` are filled in when the transfer has exactly one of each. Replace the :guilabel:`Title`
+   and check the :guilabel:`Severity`.
+#. Click :guilabel:`Save`. The transfer's :guilabel:`Nonconformities` smart button now counts it.
+
+Lots and serial numbers have the same button: :menuselection:`Inventory --> Products --> Lots / Serial Numbers`,
+open the lot, click :guilabel:`Raise nonconformity`. The source type is *Inspection*, and the product and lot are
+always filled in.
+
+.. image:: ../_images/sources-stock-receipt-form.png
+   :alt: A receipt with the Raise nonconformity button in its header and the Nonconformities smart button.
+
+.. image:: ../_images/sources-stock-raise-dialog.png
+   :alt: The dialog opened from a receipt: source type Supplier, the receipt, the description, product and lot.
+
+.. image:: ../_images/sources-stock-lot-form.png
+   :alt: A lot with the Raise nonconformity button and the Nonconformities smart button.
+
+Manufacturing: manufacturing and work orders
+--------------------------------------------
+
+#. Go to :menuselection:`Manufacturing --> Operations --> Manufacturing Orders` and open the order.
+#. Click :guilabel:`Raise nonconformity`.
+#. The source type is *Internal*; the :guilabel:`Product` is always filled in, and the :guilabel:`Lot / serial`
+   when the order produces exactly one lot. Replace the :guilabel:`Title`.
+#. Click :guilabel:`Save`. The order's :guilabel:`Nonconformities` smart button counts it.
+
+Work orders have the same button on their form.
+
+.. image:: ../_images/sources-mrp-order-form.png
+   :alt: A manufacturing order with the Raise nonconformity button.
+
+.. image:: ../_images/sources-mrp-raise-dialog.png
+   :alt: The dialog opened from a manufacturing order, with the product and the produced lot filled in.
+
+Purchase: purchase orders
+-------------------------
+
+#. Go to :menuselection:`Purchase --> Orders --> Purchase Orders` and open the order.
+#. Click :guilabel:`Raise nonconformity`.
+#. The source type is *Supplier*; the description names the vendor and the ordered lines; the :guilabel:`Product` is
+   filled in when the order has only one.
+#. Click :guilabel:`Save`. The order's :guilabel:`Nonconformities` smart button counts it.
+
+.. tip::
+   To get the lot filled in as well, raise the nonconformity from the receipt instead of the purchase order.
+
+.. image:: ../_images/sources-purchase-order-form.png
+   :alt: A purchase order with the Raise nonconformity button.
+
+.. image:: ../_images/sources-purchase-raise-dialog.png
+   :alt: The dialog opened from a purchase order: source type Supplier and the vendor in the description.
+
+Repair: repair orders
+---------------------
+
+#. Go to :menuselection:`Repairs --> Orders` and open the repair.
+#. Click :guilabel:`Raise nonconformity`.
+#. The source type is *Complaint*; the description names the product, lot and customer; the :guilabel:`Product` and
+   :guilabel:`Lot / serial` are filled in when the repair has them.
+#. Click :guilabel:`Save`. The repair's :guilabel:`Nonconformities` smart button counts it.
+
+.. image:: ../_images/sources-repair-order-form.png
+   :alt: A repair order with the Raise nonconformity button.
+
+.. image:: ../_images/sources-repair-raise-dialog.png
+   :alt: The dialog opened from a repair order: source type Complaint, the product and customer in the description.
+
+Products: nonconformities per product
+-------------------------------------
+
+#. The :guilabel:`Product` field sits in the :guilabel:`Classification` group of the nonconformity form, above
+   :guilabel:`Process`. Set it by hand, or let a connector fill it in when the record has one product.
+#. In the register, the :guilabel:`Product` column is shown by default.
+#. Open the search options and choose :menuselection:`Group By --> Product` to count nonconformities per product;
+   unfold a line to see them.
+
+With **QMS Advanced**, accepting a nonconformity checks for an earlier one on the same product within the recurrence
+window (180 days by default). A match is recorded under :menuselection:`Quality --> Recurrences`, the earlier
+verified corrective actions become *Ineffective*, and the quality managers get an activity. Set the product before
+you click :guilabel:`Accept`. See :doc:`corrective_actions`.
+
+.. image:: ../_images/sources-product-nc-grouped.png
+   :alt: The nonconformity register grouped by product, with a count per product.
+
+.. image:: ../_images/sources-product-nc-form.png
+   :alt: A nonconformity form with the Product field in the Classification group.
 
 See the nonconformities of a record
 ===================================
