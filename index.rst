@@ -16,6 +16,12 @@ supplier evaluation.
    - `Quality Management System on the Odoo Apps store <https://apps.odoo.com/apps/modules/20.0/quality_management_system/>`_
 
 .. toctree::
+   :caption: Getting started
+   :titlesonly:
+
+   quality/small_company_setup
+
+.. toctree::
    :caption: Free core
    :titlesonly:
 

@@ -27,6 +27,10 @@ Available now (Odoo 20.0)
    * - Free bridges: Stock, Manufacturing, Purchase, Repair, Product
      - Free
      - Raise a nonconformity from the record where the problem was found. See :doc:`sources`.
+   * - **Setup profiles**
+     - Free, extended by QMS Advanced
+     - *Lean*, *Standard* or *Regulated*: one choice on the settings page sets the review cycles, the reminders and
+       the password prompt on signatures to suit a small team or a regulated company. See :doc:`small_company_setup`.
    * - **QMS Advanced**
      - One-time purchase
      - Corrective actions with an independent effectiveness verdict (§10.2), internal audits with a risk-based
@@ -67,6 +71,9 @@ Available now (Odoo 20.0)
      - People without an internal user read and acknowledge controlled documents in My Account. A separate free module
        that installs itself with Portal. See :ref:`documents-portal-readers`.
 
+Every app is also available for **Odoo 19.0**, with the same features, as a separate build on the Odoo Apps
+store.
+
 Every app is a one-time purchase for its Odoo version: no subscription, no licence key, nothing that expires.
 
 Other ISO standards
@@ -96,11 +103,77 @@ are planned as part of **QMS Advanced**, included in its price, one standard at 
 Until then, keep those registers where you keep them today and use the clause libraries to link your
 records to the standard.
 
+Next
+====
+
+In the order we build them. The items marked **QMS Advanced** are included in its price; FMEA and PPAP are
+paid add-ons, each bought separately, that require QMS Advanced.
+
+Quality analytics and the cost of poor quality (QMS Advanced)
+-------------------------------------------------------------
+
+- **Pareto and trend charts**: nonconformities by cause, product, supplier, process and customer, plus the trend by
+  month.
+- **The cost of poor quality, from your Odoo data**: scrapped stock, rework manufacturing orders, customer returns
+  and credit notes, and supplier chargebacks, each linked to its nonconformity. For example: "Poor quality cost you
+  €18,400 this quarter; 62% of it came from two suppliers."
+- **Management review and quality objectives** take these figures as their input.
+- **A monthly Quality Performance Report** (PDF), emailed to management.
+
+A quality tool outside the ERP, or a spreadsheet, cannot see scrap, returns and credit notes. A QMS inside Odoo can.
+
+8D reports and problem-solving tools (QMS Advanced)
+---------------------------------------------------
+
+- **An 8D form** (steps D0 to D8) on the nonconformity or the corrective action, with a printable 8D report.
+- **5-Why and fishbone (6M) analysis** of the root cause.
+- **8D answers from suppliers**: suppliers answer a corrective action request in 8D format online, in the portal.
+
+Industrial and automotive customers ask their suppliers for 8D reports; the app lets you answer them from the
+records you already keep.
+
+Inspection plans and product release
+------------------------------------
+
+Inspection plans per product and operation, the checks recorded at receipt and in manufacturing, and the release of
+the product once its checks pass (ISO 9001 §8.5.1 and §8.6). A failed check raises a nonconformity. It comes with
+connectors to Inventory and Manufacturing.
+
+FMEA (a paid add-on that requires QMS Advanced)
+-----------------------------------------------
+
+A process FMEA worksheet: process steps, failure modes, their effects and causes, severity, occurrence and detection,
+the priority score and the actions taken. Failure modes feed the risk register, their controls become inspection
+plans, and a nonconformity on a failure mode shows up when you re-score its occurrence.
+
+PPAP (a paid add-on that requires QMS Advanced)
+-----------------------------------------------
+
+The automotive production part approval: the submission elements and the part submission warrant, assembled from
+the records the apps already keep — the FMEA, the control plan, inspection results and controlled documents.
+
+Optional bridges to other Odoo apps
+-----------------------------------
+
+Calibration with the Maintenance app, the competence records mirrored in the employee skills, and satisfaction
+scores imported from Survey. The quality registers stay the evidence an auditor reads; the bridges save typing the
+same thing twice.
+
+Review of customer requirements (§8.2)
+--------------------------------------
+
+A checklist on the sales quotation that records the review of the customer's requirements before the order is
+confirmed, kept as evidence of the review.
+
+Design and development control (§8.3)
+-------------------------------------
+
+Design inputs, reviews, verification, validation and design changes, built together with the **ISO 13485** registers
+(see *Other ISO standards* below).
+
 Later
 =====
 
-- **Optional bridges to other Odoo apps**: calibration with the Maintenance app, the competence records mirrored in
-  the employee skills, and satisfaction scores imported from Survey.
 - **A supplier portal**: suppliers answer their corrective action requests and acknowledge requirements online.
 - **A read-only portal for external auditors**: the clause view and the audit pack, without an Odoo licence seat.
 - **Industry packs**, priced separately: automotive and aerospace (IATF 16949, AS9100), and laboratories

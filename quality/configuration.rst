@@ -91,6 +91,18 @@ Go to :menuselection:`Settings --> Quality`. The section is visible to quality m
 Every value is checked when you click :guilabel:`Save`; a wrong value is refused with a message, and nothing is
 saved.
 
+.. _config-setup-profile:
+
+Setup profile
+-------------
+
+:guilabel:`Setup profile`
+   Sets a group of settings in one go: :guilabel:`Lean (small team)`, :guilabel:`Standard (defaults)` or
+   :guilabel:`Regulated`. It reads :guilabel:`Custom` when the settings differ from every profile. The values of each
+   profile, and the settings that matter most for a small team, are on :doc:`small_company_setup`.
+
+   - Default: Standard.
+
 Standards
 ---------
 
