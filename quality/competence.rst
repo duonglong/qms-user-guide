@@ -190,9 +190,18 @@ nothing required and nothing held has an empty row (the printed matrix leaves su
      - Held but not required.
 
 An hourglass on a cell means the effectiveness of the training behind it is still to be evaluated; hover a cell to see
-its source and assessor, click it to open the record. Choose another :guilabel:`Date` to see the matrix on that day, or
-a :guilabel:`Category`. Quality managers and internal auditors see every employee of their companies; another user sees
-the employees they manage.
+its source and assessor, click it to open the record. Choose another :guilabel:`Date` to see the matrix on that day.
+Quality managers and internal auditors see every employee of their companies; another user sees the employees they
+manage. The filters above the matrix narrow those rows and combine with each other:
+
+- :guilabel:`Department` keeps the employees of that department and of the departments under it.
+- :guilabel:`Job position` keeps the employees holding that job position.
+- :guilabel:`Process` keeps the employees whose user owns the process or is one of its auditees (employees without a
+  user never belong to a process).
+- :guilabel:`Category` keeps the competence columns of that category.
+
+Each list offers only the departments, job positions and processes of the employees you may see; :guilabel:`All`
+lifts the filter.
 
 .. image:: ../_images/competence-matrix.png
    :alt: The competence matrix: employees in rows, competences in columns, cells reading OK, Expiring and Gap
