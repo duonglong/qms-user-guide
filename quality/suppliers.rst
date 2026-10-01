@@ -17,7 +17,7 @@ receipt figures — on time, right quantity — to the rating. Receipt measures 
 Without Inventory, suppliers rated from receipts show *Not rated*, and the approved supplier list, the decisions, the
 requirements, the SCAR and the periodic assessment work unchanged.
 
-Everything is under :menuselection:`Quality --> Suppliers`.
+Everything is under :menuselection:`Quality --> Suppliers & customers --> Suppliers`.
 
 First steps after installing
 ============================
@@ -107,7 +107,7 @@ decision was taken, even if the settings change later.
 Run the evaluation
 ------------------
 
-#. Go to :menuselection:`Quality --> Suppliers --> Evaluate suppliers` (quality managers).
+#. Go to :menuselection:`Quality --> Suppliers & customers --> Suppliers --> Evaluate suppliers` (quality managers).
 #. Check the :guilabel:`Company`, :guilabel:`Period start` and :guilabel:`Period end`: by default the last complete
    half-year, for example 2026-01-01 to 2026-06-30 when run in September 2026. The period must be over.
 #. Click :guilabel:`Evaluate`.
@@ -118,7 +118,7 @@ example *3 created, 8 recomputed. Skipped (already confirmed): SEV/2026/0004 Acm
 in the background. Suppliers set to periodic assessment get an assessment instead, when it is due (see `Periodic
 assessment`_).
 
-Each evaluation, under :menuselection:`Quality --> Suppliers --> Evaluations`, shows its number (for example
+Each evaluation, under :menuselection:`Quality --> Suppliers & customers --> Suppliers --> Evaluations`, shows its number (for example
 ``SEV/2026/0012``), the :guilabel:`Receipts` figures, the :guilabel:`Supplier nonconformities` by severity with the
 :guilabel:`Nonconformities counted` tab, the :guilabel:`Score`, the :guilabel:`Grade` and the :guilabel:`Proposed
 status`. Add your comments in the note.
@@ -184,7 +184,7 @@ A supplier's status in a company comes from its latest signed decision in force:
 Sign a decision
 ---------------
 
-#. Go to :menuselection:`Quality --> Suppliers --> Decisions` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Suppliers & customers --> Suppliers --> Decisions` and click :guilabel:`New`.
 #. Choose the :guilabel:`Supplier` and the :guilabel:`Status`. For a conditional supplier, write the
    :guilabel:`Conditions`.
 #. Choose :guilabel:`Effective from` (today by default; a later day keeps the previous decision until then) and, unless
@@ -196,13 +196,15 @@ Sign a decision
 A decision that departs from the latest confirmed evaluation's proposal must cite that evaluation and explain why in at
 least 30 characters: *This decision departs from SEV/2026/0012 (proposed approved): cite it and explain why in at least
 30 characters.* The signature reads *Supplier decision*; the supplier's previous decision is superseded on the day the
-new one takes effect. Only quality managers decide on suppliers.
+new one takes effect. Only quality managers decide on suppliers. A decision is signed with the button only: if an edit
+tries to sign it directly, a window titled *Signing a supplier decision* explains it and offers :guilabel:`Sign now`
+to a quality manager.
 
 When the :guilabel:`Re-evaluate by` date passes, the decision shows *The re-evaluation date has passed: evaluate the
 supplier and sign a new decision. The status stands until then.* The status does not change by itself.
 
-:menuselection:`Quality --> Suppliers --> Approved supplier list` lists the signed decisions grouped by status. To print
-it, use :menuselection:`Quality --> Suppliers --> Print the approved supplier list`, choose :guilabel:`From` and
+:menuselection:`Quality --> Suppliers & customers --> Suppliers --> Approved supplier list` lists the signed decisions grouped by status. To print
+it, use :menuselection:`Quality --> Suppliers & customers --> Suppliers --> Print the approved supplier list`, choose :guilabel:`From` and
 :guilabel:`As at`, and click :guilabel:`Print`: every supplier with its status at that date, its decision, signer and
 conditions, its evaluations, its requirements communicated and its open SCARs.
 
@@ -272,14 +274,21 @@ When a supplier must fix the cause of a problem, ask them for a corrective actio
 #. Odoo creates a corrective action marked as a SCAR, titled *SCAR <supplier>: <title>*, owned by you, verified by the
    nonconformity's owner, addressed to the supplier's first contact with an email. Check the :guilabel:`Supplier
    contact` on the :guilabel:`Supplier` tab.
-#. Click :guilabel:`Send to supplier`. The *Supplier corrective action request* PDF is emailed to the contact, and
-   :guilabel:`Response due` is set: the sending date plus the :guilabel:`SCAR response (days)` (30 by default).
+#. Click :guilabel:`Send to supplier`. Odoo opens the standard email composer, filled in from the SCAR template with the
+   *Supplier corrective action request* PDF attached. Read it, change it if you wish, and click :guilabel:`Send`:
+   nothing goes out before that. The request names one response date, the action's :guilabel:`Due date` (when the
+   action has none, the sending date plus the :guilabel:`SCAR response (days)`, 30 by default), and the form shows it
+   before you send. A past date is refused (*The response date … has passed: set a new due date before sending*), so
+   change the :guilabel:`Due date` first.
+#. Once the composer sends, the form reads *Sent to <contact> on <date>. Response requested by <date>.*, a note is
+   added to the messages, a draft action you own starts (it moves to **In progress**), and the header button becomes
+   :guilabel:`Send again`. Use it to send a reminder; the dates stay as first sent.
 #. When the supplier answers, record the :guilabel:`Supplier response` (cause found, correction and corrective action),
    :guilabel:`Response received on` and the :guilabel:`Response documents`, for example an 8D report.
 
 The SCAR cannot be marked done until the supplier's response is recorded: *Record the supplier's response before marking
 this SCAR done.* It is then verified like any corrective action. A response past its due date shows *The supplier's
-response was due on <date>.* :menuselection:`Quality --> Suppliers --> SCARs` lists them all.
+response was due on <date>.* :menuselection:`Quality --> Suppliers & customers --> Suppliers --> SCARs` lists them all.
 
 Requirements communicated to suppliers
 ======================================
@@ -287,7 +296,7 @@ Requirements communicated to suppliers
 ISO 9001 clause 8.4.3 asks you to tell suppliers what you require. Record each requirement and when it was
 communicated:
 
-#. Go to :menuselection:`Quality --> Suppliers --> Requirements` and click :guilabel:`New`, or click
+#. Go to :menuselection:`Quality --> Suppliers & customers --> Suppliers --> Requirements` and click :guilabel:`New`, or click
    :guilabel:`Add requirement` on the :guilabel:`Quality requirements` tab of a purchase order.
 #. Choose the :guilabel:`Supplier` and the :guilabel:`Category`: :guilabel:`Specification (8.4.3 a)`,
    :guilabel:`Acceptance and release (8.4.3 b)`, :guilabel:`Competence and qualification (8.4.3 c)`,

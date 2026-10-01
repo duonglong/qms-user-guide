@@ -129,6 +129,9 @@ whatever the profile.
 The first three rows belong to the free core; the others appear with **QMS Advanced** and the Training & Competence
 and supplier evaluation add-ons. Lean never shortens how long records are kept.
 
+The profiles also set the environment, health and safety settings while those registers are switched on; their values
+are in the table of :doc:`ehs_setup`.
+
 The ten settings that matter
 ============================
 
@@ -227,7 +230,7 @@ that clause for as long as it is in force.
 
 To record one of them:
 
-#. Go to :menuselection:`Quality --> Documents --> Documents` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Resources --> Documents --> Documents` and click :guilabel:`New`.
 #. Enter the title, for example *Organisation chart and roles*, and choose the type *Form*.
 #. On the :guilabel:`Clauses` tab, tag the clause, for example *5.3 Organizational roles, responsibilities and
    authorities*.

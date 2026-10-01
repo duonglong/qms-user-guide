@@ -70,38 +70,65 @@ Available now (Odoo 20.0)
      - Free with QMS Advanced, a separate module
      - People without an internal user read and acknowledge controlled documents in My Account. A separate free module
        that installs itself with Portal. See :ref:`documents-portal-readers`.
+   * - **Environment, health and safety registers**
+     - Included in QMS Advanced
+     - The environmental and the health and safety registers, switched on in the settings (see *Other ISO standards*
+       below for what each standard gets): legal requirements, emergency preparedness,
+       monitoring, environmental aspects, hazards, incidents and worker consultation, with the Safety reports app for
+       every employee. With Employees installed, a free connector that installs itself brings employees, departments
+       and job positions into hazards, incidents, drills and consultations. See :doc:`ehs_setup`.
 
-Every app is also available for **Odoo 19.0**, with the same features, as a separate build on the Odoo Apps
-store.
+Every app is also available for **Odoo 19.0** as a separate build on the Odoo Apps store. The 19.0 build does not
+have the environment, health and safety registers yet; everything else is the same.
 
 Every app is a one-time purchase for its Odoo version: no subscription, no licence key, nothing that expires.
 
 Other ISO standards
 ===================
 
-**ISO 9001** is the standard the apps are built for. For **ISO 14001, ISO 45001, ISO 22000 and ISO 13485**, the apps
-ship the *clause libraries* today: you can tag nonconformities and other records with their clauses and see the
-evidence per clause (see :doc:`clauses`). The registers each of those standards asks for are not built yet. They
-are planned as part of **QMS Advanced**, included in its price, one standard at a time:
+**ISO 9001** is the standard the apps are built for. For **ISO 14001 and ISO 45001**, QMS Advanced now has the
+registers each standard asks for, included in its price (Odoo 20.0; see :doc:`ehs_setup`). For **ISO 22000 and ISO
+13485**, the apps ship the *clause libraries*: you can tag nonconformities and other records with their clauses and see
+the evidence per clause (see :doc:`clauses`); their registers are coming to QMS Advanced, included in its price, one
+standard at a time.
 
 .. list-table::
    :header-rows: 1
-   :widths: 25 75
+   :widths: 16 20 34 30
 
    * - Standard
-     - What QMS Advanced will add
+     - Status
+     - Included
+     - Not included
    * - **ISO 14001** (environment)
-     - Environmental aspects and impacts, compliance obligations (legal register), emergency preparedness.
+     - Registers in QMS Advanced
+     - The clause library and tagging, the clause view and matrix, plus: environmental aspects and impacts with their
+       significance (6.1.2, 6.1.4, 8.1), compliance obligations and the evaluation of compliance (6.1.3, 9.1.2),
+       emergency preparedness and drills (8.2), monitoring and measurement readings (9.1.1), environmental incidents
+       (10.2), the review inputs of 9.3 and the audit pack files.
+     - Carbon or greenhouse-gas accounting, emission factors, life-cycle assessment, legal content of any country,
+       a chemical or safety data sheet register, waste manifests.
    * - **ISO 45001** (health and safety)
-     - Hazard identification and risk assessment, incidents and near misses, consultation and participation of
-       workers.
+     - Registers in QMS Advanced
+     - The clause library and tagging, the clause view and matrix, plus: hazard identification and risk assessment with
+       the hierarchy of controls (6.1.2, 6.1.4, 8.1.2), OH&S opportunities, legal requirements and their evaluation
+       (6.1.3, 9.1.2), emergency preparedness (8.2), monitoring readings including workplace exposure (9.1.1),
+       incidents and near misses investigated through the nonconformity (10.2), worker consultation and hazard reports
+       (5.4), the review inputs of 9.3 and the audit pack files.
+     - PPE issue, medical surveillance, permit-to-work, contractor management, country forms (OSHA 300, RIDDOR),
+       frequency rates (LTIFR, TRIR), portal or anonymous reporting.
    * - **ISO 22000** (food safety)
-     - HACCP plan, critical control points and their monitoring, prerequisite programmes.
+     - Clause library; registers coming to QMS Advanced
+     - The clause library, tagging, the clause view and matrix.
+     - HACCP plan and hazard analysis, prerequisite programmes, operational prerequisite programmes and the monitoring
+       of critical control points.
    * - **ISO 13485** (medical devices)
+     - Clause library; registers coming to QMS Advanced
+     - The clause library, tagging, the clause view and matrix.
      - Design and development controls, complaint handling and vigilance reporting, software validation.
 
-Until then, keep those registers where you keep them today and use the clause libraries to link your
-records to the standard.
+Until the ISO 22000 and ISO 13485 registers come, keep those registers where you keep them today and use the clause
+libraries to link your records to the standard.
 
 Next
 ====
@@ -169,7 +196,7 @@ Design and development control (§8.3)
 -------------------------------------
 
 Design inputs, reviews, verification, validation and design changes, built together with the **ISO 13485** registers
-(see *Other ISO standards* below).
+(see *Other ISO standards* above).
 
 Later
 =====

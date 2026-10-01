@@ -139,7 +139,7 @@ Plan the year: programmes
 
 A programme is the plan of the year's internal audits. There is one programme per year and company.
 
-#. Go to :menuselection:`Quality --> Audits --> Programmes` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Audits & reviews --> Audits --> Programmes` and click :guilabel:`New`.
 #. Enter a name, for example *Internal audit programme 2026*, and check the :guilabel:`Year`.
 #. Save. The programme starts in the **Draft** state.
 #. Plan the audits of the year (see `Plan an audit`_) and choose this programme in each audit's
@@ -181,8 +181,9 @@ Each button appears only when its count is not zero, and opens exactly those aud
 audits, late audits are red and audits to close are amber.
 
 .. image:: ../_images/audits-programme.png
-   :alt: A draft audit programme with its completion bar, the counts by state and deviations, the rationale, its
-         planned audits and the proposal table per process.
+   :alt: An approved audit programme with its completion bar, the counts by state and deviations, the Late and To
+         close smart buttons, and its audits with process, lead auditor, planned month and state; late audits in red,
+         audits to close in amber.
 
 At the end of the year, a quality manager clicks :guilabel:`Close` on the approved programme. Every audit of the
 programme must be closed or cancelled first; if not, Odoo lists the ones still open. A closed programme is locked.
@@ -190,7 +191,7 @@ programme must be closed or cancelled first; if not, Odoo lists the ones still o
 Plan an audit
 =============
 
-#. Go to :menuselection:`Quality --> Audits --> Audits` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Audits & reviews --> Audits --> Audits` and click :guilabel:`New`.
 #. Choose the :guilabel:`Process` to audit and the :guilabel:`Programme` it belongs to. Leave the programme empty for
    an ad hoc audit, for example after a customer complaint.
 #. Choose the :guilabel:`Checklist template`, if any, and the :guilabel:`Planned month` — any day of the month will do.
@@ -397,7 +398,7 @@ audit was closed is raised as a new nonconformity of source :guilabel:`Audit` (s
 Findings
 ========
 
-:menuselection:`Quality --> Audits --> Findings` lists every audit finding with its audit, :guilabel:`Grade`,
+:menuselection:`Quality --> Audits & reviews --> Audits --> Findings` lists every audit finding with its audit, :guilabel:`Grade`,
 :guilabel:`Clause`, description, the :guilabel:`Nonconformity` it became and that :guilabel:`Nonconformity state`.
 Findings are created from an audit, never from this list.
 
@@ -428,7 +429,7 @@ The :guilabel:`Verify trail` button checks that nothing was changed outside the 
 Find and follow audits
 ======================
 
-:menuselection:`Quality --> Audits --> Audits` offers a list, a kanban board by state and a calendar by planned month.
+:menuselection:`Quality --> Audits & reviews --> Audits --> Audits` offers a list, a kanban board by state and a calendar by planned month.
 In the list, late audits are red, reported audits are amber, closed ones are green and cancelled ones are grey.
 Useful filters:
 

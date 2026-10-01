@@ -92,7 +92,7 @@ opens them.
    date, move the effectiveness date too, or Odoo refuses to save.
 
 .. tip::
-   You can also create an action from :menuselection:`Quality --> Corrective actions` by clicking :guilabel:`New` and
+   You can also create an action from :menuselection:`Quality --> Nonconformities --> Corrective actions` by clicking :guilabel:`New` and
    choosing the :guilabel:`Nonconformity`. Creating it from the nonconformity's :guilabel:`Actions` tab is quicker:
    the owner, dates and clauses are proposed for you.
 
@@ -192,7 +192,7 @@ full path after an ineffective verdict is:
 #. Close the nonconformity.
 
 .. tip::
-   The :guilabel:`Root cause to revisit` filter in :menuselection:`Quality --> Nonconformities` lists every
+   The :guilabel:`Root cause to revisit` filter in :menuselection:`Quality --> Nonconformities --> Nonconformities` lists every
    nonconformity whose analysis has been reopened.
 
 Closing the nonconformity
@@ -305,7 +305,7 @@ recorded as a *recurrence* when:
      - Both name the same process. Upper and lower case and extra spaces are ignored: *Final assembly* matches
        *final  ASSEMBLY*.
    * - :guilabel:`Same cause category and source`
-     - Both have the same :guilabel:`Cause category` (Man, Machine, Method, Material, Measurement, Environment) **and**
+     - Both have the same :guilabel:`Cause category` (Man, Machine, Method, Material, Measurement, Work environment) **and**
        the same :guilabel:`Source Type`.
 
 Two nonconformities can match on several kinds at once; each kind is one recurrence.
@@ -330,7 +330,7 @@ nonconformity.
 Review and acknowledge recurrences
 ----------------------------------
 
-#. Go to :menuselection:`Quality --> Recurrences`. Each row shows when the recurrence was detected, the
+#. Go to :menuselection:`Quality --> Nonconformities --> Recurrences`. Each row shows when the recurrence was detected, the
    :guilabel:`New nonconformity`, the :guilabel:`Prior nonconformity`, the :guilabel:`Match kind` and the
    :guilabel:`Window (days)` in force at the time.
 #. Open a recurrence to see the :guilabel:`Flagged actions`: the earlier corrective actions it made ineffective.
@@ -351,7 +351,7 @@ The :guilabel:`To acknowledge` filter lists the recurrences nobody has acknowled
 Find and follow actions
 =======================
 
-:menuselection:`Quality --> Corrective actions` opens the register, filtered on open actions (Draft, In progress and
+:menuselection:`Quality --> Nonconformities --> Corrective actions` opens the register, filtered on open actions (Draft, In progress and
 Done). It offers a list, a kanban board by state, a calendar by due date and a pivot table (states by kind).
 
 In the list, overdue actions are red, actions awaiting a verdict are amber, verified actions are green and cancelled

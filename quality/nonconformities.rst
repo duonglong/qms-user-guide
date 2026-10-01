@@ -30,7 +30,7 @@ Every nonconformity moves through four states:
 Find nonconformities in the register
 ====================================
 
-Go to :menuselection:`Quality --> Nonconformities`. The register opens on the :guilabel:`Open` filter, which shows
+Go to :menuselection:`Quality --> Nonconformities --> Nonconformities`. The register opens on the :guilabel:`Open` filter, which shows
 the nonconformities that are still **New** or **Open**. Remove the filter to see every record.
 
 Each row shows the number, the :guilabel:`Title`, the :guilabel:`Source Type`, the :guilabel:`Severity`, the
@@ -83,7 +83,7 @@ Besides the list, the register has four other views, available from the view swi
 Record a nonconformity
 ======================
 
-#. Go to :menuselection:`Quality --> Nonconformities` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Nonconformities --> Nonconformities` and click :guilabel:`New`.
 #. Enter a :guilabel:`Title`: one line saying what was found, for example *Wrong label on batch 0912*.
 #. Choose the :guilabel:`Source Type`: :guilabel:`Audit`, :guilabel:`Complaint`, :guilabel:`Inspection`,
    :guilabel:`Supplier`, :guilabel:`Internal` or :guilabel:`Health, safety and environment`. The list is fixed so that
@@ -342,6 +342,10 @@ that moment. Only a quality manager can close.
 .. image:: ../_images/nc-close-password.png
    :alt: Closing asks for the manager's own password before signing.
 
+The state moves only with the button. If an edit tries to close the nonconformity directly, a window titled *Closing a
+nonconformity* says that nothing was saved and, to a quality manager on an open record, offers :guilabel:`Close now`,
+which runs the same checks and signs the closure; anyone else reads who can close it.
+
 The nonconformity moves to **Closed** and is locked. The :guilabel:`Treatment` tab shows :guilabel:`Closed On` and
 :guilabel:`Closed By`, the :guilabel:`Signatures` tab shows the signature with the reason *Nonconformity closure*,
 and every change since it was created is kept in its :doc:`trail <trail>`.
@@ -359,7 +363,8 @@ and every change since it was created is kept in its :doc:`trail <trail>`.
 What is locked after closing
 ----------------------------
 
-A closed or cancelled nonconformity is locked. Any attempt to change its title, source, classification, owner, due
+A closed or cancelled nonconformity is locked, and a banner at the top of the form says so and points to
+:guilabel:`Amend`. Any attempt to change its title, source, classification, owner, due
 date, treatment or clauses is refused with *This record is locked; use Amend.* Its dispositions and customer
 notifications are locked with it. You can still post messages in the chatter and schedule activities.
 
@@ -397,7 +402,7 @@ nonconformity cannot be cancelled, and a cancelled one cannot be reopened or ame
 
 Only the fields you actually changed are recorded. For each one, the trail keeps the original value next to the new
 one, with your reason. The amendment is signed like the closure (reason *Amendment*), and the
-:guilabel:`Amendment Count` on the :guilabel:`Trail` tab goes up by one. The nonconformity then counts on the
+amendment count at the top of the :guilabel:`Trail` tab goes up by one. The nonconformity then counts on the
 :guilabel:`Amended nonconformities` tile of the :doc:`dashboard`.
 
 The severity, owner, due date and source cannot be amended.

@@ -61,6 +61,10 @@ Its clauses are now offered wherever clauses are tagged.
 To disable a standard, remove it from :guilabel:`Enabled standards` and save. Its clauses are no longer offered, but
 records already tagged with them keep their tags. At least one standard must stay enabled.
 
+With **QMS Advanced**, ticking :guilabel:`ISO 14001 environmental registers` or :guilabel:`ISO 45001 health & safety
+registers` enables the standard too, and a standard whose registers are on cannot be disabled until its box is
+unticked. See :doc:`ehs_setup`.
+
 .. important::
    Enable and disable standards in the settings. A standard switched on only from
    :menuselection:`Quality --> Configuration --> Standards` is switched off again the next time the settings are
@@ -87,7 +91,7 @@ count for clause 4.3.
 The clause view
 ===============
 
-#. Go to :menuselection:`Quality --> Clauses`.
+#. Go to :menuselection:`Quality --> Evidence --> Clauses`.
 #. In the dialog, choose the period with :guilabel:`Date From` and :guilabel:`Date To`. By default it covers the last
    twelve months, ending today.
 #. Tick :guilabel:`Show Inactive` to also list the clauses of standards that are not enabled.
@@ -100,7 +104,7 @@ The list, titled *Clauses — records tagged <start> to <end>*, shows one row pe
 
 - :guilabel:`Standard`, :guilabel:`Number` and :guilabel:`Name` of the clause;
 - :guilabel:`Records tagged`: how many records are tagged with this clause or one of its sub-clauses in the period;
-- *Not applicable*, as a grey badge, when the clause is declared not applicable (see `Declaring a clause not
+- :guilabel:`Applicability`: *Not applicable*, as a grey badge, when the clause is declared not applicable (see `Declaring a clause not
   applicable`_); the optional :guilabel:`Why not applicable` column shows the justification;
 - :guilabel:`Gap`: ticked when the clause has no record tagged in the period;
 - a :guilabel:`Records tagged` button, shown when there is at least one record: click it to list them;
@@ -139,8 +143,8 @@ list those.
    Before a certification audit, open the clause view on the audit period and filter on :guilabel:`Gaps`. Each gap is a
    question the auditor may ask: either find the evidence and tag it, or plan an activity that produces it.
 
-When clauses of more than one standard are listed, the list is grouped by :guilabel:`Standard`. With a single
-standard, the clauses show directly. You can also group by :guilabel:`Standard` yourself, or search by
+When clauses of more than one standard are listed, the list is grouped by :guilabel:`Standard`, every group folded:
+click a standard to unfold its clauses. With a single standard, the clauses show directly. You can also group by :guilabel:`Standard` yourself, or search by
 :guilabel:`Number` or :guilabel:`Name`.
 
 Open the evidence of a clause
@@ -162,7 +166,7 @@ product design (clause 8.3), for example — as long as it says why. A quality m
 the clause and its sub-clauses then read *Not applicable* in the clause view, with the justification, and are no longer
 counted as gaps.
 
-#. Go to :menuselection:`Quality --> Clauses` and open the clause view.
+#. Go to :menuselection:`Quality --> Evidence --> Clauses` and open the clause view.
 #. On the clause's row, click :guilabel:`Mark not applicable`. The button shows only where a declaration is allowed: not
    on sections 4 and 5 or a section the standard's table leaves out, and not on a clause already declared (or under a
    declared clause).
@@ -172,7 +176,8 @@ counted as gaps.
 #. Click :guilabel:`Mark not applicable`.
 
 .. image:: ../_images/clauses-not-applicable-dialog.png
-   :alt: The Mark not applicable dialog for clause 9001 8.3 with the company and a justification.
+   :alt: The Mark not applicable dialog for clause 9001 8.5.3 with a justification, and the warning that the scope in
+         force will be out of date until it is revised.
 
 The declaration is in force from today, in the name of the manager who made it. It is its own record, listed under
 :menuselection:`Quality --> Configuration --> Clause applicability` with the :guilabel:`Standard`, the

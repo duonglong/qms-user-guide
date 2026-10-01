@@ -32,19 +32,19 @@ The free core shows five tiles, in this order:
      - A ring with the total in the middle and, next to it, each bucket with its count and share.
    * - :guilabel:`Overdue nonconformities`
      - New and open nonconformities whose due date has passed.
-     - A number, a history line of the last eight months and the change since last month.
-   * - :guilabel:`Nonconformities by severity`
+     - A number and a history line of the last eight months, captioned *Due dates missed per month*.
+   * - :guilabel:`Nonconformities by severity, open and closed`
      - New, open and closed nonconformities, split into :guilabel:`Minor`, :guilabel:`Major` and
        :guilabel:`Critical`.
      - A ring with the total and each severity with its count and share.
-   * - :guilabel:`Nonconformities by source`
+   * - :guilabel:`Nonconformities by source, open and closed`
      - New, open and closed nonconformities, split by source type (:guilabel:`Audit`, :guilabel:`Complaint`,
        :guilabel:`Inspection`, :guilabel:`Supplier`, :guilabel:`Internal`, :guilabel:`Health, safety and
        environment`).
      - One bar per source type, with its count and share.
    * - :guilabel:`Amended nonconformities`
      - Nonconformities that were amended at least once after closing, whatever their state.
-     - A number, a history line of the last eight months and the change since last month.
+     - A number and a history line of the last eight months, captioned *Amendments per month*.
 
 Cancelled nonconformities are never counted. A source type or severity with no nonconformity does not appear on its
 tile.
@@ -56,7 +56,9 @@ Colours
 -------
 
 Each tile has its own tint so that the eye finds it quickly: red for :guilabel:`Overdue nonconformities`, amber for
-:guilabel:`Nonconformities by severity`, grey for :guilabel:`Amended nonconformities`, and blue for the age and source tiles.
+:guilabel:`Nonconformities by severity, open and closed`, grey for :guilabel:`Amended nonconformities`, and blue for the age and
+source tiles. A tile that counts things needing attention is tinted red or amber only while its number is above zero;
+at zero it turns green, so a green card always means nothing waits for you.
 
 In the rings and bars, each part has its own colour. The age buckets go from green (the youngest) through amber and
 orange to red (the oldest), so a ring that turns red means old open nonconformities.
@@ -64,17 +66,18 @@ orange to red (the oldest), so a ring that turns red means old open nonconformit
 History and trend
 -----------------
 
-The :guilabel:`Overdue nonconformities` and :guilabel:`Amended nonconformities` tiles show a small line of the last eight
-months, the current month last:
+The :guilabel:`Overdue nonconformities` and :guilabel:`Amended nonconformities` tiles show a small grey line of the last
+eight months, the current month last. A caption under the line says what it counts, because it is a history, not the
+number above it:
 
-- on :guilabel:`Overdue nonconformities`, each month counts the nonconformities that fell due in that month and were
-  not closed by their due date;
-- on :guilabel:`Amended nonconformities`, each month counts the amended values recorded in that month (an amendment that
-  changes two fields counts twice).
+- on :guilabel:`Overdue nonconformities`, *Due dates missed per month*: each month counts the nonconformities that fell
+  due in that month and were not closed by their due date;
+- on :guilabel:`Amended nonconformities`, *Amendments per month*: each month counts the amended values recorded in that
+  month (an amendment that changes two fields counts twice).
 
-Under the number, a badge compares this month with last month, for example *+50% vs. last month*. When last month was
-zero, the badge shows the difference instead, for example *+2 vs. last month*. On a quality dashboard, more is bad
-news: an increase shows in **red**, a decrease in **green**, and no change in grey.
+The other tiles with a history, such as :guilabel:`Recurrences (90 days)`, are captioned the same way. A small badge
+under a number, such as *1 overdue* or *3 > 90 days*, always counts part of that number; no badge compares the number
+with last month.
 
 Open the records behind a tile
 ==============================
@@ -123,6 +126,53 @@ With **QMS Advanced** installed, the dashboard shows more tiles after the five a
 - :guilabel:`Objectives at risk` — see :doc:`objectives`;
 - :guilabel:`Satisfaction records awaiting action` — see :doc:`satisfaction`;
 - :guilabel:`Calibration due` — see :doc:`calibration`.
+
+While the environment, health and safety registers are switched on (see :doc:`ehs_setup`), nine more tiles follow,
+each shown only with the registers of its standard:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 52 20
+
+   * - Tile
+     - Counts
+     - Page
+   * - :guilabel:`Legal compliance`
+     - Active obligations whose evaluation is overdue, whose permit is expiring or expired, or whose latest result is
+       not compliant; red with the badge *N permit(s) expired* or *N evaluation(s) overdue* when there are some.
+     - :doc:`legal_requirements`
+   * - :guilabel:`Emergency situations to act on`
+     - Active emergency situations whose drill is due soon or overdue, whose plan is not in force or whose plan
+       review is late; the badge joins *N overdue*, *N plan(s) not in force* and *N review(s) late*.
+     - :doc:`emergency_preparedness`
+   * - :guilabel:`Monitoring readings overdue`
+     - Active indicators whose reading is overdue.
+     - :doc:`monitoring`
+   * - :guilabel:`Legal limits exceeded (30 days)`
+     - Readings beyond a legal limit recorded within the look-back days (30 by default); red while there are some.
+     - :doc:`monitoring`
+   * - :guilabel:`Significant aspects` (ISO 14001)
+     - Open significant aspects; red when one lacks a control or is overdue for review.
+     - :doc:`environmental_aspects`
+   * - :guilabel:`High and critical hazards` (ISO 45001)
+     - Open high and critical hazards; red when one needs a further control, is overdue for review, or is critical
+       with protective equipment only and no justification.
+     - :doc:`hazards`
+   * - :guilabel:`Incidents to triage`
+     - Reported incidents not yet triaged; red when one waits longer than the triage days.
+     - :doc:`incidents`
+   * - :guilabel:`Worker hazard reports` (ISO 45001)
+     - Open worker hazard reports; red with the badge *N overdue* when one is past its triage day.
+     - :doc:`worker_consultation`
+   * - :guilabel:`Authority reports due`
+     - Open reportable incidents not yet notified to the authority; red when one is overdue.
+     - :doc:`incidents`
+
+The :guilabel:`Calibration due` tile counts the instruments due soon, overdue, never calibrated or out of tolerance;
+its badge joins *N overdue* and *N not usable* (never calibrated or out of tolerance). For the legal, drill and monitoring tiles, a quality user counts the records they own or are responsible for;
+internal auditors and quality managers count all. :guilabel:`My records` narrows the tiles to the records you own,
+except :guilabel:`Incidents to triage`, which always counts every report waiting, and :guilabel:`Worker hazard
+reports`, which then counts the reports you have in review.
 
 The add-ons add their own tiles: :guilabel:`Competence gaps`, :guilabel:`Qualifications expiring` and
 :guilabel:`Training evaluations due` with Training & Competence (see :doc:`competence`), and :guilabel:`Suppliers

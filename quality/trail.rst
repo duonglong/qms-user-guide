@@ -33,11 +33,17 @@ Open a nonconformity and go to its :guilabel:`Trail` tab. Each row is one event,
 Every row also shows the :guilabel:`Timestamp`, the :guilabel:`User` who made the change and its :guilabel:`Hash`
 (see below). The trail is read-only: nobody, not even the administrator, can edit or delete a row from Odoo.
 
+The trail reads in plain words: the :guilabel:`Field` column shows the label you see on the form (*Root cause method*,
+not a technical name), choices show their label (*Open*, *5 Whys*), yes/no values read *Yes* and *No*, dates follow
+your own date format, and people and records are shown by name. A signature row shows the signed step in the
+:guilabel:`Field` column (for example *Nonconformity closure*) and *Signed by* followed by the signer's name in
+:guilabel:`New value`. This is only how the trail is displayed: the values stored and fingerprinted are never changed.
+
 .. image:: ../_images/trail-tab.png
    :alt: The Trail tab of a closed nonconformity: created, field changes, state changes and the closure signature.
 
-Above the list, :guilabel:`Trail Head Hash` shows the fingerprint of the latest row and :guilabel:`Amendment Count`
-how many times the record was amended.
+Above the list, a number shows how many times the record was amended. The fingerprint of the latest row is not shown
+on the form: :guilabel:`Verify trail` checks it for you.
 
 .. note::
    Changes to the clauses are recorded in the trail when they are made by an amendment. Messages and activities in
@@ -86,7 +92,7 @@ Open the record and click :guilabel:`Export trail (PDF)` or :guilabel:`Export tr
 For a period
 ------------
 
-#. Go to :menuselection:`Quality --> Trail export`.
+#. Go to :menuselection:`Quality --> Evidence --> Trail export`.
 #. Set :guilabel:`Date From` and :guilabel:`Date To`. By default the period covers the last month, ending today.
 #. Click :guilabel:`Export trail (PDF)` or :guilabel:`Export trail (CSV)`.
 
@@ -100,8 +106,8 @@ rows of the records of their own companies only. It also contains the rows recor
 What the PDF contains
 ---------------------
 
-The PDF has one line per trail row: the record, the row number, the time (UTC), the user, the event, the field, the
-old and new values, the reason, and the first characters of the previous row's hash and of the row's own hash.
+The PDF has one line per trail row: the record, the row number, the time (UTC), the user, the event, the field (by its
+label), the old and new values (in words, as on the Trail tab), the reason, and the first characters of the previous row's hash and of the row's own hash.
 
 Its footer states:
 
@@ -122,8 +128,9 @@ What the CSV contains
 ---------------------
 
 The CSV file has one line per row with the columns ``sequence``, ``timestamp``, ``user``, ``event``, ``field``,
-``old_value``, ``new_value``, ``reason``, ``prev_hash`` and ``hash``, with the full hashes. The period export adds
-two first columns naming the record. Auditors can use it to recompute the chain with their own tools.
+``old_value``, ``new_value``, ``reason``, ``prev_hash`` and ``hash``, with the stored values and the full hashes, then
+four columns in plain words: ``record``, ``field_label``, ``old_display`` and ``new_display``. The period export adds
+two first columns naming the record. Auditors can use the stored columns to recompute the chain with their own tools.
 
 Electronic signatures
 =====================

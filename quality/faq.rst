@@ -83,7 +83,7 @@ Operations
 
 **I cannot change the Source Type of a nonconformity raised from a receipt.**
    A nonconformity raised from a record keeps the source type that record gives it. To record the problem under
-   another source type, create the nonconformity from :menuselection:`Quality --> Nonconformities`. See
+   another source type, create the nonconformity from :menuselection:`Quality --> Nonconformities --> Nonconformities`. See
    :doc:`sources`.
 
 **Why is the Product field empty on a nonconformity raised from a receipt?**
@@ -195,7 +195,7 @@ Corrective actions
 
 **A new nonconformity turned my earlier verified action Ineffective.**
    Recurrence detection found the same product, or the same cause category from the same source type, within the
-   recurrence window. See :menuselection:`Quality --> Recurrences`. A match on the same process alone never does
+   recurrence window. See :menuselection:`Quality --> Nonconformities --> Recurrences`. A match on the same process alone never does
    this. See :doc:`corrective_actions`.
 
 **Why was no recurrence detected although it is the same problem?**
@@ -336,9 +336,10 @@ Documents
    A quality user sees their own versions only while they are draft or rejected. It reappears when it comes into
    force, or when it is rejected. See :doc:`documents`.
 
-**Odoo says "Open the document first" when I click Read and understood.**
-   Click :guilabel:`Open the file` in the same session first. After logging out and back in, open it again. See
-   :doc:`documents`.
+**Odoo says "Open the file first" when I click Read and understood.**
+   Click :guilabel:`Open the file` in the message or on the line first: the line turns *Opened*, then
+   :guilabel:`Read and understood` is available. Odoo keeps the first opening, so you do not need to open it again after
+   logging out. See :doc:`documents`.
 
 **Can a manager acknowledge a document for someone who has no computer access?**
    No. Only the reader can acknowledge, for themselves. See :doc:`documents`.
@@ -462,8 +463,17 @@ Context, risks and objectives
 **Open refuses my risk: "Add at least one treatment action." or "Write a treatment note of at least 10 characters."**
    Reduce, avoid, transfer and pursue need a treatment action; accept and decline need a note. See :doc:`risks`.
 
-**Odoo says "Accepting a high or critical risk needs a quality manager's signature."**
-   Ask a quality manager to click :guilabel:`Accept` and sign. See :doc:`risks`.
+**I picked Accept in the Treatment field and Odoo put it back.**
+   Acceptance is not chosen in the field: the :guilabel:`Accept` button records who accepted the risk and why. The
+   window "Accepting a risk" says so and keeps your other changes; if you may accept the risk it offers
+   :guilabel:`Accept now…`, which saves the form and opens the Accept dialog. A high or critical risk is accepted by a
+   quality manager, with a note and their signature; anyone else asks one, or chooses Reduce, Avoid or Transfer. The
+   same kind of window guides you when a value only a button sets (Override significance, Activate, Withdraw, Sign,
+   Close, Void) reaches a save. See :doc:`risks`.
+
+**A risk, aspect, hazard or other register record shows "Only the owner (…) or a quality manager can work on this …".**
+   Its buttons belong to the named person and to quality managers; ask one of them. Internal auditors see "Auditors have
+   read-only access." instead.
 
 **Odoo says "Re-assess the risk to change its score."**
    Once a risk is open, its score changes only through :guilabel:`Re-assess`, which keeps the history. See
@@ -564,6 +574,87 @@ Suppliers
 **A requirement shows "Revision not communicated".**
    A newer version of one of its documents is in force. Supersede the requirement and communicate the new one. See
    :doc:`suppliers`.
+
+Environment, health and safety
+==============================
+
+**Why can't I see Environment (or the EHS menu, or Safety reports)?**
+   The environment, health and safety registers are off until a quality manager ticks :guilabel:`ISO 14001
+   environmental registers` or :guilabel:`ISO 45001 health & safety registers` in :menuselection:`Settings -->
+   Quality` and saves. The :guilabel:`Environment` section needs the ISO 14001 box, :guilabel:`Health & Safety` the
+   ISO 45001 box; :guilabel:`Shared` and Safety reports show with either. The **Quality** menus need a Quality role;
+   Safety reports does not. See :doc:`ehs_setup`.
+
+**I switched the ISO 45001 registers off. Are my hazards gone?**
+   No. Switching a box off hides the registers; nothing is deleted. Tick it again and everything is back.
+
+**Odoo says "Turn off the ISO 14001 environmental registers first."**
+   You removed ISO 14001 from the enabled standards while its registers are on. Untick the box first, or in the same
+   save. See :doc:`ehs_setup`.
+
+**Who can read injury details?**
+   Quality managers only. Quality users and internal auditors see the person's name and role on an incident, never the
+   body part, nature, treatment or days lost; the incident log PDF and the nonconformity raised from an incident
+   contain none of them. Do not write health details in the nonconformity or in the messages. See :doc:`incidents`.
+
+**Is a confidential report anonymous?**
+   No. Only quality managers see who sent a confidential worker hazard report; everyone else reads *Confidential
+   reporter*. The server's technical logs and a database administrator can still identify the reporter. There is no
+   anonymous or portal reporting. See :doc:`safety_reports`.
+
+**"Report" refuses my incident: "A report gives what happened, when, where and who was involved; …"**
+   A report without a Quality role gives only the event itself; the owner, clauses, reportability and investigation are
+   set by the quality team after triage. See :doc:`safety_reports`.
+
+**I am an internal auditor and I do not see "Report an incident".**
+   Internal auditors read the incident log and record nothing in it, so the entry is not shown to them. Ask a
+   colleague or a quality manager to report the incident, or report the hazard. See :doc:`incidents`.
+
+**Close refuses my incident with a list: "Before closing INC/…: …"**
+   Each line is something its type still needs: the injured person's details, the reportability decision, the date
+   the authority was notified, the nonconformity with its root cause (or, for a near miss, an investigation summary),
+   an investigator, the potential severity or the release medium, and an outcome of at least 20 characters. Only a
+   quality manager closes an incident. See :doc:`incidents`.
+
+**My nonconformity from a legal evaluation will not close: "Record a compliant re-evaluation of LEG-…".**
+   It closes once a later evaluation of the same obligation is confirmed *Compliant*. See :doc:`legal_requirements`.
+
+**My nonconformity from a reading will not close: "The latest reading of MON-… still exceeds the legal limit".**
+   Record the next reading, within the limit, then close it. See :doc:`monitoring`.
+
+**Confirm asks me to "Justify the compliant result against the … legal-limit exceedances listed".**
+   Readings beyond the obligation's legal limit were recorded in the evaluation window. Explain in
+   :guilabel:`Justification` why the obligation is still complied with, or choose another result. See
+   :doc:`legal_requirements`.
+
+**Done refuses my drill: "Record the lessons learned and at least one follow-up action or nonconformity."**
+   A partially effective drill needs lessons learned and an improvement action or a nonconformity; a drill that was
+   not effective needs a nonconformity. Add them with the buttons on the planned drill, then click :guilabel:`Done`. An
+   effective drill cannot be slower than the situation's target response time. See :doc:`emergency_preparedness`.
+
+**Open refuses my aspect: "A significant aspect needs a control: …".**
+   Give it an operational control of at least 20 characters, a document, a control action or an objective. See
+   :doc:`environmental_aspects`.
+
+**Open refuses my hazard: "A high or critical hazard needs at least one further control."**
+   Click :guilabel:`Add further control` first. A critical hazard controlled by protective equipment only also needs a
+   PPE justification. See :doc:`hazards`.
+
+**Odoo says "Re-assess the hazard to change its score." (or the aspect).**
+   Once open, the score changes only through :guilabel:`Re-assess`, which keeps the history.
+
+**My reading is wrong. Can I correct it?**
+   No: void it with a reason and enter the right value as a new reading. The person who recorded it may void it the
+   same day, unless it is beyond the legal limit; otherwise a quality manager does. See :doc:`monitoring`.
+
+**Where do I print the legal register (or the hazard register, the incident log …)?**
+   In the register's section of :menuselection:`Quality --> EHS`, right after the register, for example
+   :menuselection:`Quality --> EHS --> Shared --> Print legal register`; the list's :guilabel:`Actions` menu offers it
+   too. The same registers are files 17 to 23 of the audit pack. See :doc:`audit_pack`.
+
+**The worker hazard report tile is red.**
+   A report is past its triage day (5 days after submission by default). Close it with an outcome the reporter reads.
+   See :doc:`worker_consultation`.
 
 Settings and access
 ===================

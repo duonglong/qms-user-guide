@@ -28,7 +28,7 @@ Every management review moves through three states:
 Prepare a review
 ================
 
-#. Go to :menuselection:`Quality --> Management reviews` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Audits & reviews --> Management reviews` and click :guilabel:`New`.
 #. Choose the :guilabel:`Chair`: the member of top management who chairs and approves the review. It is you by
    default. The chair must be a **quality manager** of the review's company: only quality managers are offered, and
    Odoo refuses anyone else, because the chair holds and approves the review.
@@ -155,6 +155,60 @@ manager can rename an input, change its order or its text when empty, or archive
 more than one standard, the :guilabel:`Inputs` tab groups them by standard. Inputs of a standard enabled after the
 review was created are added when you recompute a draft review.
 
+ISO 14001 and ISO 45001 inputs
+------------------------------
+
+With ISO 14001 or ISO 45001 enabled, the agenda also holds the twelve inputs of clause 9.3 of that standard, filled
+from the environment, health and safety registers while they are switched on (see :doc:`ehs_setup`):
+
+.. list-table::
+   :header-rows: 1
+   :widths: 14 43 43
+
+   * - Clause
+     - ISO 14001 input
+     - ISO 45001 input
+   * - 9.3 b 1–2
+     - *Changes in external and internal issues and in compliance obligations*
+     - *Changes in external and internal issues and in legal and other requirements*
+   * - 9.3 b 3
+     - *Changes in significant environmental aspects* — significant aspects at the end of the period, those that became
+       or ceased significant, the controls missing (:doc:`environmental_aspects`)
+     - *OH&S risks and opportunities* (9.3 b 3, d 6) — hazards by level, controls re-assessed and how many reduced the
+       level (:doc:`hazards`)
+   * - 9.3 c
+     - *Extent to which environmental objectives were achieved*
+     - *Extent to which OH&S objectives were met*
+   * - 9.3 d 1
+     - *Nonconformities and corrective actions*
+     - *Incidents, nonconformities and corrective actions* — incidents by type, days lost, authority reports made late
+       (:doc:`incidents`)
+   * - 9.3 d 2
+     - *Monitoring and measurement results* — each indicator of the standard with its period value and change, the
+       exceedances, the overdue readings and the drills (:doc:`monitoring`, :doc:`emergency_preparedness`)
+     - the same, for the health and safety indicators
+   * - 9.3 d 3
+     - *Fulfilment of compliance obligations* — the evaluations of the period by result (:doc:`legal_requirements`)
+     - *Fulfilment of legal and other requirements* — the same
+   * - 9.3 d 5
+     - —
+     - *Consultation and participation of workers* — consultations by kind and topic, reports by outcome, median days
+       to close (:doc:`worker_consultation`)
+
+Each standard also has its own input on communications with interested parties (9.3 f). The status of previous
+actions, the audit results, the adequacy of resources, the opportunities for improvement and, for ISO 14001, the risks
+and opportunities are shared with ISO 9001 (see below).
+
+One integrated review
+---------------------
+
+A company working to ISO 9001, 14001 and 45001 holds one review for the three. The inputs the standards share and
+whose figures are the same — the status of actions from previous reviews, the audit results, the adequacy of
+resources, the opportunities for improvement, and the risks and opportunities of ISO 9001 and 14001 — appear **once**,
+under the first standard, and name the clauses of the others, for example *9.3.2 a · ISO 14001 9.3 a · ISO 45001 9.3
+a*. The inputs whose figures differ by standard (context, objectives, monitoring, compliance) stay separate. With the
+three standards enabled, a new review has 27 inputs: the 12 of ISO 9001, then 7 of ISO 14001 and 8 of ISO 45001.
+
 Recompute the figures
 ---------------------
 
@@ -216,7 +270,7 @@ description, the decision's owner and due date, the review's clauses, and an eff
 plus the :guilabel:`Effectiveness gap` of the corrective action settings. The action's number shows in the decision's
 :guilabel:`Action` column, and the button disappears: a decision gets one action only.
 
-The action is then followed like any other in :menuselection:`Quality --> Corrective actions`: started, done and
+The action is then followed like any other in :menuselection:`Quality --> Nonconformities --> Corrective actions`: started, done and
 verified for effectiveness. See :doc:`corrective_actions`. The :guilabel:`Actions` tab of the review lists all the
 actions created from its decisions, with their number, title, owner, due date and state.
 
@@ -318,12 +372,12 @@ due <date>*, on the last approved review, due on that date. A quality manager ne
 open. Creating the next review as a draft stops the reminders.
 
 .. image:: ../_images/management-reviews-tile.png
-   :alt: The Next management review tile on the Quality dashboard, showing the due date in amber.
+   :alt: The Next management review tile on the Quality dashboard with the date the next review is due.
 
 Find reviews
 ============
 
-:menuselection:`Quality --> Management reviews` lists the reviews, newest meeting first, with their number, meeting
+:menuselection:`Quality --> Audits & reviews --> Management reviews` lists the reviews, newest meeting first, with their number, meeting
 date, period, chair and state: held reviews in amber, approved ones in green. Useful filters:
 
 - :guilabel:`My reviews`: the reviews you chair or attend;

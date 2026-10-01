@@ -224,7 +224,7 @@ Products: nonconformities per product
    unfold a line to see them.
 
 With **QMS Advanced**, accepting a nonconformity checks for an earlier one on the same product within the recurrence
-window (180 days by default). A match is recorded under :menuselection:`Quality --> Recurrences`, the earlier
+window (180 days by default). A match is recorded under :menuselection:`Quality --> Nonconformities --> Recurrences`, the earlier
 verified corrective actions become *Ineffective*, and the quality managers get an activity. Set the product before
 you click :guilabel:`Accept`. See :doc:`corrective_actions`.
 

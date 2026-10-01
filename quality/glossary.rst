@@ -49,6 +49,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       the fields each record allows can be amended. The trail keeps the original value next to the new one. See
       :doc:`trail`.
 
+   Applies to
+      The standard a shared environment, health and safety record serves: *Environment* (ISO 14001), *Health & safety*
+      (ISO 45001) or *Both*. The lists of the shared registers filter on it. See :doc:`ehs_setup`.
+
    Approved supplier list
       The suppliers a company may buy from, kept by signed decisions: each supplier is Approved, Conditional, Blocked,
       Unapproved (no decision) or Exempt. See :doc:`suppliers`.
@@ -87,6 +91,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       level 3 leads an audit, by default. With the Training & Competence add-on, an audit whose lead auditor is not
       qualified cannot start. See :doc:`competence`.
 
+   Authority report
+      The notification of a reportable incident to an authority such as a labour inspectorate, with its due date, the
+      date it was made and the authority's reference. See :doc:`incidents`.
+
    Awaiting verdict
       Said of a **Done** corrective action whose effectiveness date has arrived and that has no verdict yet. See
       :doc:`corrective_actions`.
@@ -96,7 +104,7 @@ The words below are used throughout the **Quality** guide with the meaning given
       is not the fingerprint of the ZIP file itself. See :doc:`audit_pack`.
 
    Cause category
-      The family of a root cause: Man, Machine, Method, Material, Measurement or Environment. It is used to detect
+      The family of a root cause: Man, Machine, Method, Material, Measurement or Work environment. It is used to detect
       recurrences. See :doc:`corrective_actions`.
 
    Chair
@@ -143,9 +151,17 @@ The words below are used throughout the **Quality** guide with the meaning given
       deleted: superseded or revoked. See :doc:`competence`.
 
    Completeness checks
-      The eleven questions the integrity and completeness report of an audit pack asks of the period's records, for
+      The questions the integrity and completeness report of an audit pack asks of the period's records, for
       example closed nonconformities without a root cause, or verified actions without evidence. Each lists the
       records concerned. See :doc:`audit_pack`.
+
+   Compliance evaluation
+      The dated, signed-off check of whether an obligation is complied with — compliant, partially compliant or non-
+      compliant — with its evidence; locked once confirmed. See :doc:`legal_requirements`.
+
+   Compliance obligation
+      A legal or other requirement the company must or chooses to comply with: a law, a regulation, a permit, a customer
+      requirement or a voluntary commitment. Also *obligation* or *legal requirement*. See :doc:`legal_requirements`.
 
    Concession
       A disposition that lets nonconforming output go on — *Repair* or *Use as is* — authorised with a signature by a
@@ -156,6 +172,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       The overall result of an audit, chosen when it is reported: *Conforming*, *Conforming with findings* or *Not
       conforming*. It must agree with the grades of the findings. Management reviews also end with a written
       conclusion. See :doc:`audits`.
+
+   Confidential reporter
+      What everyone but the quality managers reads in place of the name of an employee who reported a hazard
+      confidentially. Confidential is not anonymous. See :doc:`safety_reports`.
 
    Containment
       The immediate action that stopped a problem from spreading, such as quarantining a batch. See
@@ -184,6 +204,10 @@ The words below are used throughout the **Quality** guide with the meaning given
    Customer notification
       The record that a customer was told that nonconforming output may have reached them: who, when, how and what was
       said. See :doc:`nonconformities`.
+
+   Dangerous occurrence
+      An event that could have caused serious harm, such as a crane collapse or an uncontrolled release, whether or not
+      anyone was hurt. See :doc:`incidents`.
 
    Deviation
       A difference between an audit programme and the proposed audit frequency: a process due without an audit planned,
@@ -214,6 +238,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       One numbered revision of a controlled document (v1, v2…), with its file, change summary, author, approver and
       effective dates. See :doc:`documents`.
 
+   Drill
+      A test of the response to an emergency situation — tabletop, partial or full scale — recorded with its scenario,
+      participants, duration, response time, outcome and lessons learned. See :doc:`emergency_preparedness`.
+
    Edition check
       The periodic check, 12 months by default, that the edition of an external document in use is still the issuer's
       current one. See :doc:`documents`.
@@ -231,13 +259,26 @@ The words below are used throughout the **Quality** guide with the meaning given
       The signed judgement that a corrective action worked (*Effective*) or did not (*Ineffective*), given by someone
       other than the action's owner. See :doc:`corrective_actions`.
 
+   EHS registers
+      The environment, health and safety registers of QMS Advanced, switched on per standard in the Quality settings:
+      legal requirements, emergency preparedness, monitoring, environmental aspects, hazards, incidents and worker
+      consultation. See :doc:`ehs_setup`.
+
    Electronic signature
       A record of who approved what, when and why, together with the fingerprint of the record at that moment. By
       default it requires the signer's password. See :doc:`trail`.
 
+   Emergency situation
+      A potential emergency you prepare for — a spill, a fire, a gas leak — with its consequences, response plan,
+      responsible and drill interval. See :doc:`emergency_preparedness`.
+
    Enabled standard
       A standard whose clauses are offered when tagging records. Standards are enabled in the Quality settings. See
       :doc:`clauses`.
+
+   Environmental aspect
+      Something an activity, product or service does to the environment, such as solvent vapour from a paint line; the
+      impact is the change it causes, such as air pollution. See :doc:`environmental_aspects`.
 
    Evidence
       The quality records tagged with a clause. The clause view counts them for a period. See :doc:`clauses`.
@@ -264,6 +305,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       What an audit found, graded *Observation*, *Minor* or *Major*. Minor and major findings become nonconformities
       when the audit is closed. See :doc:`audits`.
 
+   Further control
+      A preventive action that reduces the risk of a hazard beyond the controls already in place, classified by the
+      hierarchy of controls. See :doc:`hazards`.
+
    Gap
       A clause of an enabled standard with no evidence in the chosen period. See :doc:`clauses`.
 
@@ -274,6 +319,14 @@ The words below are used throughout the **Quality** guide with the meaning given
    Hash chain
       The rows of a record's trail linked together by their hashes. :guilabel:`Verify trail` checks it. See
       :doc:`trail`.
+
+   Hazard
+      A source of harm to people in a task or area, such as a hand caught in a press brake, scored by likelihood and
+      severity. See :doc:`hazards`.
+
+   Hierarchy of controls
+      The order in which health and safety controls are chosen, most effective first: elimination, substitution,
+      engineering controls, administrative controls, personal protective equipment. See :doc:`hazards`.
 
    Hold
       The disposition *Suspend provision (hold)*: the provision of nonconforming output is stopped until a quality manager
@@ -287,6 +340,14 @@ The words below are used throughout the **Quality** guide with the meaning given
       The rating of a process — High, Medium or Low — that sets the base interval of its proposed audit frequency. See
       :doc:`audits`.
 
+   Incident
+      An event at work that caused or could have caused harm: an injury, ill health, a near miss, a dangerous occurrence
+      or an environmental incident. See :doc:`incidents`.
+
+   Injury details
+      The body part, nature of injury, treatment, days lost and injury note of a person involved in an incident; health
+      data, visible to quality managers only. See :doc:`incidents`.
+
    Interested party
       A person or group that affects or is affected by the quality system (ISO 9001 4.2), with its needs and
       expectations and how each is monitored. See :doc:`context`.
@@ -294,6 +355,10 @@ The words below are used throughout the **Quality** guide with the meaning given
    Internal auditor
       The Quality role for people who must read the whole quality system and run internal audits. It includes the
       User role. See :doc:`roles`.
+
+   Internal target
+      Your own limit for a monitoring indicator, usually stricter than the legal limit; a reading above it warns the
+      responsible without raising a nonconformity. See :doc:`monitoring`.
 
    Ishikawa
       A root-cause method, also called the fishbone diagram, that sorts possible causes into families. See
@@ -310,6 +375,10 @@ The words below are used throughout the **Quality** guide with the meaning given
    Lead auditor
       The auditor responsible for an audit, and the only one who starts and reports it (a quality manager can do it on
       their behalf). Holds the Internal auditor role. See :doc:`audits`.
+
+   Legal exceedance
+      A monitoring reading beyond the legal limit of its indicator; it raises a major nonconformity and is listed on the
+      next compliance evaluation. See :doc:`monitoring`.
 
    Locked record
       A record in a final state, such as a closed or cancelled nonconformity. Its content can no longer be changed,
@@ -331,6 +400,13 @@ The words below are used throughout the **Quality** guide with the meaning given
       The fingerprint of a management review's trail at the moment the chair approved it, printed on the minutes. See
       :doc:`management_reviews`.
 
+   Monitoring indicator
+      Something you measure at a frequency — energy use, a discharge, noise, a workplace exposure — with its unit,
+      aggregation, legal limit and internal target. See :doc:`monitoring`.
+
+   Near miss
+      An event in which nobody was hurt but someone could have been. See :doc:`incidents`.
+
    Nonconformity
       Also *NC*. Anything that did not meet a requirement: a complaint, a supplier defect, an inspection failure, an
       audit finding, a health and safety event or an internal problem. See :doc:`nonconformities`.
@@ -345,6 +421,10 @@ The words below are used throughout the **Quality** guide with the meaning given
    Observation
       A finding that is not a nonconformity: a weakness or an improvement opportunity. It stays in the audit report
       and creates no nonconformity. See :doc:`audits`.
+
+   OH&S opportunity
+      An opportunity to improve health and safety, kept in the risk register and tagged ISO 45001 6.1.2.3. See
+      :doc:`hazards`.
 
    Overdue
       Said of a new or open nonconformity whose due date has passed, and of a corrective action still **In progress**
@@ -371,6 +451,10 @@ The words below are used throughout the **Quality** guide with the meaning given
    Portal reader
       A person without an internal user, named on a controlled document, who reads and acknowledges its version in force
       in the My Account portal and sees nothing else of the app. See :doc:`documents`.
+
+   PPE justification
+      The reason, required on a critical hazard controlled by personal protective equipment only, why no control higher
+      in the hierarchy is possible. See :doc:`hazards`.
 
    Preventive action
       An action on a potential cause, before any nonconformity happened. It is tracked and verified like a corrective
@@ -428,6 +512,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       A new scoring of an open risk after treatment, at its periodic review or after a change, recorded with the previous
       score and the change. See :doc:`risks`.
 
+   Reading
+      One measured value of a monitoring indicator, classified when it is entered as within limits, outside the internal
+      target or outside the legal limit; voided, never deleted. See :doc:`monitoring`.
+
    Realised clauses
       The clauses of a standard that a process carries out. They are the default scope of its audits. See
       :doc:`audits`.
@@ -451,6 +539,10 @@ The words below are used throughout the **Quality** guide with the meaning given
 
    Report hash
       The fingerprint of an audit's trail at the moment the lead auditor signed the report. See :doc:`audits`.
+
+   Response plan
+      The controlled document people follow in an emergency; an emergency situation needs one with a version in force.
+      See :doc:`emergency_preparedness`.
 
    Retention period
       How many years a type of record is kept once it stops being live, set per record type and company, 5 years by
@@ -481,6 +573,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       came back after it was closed. It blocks closure until the root cause is changed and a new corrective action is
       started. See :doc:`corrective_actions`.
 
+   Safety reports
+      The small app every employee sees once the EHS registers are on, to report an incident or a hazard and follow
+      their own reports. See :doc:`safety_reports`.
+
    SCAR
       Supplier corrective action request: a corrective action asked of a supplier from a supplier nonconformity, sent to
       their contact, and done only once the supplier's response is recorded. See :doc:`suppliers`.
@@ -493,6 +589,14 @@ The words below are used throughout the **Quality** guide with the meaning given
    Severity
       How serious a nonconformity is: *Minor*, *Major* or *Critical*. With QMS Advanced, major and critical
       nonconformities need a verified corrective action before closing, by default. See :doc:`nonconformities`.
+
+   Significance
+      Whether an environmental aspect is significant: because a compliance obligation applies, because a quality manager
+      decided it (override), or because its score reached the significance threshold. See :doc:`environmental_aspects`.
+
+   Significance threshold
+      The score (10 by default) from which an environmental aspect is significant by score. See
+      :doc:`environmental_aspects`.
 
    Source description
       A summary of the record a nonconformity was raised from, kept on the nonconformity and readable even if that
@@ -550,6 +654,10 @@ The words below are used throughout the **Quality** guide with the meaning given
       The decision on a risk — reduce, avoid, transfer or accept — or on an opportunity — pursue or decline. See
       :doc:`risks`.
 
+   Triage
+      The first handling of a new incident or worker hazard report by a quality user, who takes it and decides what it
+      becomes. See :doc:`incidents` and :doc:`worker_consultation`.
+
    Verifier
       The person who signs the effectiveness verdict of a corrective action. It is never the action's owner. See
       :doc:`corrective_actions`.
@@ -564,3 +672,16 @@ The words below are used throughout the **Quality** guide with the meaning given
    Withdrawal
       Taking an effective document version out of use without a replacement, signed by a quality manager with a
       reason. See :doc:`documents`.
+
+   Worker consultation
+      Asking workers for their view before a decision (consultation) or having them take part in the work
+      (participation), as ISO 45001 clause 5.4 asks, recorded with the input received and the response given. See
+      :doc:`worker_consultation`.
+
+   Worker hazard report
+      A hazard, unsafe condition, unsafe act or suggestion reported by any employee from Safety reports, answered with
+      an outcome the reporter reads. See :doc:`worker_consultation`.
+
+   Worker representative
+      A person who speaks for the workers in a consultation, such as a union delegate or a safety representative. See
+      :doc:`worker_consultation`.

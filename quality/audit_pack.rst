@@ -35,7 +35,7 @@ A pack moves through these states:
 Request a pack
 ==============
 
-#. Go to :menuselection:`Quality --> Audit pack --> Request a pack`.
+#. Go to :menuselection:`Quality --> Evidence --> Audit pack --> Request a pack`.
 #. Check the :guilabel:`Period start` and :guilabel:`Period end`. By default the period is the last 12 months,
    ending today.
 #. Check the :guilabel:`Standards`. By default all enabled standards are chosen. You may also add a disabled standard,
@@ -50,7 +50,7 @@ Request a pack
 
 Odoo creates the pack in the **Queued** state, numbered *PACK/2026/0001* (numbered per company and year), opens its
 form and starts the generation in the background. You do not need to wait on the page: come back later from
-:menuselection:`Quality --> Audit pack --> Audit packs`.
+:menuselection:`Quality --> Evidence --> Audit pack --> Audit packs`.
 
 The period is checked when you click :guilabel:`Request`:
 
@@ -111,7 +111,7 @@ is shown to them only. The pack moves to **Cancelled**. A pack that is already g
 The pack form
 =============
 
-Open a pack from :menuselection:`Quality --> Audit pack --> Audit packs`. The list shows each pack's number, period,
+Open a pack from :menuselection:`Quality --> Evidence --> Audit pack --> Audit packs`. The list shows each pack's number, period,
 requester, request date, duration and state; done packs are green, failed ones red, cancelled ones grey. Use the
 :guilabel:`Done` and :guilabel:`Failed` filters, or group by :guilabel:`State`.
 
@@ -197,8 +197,11 @@ What is inside the ZIP
 ======================
 
 The files come in a fixed order, so that every pack looks the same to an auditor: files 01 to 06, then the registers
-10 to 16, then 07, 08 and 09. A section with nothing in the period still gets its PDF, stating *0 records in period*:
-absence is evidence too. Files 13 and 15 are present only when their add-on is installed.
+10 to 16, then the environment, health and safety registers 17 to 23, then 07, 08 and 09. A section with nothing in
+the period still gets its PDF, stating *0 records in period*: absence is evidence too. Files 13 and 15 are present
+only when their add-on is installed. Files 17 to 23 are present only when the pack's :guilabel:`Standards` include
+ISO 14001 or ISO 45001 **and** the registers of that standard are switched on (see :doc:`ehs_setup`): files 20
+(aspects) with ISO 14001, files 21 (hazards) and 23 (worker consultation) with ISO 45001, the others with either.
 
 .. list-table::
    :header-rows: 1
@@ -235,8 +238,9 @@ absence is evidence too. Files 13 and 15 are present only when their add-on is i
      - Documents
    * - ``05_acknowledgement_matrix.pdf``
      - A table of people against the document versions in force at some time during the period. Each cell shows the
-       date the person acknowledged the version, *pending* when they have not yet, or *not required* when the version
-       was not addressed to them. The acknowledgement matrix shows who confirmed they read and understood each
+       date the person acknowledged the version with the time they first opened it (*opened not recorded* for
+       acknowledgements given before openings were recorded), *opened …, not yet acknowledged*, *pending* when they
+       have not opened it yet, or *not required* when the version was not addressed to them. The acknowledgement matrix shows who confirmed they read and understood each
        controlled document, and when. It is evidence of awareness (ISO 9001 7.3). It is not a training or competence
        record (7.2): competence is recorded by the Training & Competence add-on.
      - Cells of the table
@@ -273,6 +277,36 @@ absence is evidence too. Files 13 and 15 are present only when their add-on is i
      - The confirmed satisfaction records whose period overlaps the pack period, with the complaint trend. See
        :doc:`satisfaction`.
      - Satisfaction records
+   * - ``17_legal_register.pdf``
+     - The legal register as at the end of the period for the pack's standards: every obligation with its latest
+       result and permit status, and the compliance evaluations of the period. See :doc:`legal_requirements`.
+     - Obligations and evaluations
+   * - ``18_emergency_preparedness.pdf``
+     - The emergency situations with their plan and drill status, and the drills of the period with their outcome. See
+       :doc:`emergency_preparedness`.
+     - Situations and drills
+   * - ``19_monitoring_register.pdf``
+     - The monitoring indicators with their limits and reading status, and the readings of the period with their
+       classification. See :doc:`monitoring`.
+     - Indicators and readings
+   * - ``20_environmental_aspects.pdf``
+     - Only with ISO 14001. The aspects open in the period with their score, significance and basis, controls and
+       assessments up to the end of the period. See :doc:`environmental_aspects`.
+     - Aspects
+   * - ``21_hazard_register.pdf``
+     - Only with ISO 45001. The hazards open in the period with their scores before and after, further controls by
+       hierarchy level and PPE justification. See :doc:`hazards`.
+     - Hazards
+   * - ``22_incident_log.pdf``
+     - The incidents that occurred in the period, of the types of the pack's standards, with their type, date,
+       reportability and nonconformity state, and the totals by type and treatment. It prints no person name and no
+       injury detail. See :doc:`incidents`.
+     - Incidents
+   * - ``23_worker_consultation.pdf``
+     - Only with ISO 45001. The consultations held and the worker hazard reports submitted in the period, with their
+       outcomes. A confidential reporter is never named, not even for a quality manager. See
+       :doc:`worker_consultation`.
+     - Consultations and reports
    * - ``07_clause_matrix.pdf``
      - For each chosen standard, every clause with its number, title, evidence count in the period and the count per
        type of record. Clauses without evidence are highlighted and marked *no evidence*. See `The clause matrix`_.
@@ -283,7 +317,7 @@ absence is evidence too. Files 13 and 15 are present only when their add-on is i
      - Records verified
    * - ``09_trail.csv``
      - Only when :guilabel:`Include the trail CSV` was ticked. Every trail row of the records the pack prints —
-       nonconformities, actions, audits, findings, document versions, reviews and the records of files 10 to 16 — with
+       nonconformities, actions, audits, findings, document versions, reviews and the records of files 10 to 23 — with
        the columns ``model``, ``record``, ``sequence``,
        ``timestamp``, ``user``, ``event``, ``field``, ``old``, ``new``, ``reason``, ``prev_hash`` and ``hash``. The
        auditor can recompute the hash chain with their own tools. See :doc:`trail`.
@@ -306,7 +340,7 @@ document hash is a fingerprint of the body of the document; it ties a printed co
 generated. See :doc:`trail`.
 
 .. image:: ../_images/audit-pack-zip.png
-   :alt: The content of an audit pack ZIP opened in a file manager: files 01 to 16, the 03_audit_reports and
+   :alt: The content of an audit pack ZIP opened in a file manager: files 01 to 23, the 03_audit_reports and
          06_review_minutes folders, manifest.json and README.txt.
 
 .. note::
@@ -419,6 +453,18 @@ the app is not installed shows *n/a*.
    * - Management reviews missing an input
      - Approved reviews of the period whose agenda lacks an ISO 9001 input that existed when the review was created, or
        holds an input neither discussed nor noted. See :doc:`management_reviews`.
+   * - Open significant environmental aspects without any control
+     - With file 20 only. See :doc:`environmental_aspects`.
+   * - Open high or critical hazards waiting for a further control, or critical with PPE only and no justification
+     - With file 21 only. See :doc:`hazards`.
+   * - Reportable incidents not reported to the authority by their due date
+     - With file 22 only. See :doc:`incidents`.
+   * - Active legal requirements whose compliance evaluation is overdue
+     - With file 17 only. See :doc:`legal_requirements`.
+   * - Active monitoring indicators with overdue readings
+     - With file 19 only. See :doc:`monitoring`.
+
+The last five checks are left out of the report when their file is not part of the pack.
 
 .. image:: ../_images/audit-pack-integrity.png
    :alt: The integrity and completeness PDF: the trail integrity table per type of record with verified, intact and
@@ -439,7 +485,7 @@ tagged to a clause show where to look; they are not proof of conformity.
 
 The pack always contains it as ``07_clause_matrix.pdf``. To print it on its own, without building a pack:
 
-#. Go to :menuselection:`Quality --> Audit pack --> Clause matrix`.
+#. Go to :menuselection:`Quality --> Evidence --> Audit pack --> Clause matrix`.
 #. Choose the :guilabel:`Period start`, the :guilabel:`Period end` (the last 12 months by default) and the
    :guilabel:`Standards` (all enabled standards by default).
 #. Click :guilabel:`Print`. Odoo downloads the PDF.
@@ -501,7 +547,7 @@ Who can do what
    * - Role
      - Audit packs
    * - **User**
-     - No access: the :menuselection:`Audit pack` menu is not shown and packs cannot be opened or downloaded.
+     - No access: the :menuselection:`Evidence --> Audit pack` menu is not shown and packs cannot be opened or downloaded.
    * - **Internal auditor**
      - Sees every pack of their companies and downloads them and their files. Requests packs and prints the clause
        matrix. Cancels the packs they requested while they are queued.

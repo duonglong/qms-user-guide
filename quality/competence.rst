@@ -19,7 +19,7 @@ Odoo are covered too.
    controlled document shows that a person was made aware of it. It never creates, extends or counts as a competence
    record: the matrix never shows acknowledgements, and the employee's form lists them apart under that heading.
 
-Everything is under :menuselection:`Quality --> Competence`; the catalogue and the requirements are under
+Everything is under :menuselection:`Quality --> Resources --> Competence`; the catalogue and the requirements are under
 :menuselection:`Quality --> Configuration`.
 
 The competence catalogue
@@ -81,9 +81,12 @@ A competence record is the evidence that an employee holds a competence at a lev
 
 To record an assessment or prior experience:
 
-#. Go to :menuselection:`Quality --> Competence --> Competence records` and click :guilabel:`New`, or use the
+#. Go to :menuselection:`Quality --> Resources --> Competence --> Competence records` and click :guilabel:`New`, or use the
    :guilabel:`Competences` smart button of the employee.
 #. Choose the :guilabel:`Employee`, the :guilabel:`Competence`, the :guilabel:`Level` and the :guilabel:`Source`.
+   :guilabel:`Training` and :guilabel:`Signed qualification` are not typed in here: if you pick one, the field is
+   cleared and a notice says where that record comes from (a training marked done, a signed auditor qualification);
+   choose :guilabel:`Assessment` or :guilabel:`Prior education or experience` instead. Your other entries are kept.
 #. Write the :guilabel:`Evidence` and attach the :guilabel:`Certificates`; name who :guilabel:`Assessed by` — nobody
    assesses their own competence.
 #. Check :guilabel:`Valid from` and :guilabel:`Valid until`, proposed from the competence's validity.
@@ -97,7 +100,7 @@ A record is evidence: it never changes in substance and is never deleted.
   reason of at least ten characters. It cannot be undone: grant a new record instead.
 - The evidence and certificates are corrected with :guilabel:`Amend`, with a reason.
 
-:menuselection:`Quality --> Competence --> My competences` lists your own current records, read-only. The filters
+:menuselection:`Quality --> Resources --> Competence --> My competences` lists your own current records, read-only. The filters
 :guilabel:`Current`, :guilabel:`Expired`, :guilabel:`Superseded`, :guilabel:`Revoked` and :guilabel:`Past retention`
 help in the full list.
 
@@ -105,8 +108,7 @@ On the employee's form, the :guilabel:`Competences` tab lists the person's recor
 documents (ISO 9001 7.3) — not evidence of competence*, the documents they acknowledged.
 
 .. image:: ../_images/competence-employee-tab.png
-   :alt: The Competences tab of an employee: competence records with level, source and validity, and below, under the
-         awareness heading, the documents the employee acknowledged.
+   :alt: The Competences tab of an employee: competence records with their level, source, validity dates and state.
 
 Trainings
 =========
@@ -124,7 +126,7 @@ Trainings
    * - **Cancelled**
      - Cancelled with a reason; it did not take place.
 
-#. Go to :menuselection:`Quality --> Competence --> Trainings` and click :guilabel:`New` (quality managers).
+#. Go to :menuselection:`Quality --> Resources --> Competence --> Trainings` and click :guilabel:`New` (quality managers).
 #. Enter the :guilabel:`Course`, for example *CMM level 2 course*, the :guilabel:`Date` (and :guilabel:`End date` for a
    training over several days), the :guilabel:`Duration (hours)` and the :guilabel:`Method`: :guilabel:`Classroom`,
    :guilabel:`On the job`, :guilabel:`E-learning`, :guilabel:`External course` or :guilabel:`Document briefing`.
@@ -166,7 +168,7 @@ reappears in the matrix. Nobody evaluates their own training, and the trainer do
 The competence matrix
 =====================
 
-Go to :menuselection:`Quality --> Competence --> Matrix`. The matrix shows, headed *Competence (ISO 9001 7.2) on
+Go to :menuselection:`Quality --> Resources --> Competence --> Matrix`. The matrix shows, headed *Competence (ISO 9001 7.2) on
 <date>*, one row per employee you may see and one column per competence that is required or held. An employee with
 nothing required and nothing held has an empty row (the printed matrix leaves such employees out). Each cell reads:
 
@@ -186,10 +188,12 @@ nothing required and nothing held has an empty row (the printed matrix leaves su
      - The last record ended on that date and nothing replaced it.
    * - *Gap (missing)*
      - Required, never recorded.
-   * - A level, in grey
-     - Held but not required.
+   * - *Level 3 (not required)*, in grey
+     - Held at that level, but not required by any job or process.
 
-An hourglass on a cell means the effectiveness of the training behind it is still to be evaluated; hover a cell to see
+Dates in the cells and in the heading follow your own date format. An hourglass on a cell means the effectiveness of
+the training behind it is still to be evaluated; a legend under the matrix explains the cells and the hourglass. The
+matrix is as tall as the list of employees: scroll the page to reach the rows below and the legend. Hover a cell to see
 its source and assessor, click it to open the record. Choose another :guilabel:`Date` to see the matrix on that day.
 Quality managers and internal auditors see every employee of their companies; another user sees the employees they
 manage. The filters above the matrix narrow those rows and combine with each other:
@@ -206,7 +210,7 @@ lifts the filter.
 .. image:: ../_images/competence-matrix.png
    :alt: The competence matrix: employees in rows, competences in columns, cells reading OK, Expiring and Gap
          (missing) in their colours, an hourglass where a training's evaluation is pending, and in grey a level held but
-         not required.
+         not required, such as Level 3 (not required).
 
 Reminders
 ---------
@@ -220,7 +224,7 @@ Auditor qualification
 
 The internal auditor qualification is recorded as a signed competence record:
 
-#. Go to :menuselection:`Quality --> Competence --> Grant auditor qualification` (quality managers).
+#. Go to :menuselection:`Quality --> Resources --> Competence --> Grant auditor qualification` (quality managers).
 #. Choose the :guilabel:`Employee` and the :guilabel:`Level`: 2 audits as a co-auditor, 3 leads an audit.
 #. Write the :guilabel:`Evidence`: courses followed, audits observed or led, the ISO 19011 criteria met, and attach the
    certificates.
@@ -252,7 +256,7 @@ The levels are set in :ref:`Internal auditor levels <config-training>`. See :ref
 Print and audit pack
 ====================
 
-:menuselection:`Quality --> Competence --> Print competence and training` prints, for the dates you choose, the matrix at
+:menuselection:`Quality --> Resources --> Competence --> Print competence and training` prints, for the dates you choose, the matrix at
 the end of the period (only the employees with at least one requirement) and the trainings of the period with each attendee's result and effectiveness verdict, headed
 *Competence (ISO 9001 7.2)*. The :doc:`audit pack <audit_pack>` includes it as ``13_competence_and_training.pdf``, apart
 from the acknowledgement matrix (file 05), which is evidence of awareness only.

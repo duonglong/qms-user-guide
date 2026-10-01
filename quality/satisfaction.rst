@@ -23,7 +23,7 @@ in its result.
 Record a satisfaction result
 ============================
 
-#. Go to :menuselection:`Quality --> Customer satisfaction --> Records` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Suppliers & customers --> Customer satisfaction --> Records` and click :guilabel:`New`.
 #. Write what was measured, for example *2026-Q3 customer survey*.
 #. In :guilabel:`Measurement`, enter the :guilabel:`Period start` and :guilabel:`Period end` — the period is over
    before its result is recorded — and choose the :guilabel:`Method`: :guilabel:`Survey`, :guilabel:`Interview`,
@@ -44,8 +44,9 @@ The record gets its number at once, ``CSAT/<year of the period end>/<nnn>``, for
 of ISO 9001 is proposed.
 
 .. image:: ../_images/satisfaction-form.png
-   :alt: A confirmed satisfaction record: survey of customers for a quarter, score 4.2 on 1 to 5, score 80.0 %, target
-         75 % met, comparison with the previous record, invited 120 and responses 36.
+   :alt: A confirmed satisfaction record: a survey of customers for a quarter, score 3.7 on 1 to 5, score 67.5 %,
+         target 75 % not met, comparison with the previous record (80.0 %, −12.5), invited 120, responses 38, and
+         Action expected ticked.
 
 How the result is compared
 --------------------------
@@ -81,7 +82,7 @@ ticked when:
   CSAT/2026/002)*.
 
 A record with an action expected shows the amber banner *Action expected:* with the reason, and is listed under
-:menuselection:`Quality --> Customer satisfaction --> Action expected` until a quality manager either raises an
+:menuselection:`Quality --> Suppliers & customers --> Customer satisfaction --> Action expected` until a quality manager either raises an
 action or records why none is needed.
 
 Raise an improvement action
@@ -116,13 +117,13 @@ The trend is printed with the satisfaction records and shown in the management r
 Print the satisfaction records
 ==============================
 
-Go to :menuselection:`Quality --> Customer satisfaction --> Print satisfaction`, choose :guilabel:`From` and
+Go to :menuselection:`Quality --> Suppliers & customers --> Customer satisfaction --> Print satisfaction`, choose :guilabel:`From` and
 :guilabel:`To` (the last 12 months by default) and click :guilabel:`Print`. The *Customer satisfaction* PDF lists each
 confirmed record whose period overlaps those dates, with its method, score, sample and comments, what was done about
 poor results or the manager's reason for none, and the complaint trend of the period. The :doc:`audit pack
 <audit_pack>` includes it as ``16_customer_satisfaction.pdf``.
 
-:menuselection:`Quality --> Customer satisfaction --> By method` lists the confirmed records grouped by method, to
+:menuselection:`Quality --> Suppliers & customers --> Customer satisfaction --> By method` lists the confirmed records grouped by method, to
 follow each method over time. The records list can also be filtered on :guilabel:`Draft`, :guilabel:`Confirmed` and
 :guilabel:`Action expected`, and grouped by :guilabel:`Method`, :guilabel:`Population` or :guilabel:`State`.
 

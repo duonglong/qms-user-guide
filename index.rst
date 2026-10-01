@@ -8,8 +8,10 @@ auditor — clause by clause — that nothing was quietly changed afterwards. Th
 register and the clause libraries, with the clauses you declare not applicable. **QMS Advanced** adds corrective
 actions, internal audits with a risk-based programme, document control with the quality policy and record retention,
 the context and scope, risks and opportunities, quality objectives, customer satisfaction, equipment calibration,
-the management review and the audit pack. Two free add-ons, installed separately, cover training and competence and
-supplier evaluation.
+the management review and the audit pack. With ISO 14001 or ISO 45001, QMS Advanced also keeps the environment,
+health and safety registers: legal requirements, emergency preparedness, monitoring, environmental aspects, hazards,
+incidents and worker consultation, switched on in the settings. Two free add-ons, installed separately, cover training
+and competence and supplier evaluation.
 
 .. seealso::
    - :doc:`quality/nonconformities`
@@ -46,6 +48,20 @@ supplier evaluation.
    quality/calibration
    quality/management_reviews
    quality/audit_pack
+
+.. toctree::
+   :caption: Environment, health and safety (QMS Advanced)
+   :titlesonly:
+
+   quality/ehs_setup
+   quality/legal_requirements
+   quality/emergency_preparedness
+   quality/monitoring
+   quality/environmental_aspects
+   quality/hazards
+   quality/incidents
+   quality/worker_consultation
+   quality/safety_reports
 
 .. toctree::
    :caption: Add-ons

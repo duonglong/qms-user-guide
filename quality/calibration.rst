@@ -9,12 +9,12 @@ installed, the **Quality** app keeps the register of your measuring equipment, r
 certificate, computes each instrument's status every day, and raises a nonconformity when a calibration finds a
 problem.
 
-Everything is under :menuselection:`Quality --> Equipment`.
+Everything is under :menuselection:`Quality --> Resources --> Equipment`.
 
 Register an instrument
 ======================
 
-#. Go to :menuselection:`Quality --> Equipment --> Equipment` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Resources --> Equipment --> Equipment` and click :guilabel:`New`.
 #. Leave the code empty to have one proposed on save, for example ``EQ-0007``, or type the code already engraved on
    the instrument. The code is unique in the company and never changes afterwards.
 #. Enter the description, for example *Digital calliper 0–150 mm*, and, in :guilabel:`Identity`, its
@@ -35,8 +35,8 @@ Clause 7.1.5 of ISO 9001 is proposed on the :guilabel:`Clauses` tab. When the in
 in force, the form warns *The method document <code> has no version in force.*
 
 .. image:: ../_images/calibration-equipment-form.png
-   :alt: The instrument EQ-0007 with its identity, calibration by the external laboratory MetroLab every 12 months,
-         next due 2026-10-15, seal protection, and the status bar on Due soon.
+   :alt: The instrument EQ-0007, a digital calliper, calibrated by the external laboratory MetroLab every 12 months,
+         next due in October, not adjustable, and the status bar on Due soon.
 
 On the laboratory's contact, the :guilabel:`Calibration laboratory` tab records its :guilabel:`Accreditation number`,
 :guilabel:`Accreditation body` and :guilabel:`Accreditation valid until`.
@@ -102,7 +102,7 @@ instruments` filters, or group by :guilabel:`Status` or :guilabel:`Responsible`.
 Record a calibration
 ====================
 
-#. Go to :menuselection:`Quality --> Equipment --> Calibrations` and click :guilabel:`New`, or open the instrument's
+#. Go to :menuselection:`Quality --> Resources --> Equipment --> Calibrations` and click :guilabel:`New`, or open the instrument's
    :guilabel:`Calibrations` tab.
 #. Choose the :guilabel:`Equipment` and enter :guilabel:`Performed on`: the day the calibration was performed, not the
    day the certificate arrived. The due date counts from it.
@@ -149,9 +149,8 @@ instrument's due date and status move at once. Later corrections of the notes or
 :guilabel:`Amend`, with a reason.
 
 .. image:: ../_images/calibration-record-form.png
-   :alt: A confirmed calibration of EQ-0007 on 2026-09-20: result Pass, certificate ML-26-4471 attached with its hash,
-         traceability to a national standard with the accreditation and statement, protection found intact and
-         restored.
+   :alt: A confirmed calibration of EQ-0007: result Pass, the certificate PDF attached with its hash, traceability to
+         a national standard with the accreditation and the statement, confirmed by and on.
 
 Out of tolerance: the impact assessment
 =======================================
@@ -183,7 +182,7 @@ Label and register
 - **Label.** From an instrument, choose :menuselection:`Print --> Equipment label`: a label with the code, the status,
   the next due date and the adjustment protection, and **DO NOT USE** when the instrument may not be used, to stick on
   the instrument.
-- **Register.** Go to :menuselection:`Quality --> Equipment --> Calibration register`, choose :guilabel:`From` and
+- **Register.** Go to :menuselection:`Quality --> Resources --> Equipment --> Calibration register`, choose :guilabel:`From` and
   :guilabel:`To` (the last 12 months by default) and click :guilabel:`Print`. The *Calibration register* PDF lists
   every instrument with its status at the end of the period and the calibrations of the period. The :doc:`audit pack
   <audit_pack>` includes it as ``14_calibration_register.pdf``.

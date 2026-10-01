@@ -132,7 +132,7 @@ Create a document
 
 Only a quality manager creates documents.
 
-#. Go to :menuselection:`Quality --> Documents --> Documents` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Resources --> Documents --> Documents` and click :guilabel:`New`.
 #. Enter the title, for example *Receiving inspection*.
 #. Choose the :guilabel:`Type`.
 #. Enter the :guilabel:`Area`: 2 to 4 capital letters for the department or area, for example ``PUR`` for
@@ -395,27 +395,37 @@ A document with an empty audience, or whose type does not require acknowledgemen
 Confirm you read it
 -------------------
 
-#. Go to :menuselection:`Quality --> Documents --> My documents to read`. The list shows your pending
-   acknowledgements with the document, the version, the date requested and the due date. Overdue ones are red.
-#. Click :guilabel:`Open the file` and read the document. It opens in a new tab.
-#. Back in the list, click :guilabel:`Read and understood`.
+#. Go to :menuselection:`Quality --> Resources --> Documents --> My documents to read`. The list shows the
+   acknowledgements you still owe with the document, the version, the date requested, the due date, the state and
+   :guilabel:`Opened on`. Overdue ones are red.
+#. Click :guilabel:`Open the file` and read the document. It opens in a new tab. The line turns **Opened** and shows
+   when you opened it; the version's trail records *Opened by <you>*.
+#. Back in the list, click :guilabel:`Read and understood`. The button appears only once the line is **Opened**.
 
 The acknowledgement is done: it is dated, your to-do is marked done and the line leaves the list. The version's
-trail records *Acknowledged by <you>*.
+trail records *Acknowledged by <you>*. Each acknowledgement goes **Pending** → **Opened** → **Acknowledged**; click a
+line to see it with its dates.
+
+To read a document again, remove the :guilabel:`To read` filter in the search bar or choose :guilabel:`Already read`:
+your acknowledged documents are listed there, and :guilabel:`Open the file` opens them without changing your
+acknowledgement.
 
 .. image:: ../_images/documents-to-read.png
-   :alt: My documents to read: pending acknowledgements with their document, version, due date, and the Open the
-         file and Read and understood buttons; an overdue line in red.
+   :alt: My documents to read: acknowledgements with their document, version, requested and due dates, state and
+         opening time; one line Opened with the Read and understood button, the others Pending with Open the file.
 
 A few rules make the acknowledgement worth something:
 
-- **You must open the file first**, in the same Odoo session. Otherwise Odoo answers *Open the document first*. After
-  you log out and back in, open the file again.
+- **You must open the file first.** Odoo records the first time you open it, and keeps that time: opening it again
+  changes nothing. If you press :guilabel:`Read and understood` before, a *Reading a document* message says *Open the
+  file first: the acknowledgement records that you read this version.* with an :guilabel:`Open the file` button.
 - **Only you can acknowledge for yourself.** Nobody, not even a quality manager, can confirm on your behalf.
 - **A done acknowledgement is final.** It cannot be changed or deleted.
 
 Quality managers and internal auditors follow who has read what on the :guilabel:`Acknowledgements` tab of each
-version: the reader, the state (**Pending** or **Done**), the due date and the date acknowledged.
+version: the reader, the state (**Pending**, **Opened** or **Acknowledged**), the due date, when the reader opened the
+file and the date acknowledged. Acknowledgements given before the *Opened* state existed show their opening as *not
+recorded*.
 
 .. _documents-portal-readers:
 
@@ -450,13 +460,15 @@ What a portal reader sees
 
 In **My Account**, the *Documents to read* entry opens ``/my/documents``:
 
-- **Documents to read**: their pending acknowledgements, overdue ones first, with the document code, title and version;
+- **Documents to read**: the acknowledgements they still owe, overdue ones first, with the document code, title,
+  version, state (*Pending* or *Opened*) and when they opened it;
 - **Documents that concern you**: the documents naming them, with the version in force, its *In force from* date and
   state.
 
-To confirm, they open the version (the controlled copy, stamped, opens in the browser) and click :guilabel:`Read and
-understood`. As inside Odoo, they must open the document first in the same session: otherwise the page says *Open the
-document first.* When the version is no longer in force, the page says *This version is no longer in force; open the
+To confirm, they open the version with :guilabel:`Open the file` (the controlled copy, stamped, opens in the browser;
+the line turns *Opened* and the page refreshes) and click :guilabel:`Read and understood`. As inside Odoo, the button
+stays greyed out with *Open the file first* until they have opened the version; a direct post before that says *Open
+the file first: the acknowledgement records that you read this version.* When the version is no longer in force, the page says *This version is no longer in force; open the
 current one.* Once recorded, it says *Thank you: your acknowledgement is recorded.*
 
 A portal reader never sees anything else of the Quality app: no other document, no draft, no obsolete version, no
@@ -518,7 +530,7 @@ The master list
 The master list is the auditor's index of your documents: for a chosen date, every document with the version that
 was in force on that date.
 
-#. Go to :menuselection:`Quality --> Documents --> Master list`.
+#. Go to :menuselection:`Quality --> Resources --> Documents --> Master list`.
 #. Choose the :guilabel:`Date`: today by default.
 #. Choose :guilabel:`Types` to limit the list, or leave it empty for every type.
 #. Click :guilabel:`Print` for a PDF, or :guilabel:`Export CSV` for a spreadsheet with the same columns.
@@ -726,7 +738,7 @@ background. Each row shows its :guilabel:`Past retention` count; click :guilabel
 Find documents
 ==============
 
-:menuselection:`Quality --> Documents --> Documents` offers a list and a kanban board grouped by type. In the list,
+:menuselection:`Quality --> Resources --> Documents --> Documents` offers a list and a kanban board grouped by type. In the list,
 documents overdue for review are red and obsolete documents are grey; the state is a coloured badge. Search by code,
 title or owner. Useful filters:
 
@@ -739,7 +751,7 @@ You can group by :guilabel:`Type`, :guilabel:`Owner` or :guilabel:`State`.
 Find versions
 -------------
 
-Quality managers and internal auditors also have :menuselection:`Quality --> Documents --> Versions`: every version of
+Quality managers and internal auditors also have :menuselection:`Quality --> Resources --> Documents --> Versions`: every version of
 every document in one list, with its author, approver, effective dates and state. Versions in draft or in review are
 shown in blue and obsolete ones in grey. Use the :guilabel:`In review` filter to see what waits for approval and
 :guilabel:`In force` for the versions currently in force; group by :guilabel:`Document` or :guilabel:`State`.
@@ -843,13 +855,13 @@ Who can do what
        interested party.
    * - **Internal auditor**
      - The same, and reads every document, version and acknowledgement of the company, also from
-       :menuselection:`Documents --> Versions`.
+       :menuselection:`Resources --> Documents --> Versions`.
    * - **Manager**
      - Everything: creates documents and changes their title, owner, audience and clauses; manages document types and
        retention periods; approves and rejects versions under the type's rule (never their own version, never a
        top-management type); brings into force and withdraws versions; submits, revises or deletes drafts on the
        author's behalf; amends the change summary of a version in force or obsolete; lists every version under
-       :menuselection:`Documents --> Versions`. A manager cannot acknowledge for anyone else.
+       :menuselection:`Resources --> Documents --> Versions`. A manager cannot acknowledge for anyone else.
    * - **Top management**
      - Needs no Quality role: approves or rejects the versions of the quality policy from their to-do.
    * - **Portal reader**

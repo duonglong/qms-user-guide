@@ -42,6 +42,9 @@ Three kinds of people take part without a Quality role:
   My Account portal, and see nothing else. See :ref:`documents-portal-readers`.
 - **Employees** without a user are covered by the Training & Competence add-on: their competence records and trainings
   are kept on their employee record. See :doc:`competence`.
+- **Every employee** — any internal user, with or without a Quality role — reports incidents and hazards from the
+  **Safety reports** app once the environment, health and safety registers are switched on, and follows their own
+  reports there. See :doc:`safety_reports`.
 
 Give a user a role
 ==================
@@ -201,7 +204,7 @@ cell says on which records. Items in **QMS Advanced** need the paid layer to be 
      - Records they can see
      - Records they can see
      - Yes
-   * - Export the trail of a period (:menuselection:`Quality --> Trail export`)
+   * - Export the trail of a period (:menuselection:`Quality --> Evidence --> Trail export`)
      - Rows of the records they can see
      - Rows of the records they can see
      - Yes
@@ -337,7 +340,7 @@ cell says on which records. Items in **QMS Advanced** need the paid layer to be 
      - No
      - No
      - Yes
-   * - List every version (:menuselection:`Documents --> Versions`)
+   * - List every version (:menuselection:`Resources --> Documents --> Versions`)
      - No
      - Yes
      - Yes
@@ -544,6 +547,15 @@ cell says on which records. Items in **QMS Advanced** need the paid layer to be 
    audit to its lead auditor and to quality managers, not to co-auditors; :guilabel:`Submit` and :guilabel:`Revise` on
    a document version to its author and to quality managers.
 
+   On the registers whose buttons belong to a named person — risks, environmental aspects, hazards, legal
+   requirements, monitoring indicators, emergency situations, incidents and consultations — a blue line under the
+   header of a record you cannot act on says who can, for example *Only the owner (DEMO Operations Manager) or a
+   quality manager can work on this hazard.* Internal auditors read *Auditors have read-only access.*
+
+   When a save would set a value that only a button may set, a window explains what happened, what was kept of your
+   edit and, if you may press the button, offers it (for example :guilabel:`Accept now…`); otherwise it names who can.
+   :guilabel:`Got it` closes it.
+
 .. important::
    - Only users with the :guilabel:`Internal auditor` or :guilabel:`Manager` role can be chosen as lead auditor or
      co-auditor. See :doc:`audits`.
@@ -552,6 +564,57 @@ cell says on which records. Items in **QMS Advanced** need the paid layer to be 
      quality managers or top management — never to its author. See :doc:`documents`.
    - With the Training & Competence add-on, the lead auditor of an audit must be qualified for the audit to start. See
      :doc:`competence`.
+
+Environment, health and safety
+==============================
+
+With the environment, health and safety registers switched on (see :doc:`ehs_setup`), the three Quality roles work on
+them as on the other registers, with these particulars:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 34 22 22 22
+
+   * - Action
+     - User
+     - Internal auditor
+     - Manager
+   * - Read the EHS registers of the standards switched on
+     - Yes
+     - Yes
+     - Yes
+   * - Record obligations, situations, indicators, readings, aspects, hazards, consultations
+     - Yes
+     - No
+     - Yes
+   * - Activate, open, re-assess, record drills, triage reports
+     - As the owner, responsible, coordinator or organiser (triage: any quality user)
+     - No
+     - Yes
+   * - Withdraw an obligation, retire a situation, override an aspect's significance, close an aspect, a hazard or an
+       incident, decide reportability
+     - No
+     - No
+     - Yes
+   * - Read and write the injury details of an incident
+     - No
+     - No
+     - Yes
+   * - See who sent a confidential worker hazard report
+     - No
+     - No
+     - Yes
+   * - Report an incident from Safety reports
+     - Yes
+     - No
+     - Yes
+   * - Report a hazard from Safety reports
+     - Yes
+     - Yes
+     - Yes
+
+Employees without a Quality role see only the **Safety reports** app: they report incidents and hazards and read their
+own reports, nothing else. Portal users see neither. Switching the registers on changes no user's type in Odoo.
 
 Separation of duties
 ====================

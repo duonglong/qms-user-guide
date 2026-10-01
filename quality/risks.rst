@@ -23,19 +23,20 @@ treatment shows whether the treatment worked.
      - Closed by a quality manager with a reason. It is locked.
 
 .. image:: ../_images/risks-register.png
-   :alt: The risk register: number, title, type, owner, likelihood, severity, score, a coloured level badge,
-         treatment, next review and state, sorted by score.
+   :alt: The risk register: number, title, type, owner, score, a coloured level badge, treatment, next review and
+         state, sorted by score.
 
 Record a risk or an opportunity
 ===============================
 
-#. Go to :menuselection:`Quality --> Risks --> Risks and opportunities` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Planning --> Risks --> Risks and opportunities` and click :guilabel:`New`.
 #. Write the risk or the opportunity in one line, for example *Single qualified supplier for anodising*.
 #. Choose the :guilabel:`Type`: :guilabel:`Risk` (it may harm conformity or customer satisfaction) or
    :guilabel:`Opportunity` (it may improve them). The type is fixed once the risk is open.
 #. Check the :guilabel:`Owner` (you by default) and :guilabel:`Identified on` (today; it cannot be in the future).
 #. Score it: :guilabel:`Likelihood` and :guilabel:`Severity` — :guilabel:`Benefit` for an opportunity — from 1 to 5.
-#. On the :guilabel:`Description` tab, describe it, its :guilabel:`Cause` and its :guilabel:`Consequence`.
+#. On the :guilabel:`Description` tab, describe it, its :guilabel:`Cause` and its :guilabel:`Consequence`. For an
+   opportunity these read :guilabel:`What could bring it about` and :guilabel:`What we would gain`.
 #. On the :guilabel:`Links` tab, add the :guilabel:`Processes` it concerns, the :guilabel:`Context issues` it stems
    from, the :guilabel:`Interested-party needs` it concerns (adopted needs of relevant parties only) and the
    :guilabel:`Nonconformities` where it materialised. Links stay within the risk's company.
@@ -104,16 +105,24 @@ thresholds:
      - Every 3 months
 
 For example, a risk scored likelihood 4 × severity 4 has a score of 16: it is **Critical**. The form shows the 5 × 5
-matrix, each cell in the colour of its level, with the risk's cell outlined.
+matrix, with the likelihood down the left side and the severity across the top, each cell in the colour of its level,
+with the risk's cell outlined.
+
+An opportunity reads the other way. Its matrix has the benefit across the top and one green that gets stronger as the
+score rises, never red, and its level reads as a benefit: :guilabel:`Minor benefit`, :guilabel:`Moderate benefit`,
+:guilabel:`High benefit` or :guilabel:`Major benefit`. In the register, the :guilabel:`Level` column and the colour of
+the badge follow the same reading.
 
 .. image:: ../_images/risks-form.png
-   :alt: An open risk as a quality manager sees it, with Add treatment action, Re-assess, Accept and Close in the header:
+   :alt: An open risk as a quality manager sees it, with Add treatment action, Re-assess and Close in the header:
          likelihood 4 and severity 4, score 16, level Critical, and the 5 × 5 matrix with the risk's cell outlined.
 
 Decide the treatment
 ====================
 
-On the :guilabel:`Treatment` tab, choose the :guilabel:`Treatment`. What it needs before the risk can be opened:
+On the :guilabel:`Treatment` tab, choose the :guilabel:`Treatment`. A risk offers :guilabel:`Reduce`,
+:guilabel:`Avoid`, :guilabel:`Transfer` and :guilabel:`Accept`; an opportunity offers only :guilabel:`Pursue` and
+:guilabel:`Decline`. What it needs before the risk or opportunity can be opened:
 
 .. list-table::
    :header-rows: 1
@@ -161,6 +170,16 @@ A **Low** or **Medium** risk is accepted by its owner or a quality manager. A **
 by a quality manager only: Odoo asks for their password and records an electronic signature with the reason *Risk
 acceptance*. :guilabel:`Accepted by` shows who accepted it.
 
+Acceptance is recorded with the button, not by choosing :guilabel:`Accept` in the :guilabel:`Treatment` field. If you
+pick it there, a window titled *Accepting a risk* says why, puts back only the treatment (your other changes are kept)
+and, if you may accept this risk, offers :guilabel:`Accept now…`, which saves the form and opens the Accept dialog.
+Otherwise it says who can — a quality manager for a high or critical risk, the owner or a quality manager otherwise —
+and suggests Reduce, Avoid or Transfer instead. On a draft risk, the same window is titled *Opening a risk* and offers
+:guilabel:`Accept and open…`.
+
+On a risk you do not own, a line under the header says *Only the owner (…) or a quality manager can work on this
+risk.*
+
 If an accepted risk later becomes High or Critical after a re-assessment, its acceptance lapses: the form shows
 *Acceptance lapsed: the risk became high or critical after it was accepted. Re-decide the treatment.*, and the owner
 and the quality managers get a *Re-decide the treatment* to-do. The risk stays open.
@@ -169,7 +188,11 @@ Open the risk
 -------------
 
 When the risk is described, scored and its treatment decided, its owner or a quality manager clicks :guilabel:`Open`.
-Odoo checks the title, type, owner, score, at least one clause and the treatment table above, then:
+Odoo checks the title, type, owner, score, at least one clause and the treatment table above. If something is missing,
+a window titled *Opening a risk* (*Opening an opportunity* for an opportunity) lists everything still needed at once and
+says where to enter it, for example *Choose Pursue or Decline in the Treatment field on the Treatment tab, then press
+Open again.* Click :guilabel:`Got it`, fill the fields it names and click :guilabel:`Open` again. When everything is
+there, Odoo:
 
 - gives the risk its number, ``RSK/<year identified>/<nnn>``, for example ``RSK/2026/001``;
 - records the first row of the :guilabel:`Assessments` tab, phase :guilabel:`Initial`, with the date, who assessed,
@@ -182,7 +205,8 @@ Re-assess the risk
 ==================
 
 When the last treatment action of an open risk is done or verified, its owner gets a *Re-assess the risk <risk>*
-to-do. To record a re-assessment:
+to-do. To record a re-assessment (the window is titled *Re-assess opportunity* on an opportunity, and asks for the
+:guilabel:`Benefit` instead of the :guilabel:`Severity`):
 
 #. Click :guilabel:`Re-assess` on the open risk.
 #. Choose the :guilabel:`Phase`: :guilabel:`After treatment`, :guilabel:`Periodic review` or :guilabel:`Change`.
@@ -195,8 +219,9 @@ A new row is added to the :guilabel:`Assessments` tab with the previous score an
 re-assessment records a partial treatment.
 
 .. image:: ../_images/risks-assessments.png
-   :alt: The Assessments tab of a risk: the initial row with score 16 Critical and an after-treatment row with score 6
-         Medium, previous score 16 and delta −10.
+   :alt: The Assessments tab of a risk with its initial assessment: date, phase Initial, likelihood 4, severity 4,
+         score 16, level Critical and the assessor; each re-assessment adds a row with the previous score and the
+         delta.
 
 Review risks periodically
 -------------------------
@@ -223,11 +248,12 @@ takes no new treatment action: record a new risk instead. Only a draft risk can 
 Find risks and print the register
 =================================
 
-The register is sorted by score, highest first. Filters: :guilabel:`Risks`, :guilabel:`Opportunities`,
+The register is sorted by score, highest first. A risk shows its score and level; for an opportunity the level reads
+as a benefit, as above. Filters: :guilabel:`Risks`, :guilabel:`Opportunities`,
 :guilabel:`High and critical`, :guilabel:`My risks`, :guilabel:`Overdue review`, :guilabel:`Draft`, :guilabel:`Open`
 and :guilabel:`Closed`; group by :guilabel:`Level`, :guilabel:`Type` or :guilabel:`Owner`.
 
-To print it, go to :menuselection:`Quality --> Risks --> Print risk register`, choose the :guilabel:`As at` date and
+To print it, go to :menuselection:`Quality --> Planning --> Risks --> Print risk register`, choose the :guilabel:`As at` date and
 click :guilabel:`Print`. The PDF lists every risk open on that date with its scores before and after treatment, its
 treatment and its actions. The :doc:`audit pack <audit_pack>` includes it as ``11_risk_register.pdf``.
 

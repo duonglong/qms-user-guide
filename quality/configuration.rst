@@ -63,8 +63,8 @@ Follow this order the first time:
    set their **Quality** role: :guilabel:`User` for people who raise and treat nonconformities,
    :guilabel:`Internal auditor` for people who must read every nonconformity, :guilabel:`Manager` for people who
    close, cancel, amend and configure. See :doc:`roles`.
-#. **Enable your standards** in :menuselection:`Settings --> Quality`: add ISO 14001, 45001, 13485 or 22000 if you
-   certify against them. See :doc:`clauses`.
+#. **Enable your standards** in :menuselection:`Settings --> Quality`: add ISO 14001, 45001, 13485 or 22000 if your
+   management system covers them. See :doc:`clauses`.
 #. **Check the nonconformity settings**: days to treat, owner reminder, fallback owner and dashboard age buckets (see
    below).
 #. **Decide on the password check** for signatures. Leave it on unless your users sign in through single sign-on.
@@ -74,7 +74,9 @@ Follow this order the first time:
 With **QMS Advanced**, continue with: the process register and the importance of each process (:doc:`audits`), the
 top management and the quality policy (:doc:`documents`), the context and the signed scope (:doc:`context`), the risk
 register (:doc:`risks`), the objectives (:doc:`objectives`), the equipment register (:doc:`calibration`) and the
-retention periods (:ref:`documents-retention`).
+retention periods (:ref:`documents-retention`). For ISO 14001 or ISO 45001, switch on the environment, health and safety
+registers and set them up in the order of :doc:`ehs_setup`: legal requirements first, then emergency situations,
+monitoring indicators, aspects or hazards.
 
 Settings
 ========
@@ -82,7 +84,8 @@ Settings
 Go to :menuselection:`Settings --> Quality`. The section is visible to quality managers only.
 
 .. image:: ../_images/settings-quality.png
-   :alt: The Quality section of the Settings app with the Standards and Nonconformities blocks.
+   :alt: The Standards block of the Quality settings with the enabled standards and the ISO 14001 and ISO 45001
+         register boxes, and the start of the Environment, health and safety block.
 
 .. important::
    Odoo opens the Settings app only to users with the *Administration: Settings* right. A quality manager without
@@ -117,6 +120,15 @@ Standards
    - Disabling a standard hides its clauses from the pickers; records already tagged keep their tags.
    - Example: add *ISO 45001 — Occupational health and safety* to tag health and safety events with ISO 45001
      clauses.
+   - A standard whose environment, health and safety registers are switched on cannot be disabled: *Turn off the ISO
+     14001 environmental registers first.* See :doc:`ehs_setup`.
+
+:guilabel:`ISO 14001 environmental registers` and :guilabel:`ISO 45001 health & safety registers`
+   With **QMS Advanced**: show the environment, health and safety registers of that standard, and enable the standard.
+   Switching a box off hides the registers; nothing is deleted.
+
+   - Default: both off (on with demo data).
+   - See :doc:`ehs_setup`.
 
 Nonconformities
 ---------------
@@ -184,7 +196,7 @@ Integrity
    - Default: ticked.
    - Untick it only on installations where users sign in through single sign-on and have no Odoo password.
    - Every change of this setting is recorded in the trail, with who changed it and when, and appears in the
-     :menuselection:`Quality --> Trail export` of that period.
+     :menuselection:`Quality --> Evidence --> Trail export` of that period.
 
 .. _config-trail-pdf-limit:
 
@@ -301,6 +313,12 @@ With **QMS Advanced** installed, the same page shows more blocks. A value outsid
      - :guilabel:`Longest period`, :guilabel:`Time cap`, :guilabel:`NC log rows per file`
      - 24, 600, 5000
      - See :doc:`audit_pack`.
+   * - :guilabel:`Environment, health and safety` (shown while an ISO 14001 or ISO 45001 box is ticked)
+     - :guilabel:`Legal requirements`, :guilabel:`Emergency preparedness`, :guilabel:`Monitoring`,
+       :guilabel:`Incidents`, :guilabel:`Environmental aspects`, :guilabel:`Hazards (uses the risk thresholds)`,
+       :guilabel:`Worker consultation`
+     - See :doc:`ehs_setup`
+     - Every key with its Lean, Standard and Regulated value is in the table of :doc:`ehs_setup`.
 
 .. _config-context:
 .. _config-risks:
@@ -313,7 +331,8 @@ The labels above are those of the settings page. Each setting is explained with 
 table. Refusals you may meet when saving: *Thresholds must increase: medium < high < critical.*, *The audit proposal
 factors must be above 0 and at most 1.*, *The base audit intervals must be above 0 months.*, *The shortest audit
 interval must be at least 1 month and not above the longest.*, *The nonconformity threshold must be at least 1.*, *The
-deterioration threshold cannot be negative.*, *The controlled-copy stamp cannot be empty.*, and *<setting> must be at
+deterioration threshold cannot be negative.*, *The controlled-copy stamp cannot be empty.*, *Turn off the ISO 14001
+environmental registers first.*, *Turn off the ISO 45001 health & safety registers first.*, and *<setting> must be at
 least <n>.* or *<setting> must be at most <n>.* for a value out of its limits.
 
 .. _config-training:

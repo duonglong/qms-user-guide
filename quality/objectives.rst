@@ -47,7 +47,7 @@ objective :guilabel:`At most`. Equality meets it.
 Set an objective
 ================
 
-#. Go to :menuselection:`Quality --> Objectives --> Objectives` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Planning --> Objectives --> Objectives` and click :guilabel:`New`.
 #. Write the objective in one line, for example *On-time delivery*.
 #. In :guilabel:`Target`: choose the :guilabel:`Direction` (:guilabel:`At least` or :guilabel:`At most`), the
    :guilabel:`Target`, for example ``95``, and the :guilabel:`Unit`, at most 20 characters, for example ``%``,
@@ -157,7 +157,7 @@ Find objectives and print them
 Filters: :guilabel:`My objectives`, :guilabel:`Draft`, :guilabel:`Active`, :guilabel:`Closed`, :guilabel:`At risk` and
 :guilabel:`Not communicated`; group by :guilabel:`State`, :guilabel:`Status`, :guilabel:`Owner` or :guilabel:`Process`.
 
-To print, go to :menuselection:`Quality --> Objectives --> Print objectives`, choose :guilabel:`From` and
+To print, go to :menuselection:`Quality --> Planning --> Objectives --> Print objectives`, choose :guilabel:`From` and
 :guilabel:`To` (the current year by default) and click :guilabel:`Print`. The *Objectives status* PDF lists each
 objective whose period overlaps those dates, with its target, actual, status, plan and measurements. The
 :doc:`audit pack <audit_pack>` includes it as ``12_quality_objectives.pdf``.

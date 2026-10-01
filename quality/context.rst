@@ -13,7 +13,7 @@ the **Quality** app keeps the answers as three registers instead of a slide or a
 - **Scope** (clause 4.3) — the scope statement, approved with a signature, in force from its approval until it is
   revised, with the clauses the company declared not applicable.
 
-Everything is under :menuselection:`Quality --> Context`. Each register counts as evidence in the
+Everything is under :menuselection:`Quality --> Planning --> Context`. Each register counts as evidence in the
 :doc:`clause view <clauses>` for every period its records were in force.
 
 Record the issues
@@ -33,7 +33,7 @@ customers now require PPAP, a key machine is ageing, a new regulation is coming.
    * - **Retired**
      - The issue no longer applies. It is locked, with the reason, and stays as evidence of the periods it applied.
 
-#. Go to :menuselection:`Quality --> Context --> Issues` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Planning --> Context --> Issues` and click :guilabel:`New`.
 #. Write the :guilabel:`Issue` in one line, for example *Two customers now require PPAP*.
 #. Choose the :guilabel:`Kind`: :guilabel:`External` (outside the company: market, law, technology…) or
    :guilabel:`Internal` (inside it: values and culture, knowledge, performance and resources).
@@ -84,7 +84,7 @@ Only the owner of the issue or a quality manager can mark it reviewed or retire 
 Record the interested parties
 =============================
 
-#. Go to :menuselection:`Quality --> Context --> Interested parties` and click :guilabel:`New`.
+#. Go to :menuselection:`Quality --> Planning --> Context --> Interested parties` and click :guilabel:`New`.
 #. Enter the party or group, for example *Automotive customers*, *Employees* or *the local community*. A name is used
    once per company, whatever the upper and lower case.
 #. Choose the :guilabel:`Category`: :guilabel:`Customer`, :guilabel:`End user`, :guilabel:`Supplier`,
@@ -110,8 +110,11 @@ Each need has:
 
 :guilabel:`Next monitoring` is the last monitoring (or the day the need was added) plus the frequency. A
 :guilabel:`Continuous` need is checked by an everyday control, such as every delivery, and is never overdue. When the
-monitoring was done, click :guilabel:`Record monitoring` on the need's line, write what it found (at least ten
-characters) and confirm: :guilabel:`Last monitored on` becomes today.
+monitoring was done, click :guilabel:`Record monitoring` on the need's line. The dialog says what it records and
+shows the need's monitoring method and frequency, the last monitoring with its note, and the :guilabel:`Next
+monitoring` date that recording today sets. Write what the check found (at least ten characters) and confirm:
+Odoo confirms *Monitoring recorded on … Next check due on …*, and the need's line shows the new
+:guilabel:`Last monitored on` and :guilabel:`Next monitoring`.
 
 .. image:: ../_images/context-party-form.png
    :alt: An interested party with its category, contact, owner and relevance, and the Needs and expectations tab with
@@ -140,7 +143,7 @@ version in force per company at a time.
    * - **Superseded**
      - Replaced by a newer approved version. It keeps its dates: in force from … until the day before its successor.
 
-#. Go to :menuselection:`Quality --> Context --> Scope` and click :guilabel:`New`. The version gets its number, for
+#. Go to :menuselection:`Quality --> Planning --> Context --> Scope` and click :guilabel:`New`. The version gets its number, for
    example *Scope v1*.
 #. On the :guilabel:`Statement` tab, write the scope statement in terms of the products and services covered, and,
    if useful, the :guilabel:`Products and services`, the :guilabel:`Sites` and the :guilabel:`Boundaries`
@@ -185,7 +188,7 @@ A draft can be deleted by a quality manager. An approved or superseded scope is 
 Print the context and scope
 ===========================
 
-#. Go to :menuselection:`Quality --> Context --> Print context and scope`, or click :guilabel:`Print context and
+#. Go to :menuselection:`Quality --> Planning --> Context --> Print context and scope`, or click :guilabel:`Print context and
    scope` on an approved scope.
 #. Choose the :guilabel:`As at` date: today by default.
 #. Click :guilabel:`Print`.
